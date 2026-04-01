@@ -2,7 +2,7 @@ import os
 import json
 import secrets
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, date
 from pydantic_ai.messages import ModelMessagesTypeAdapter
 
 
@@ -27,7 +27,7 @@ def log_entry(agent, messages, source="user"):
 
 
 def serializer(obj):
-    if isinstance(obj, datetime):
+    if isinstance(obj, (datetime, date)):
         return obj.isoformat()
     raise TypeError(f"Type {type(obj)} not serializable")
 
