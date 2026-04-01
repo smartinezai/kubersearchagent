@@ -1,0 +1,13 @@
+[project]
+name = "kubernetes-ai-assistant"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.45.0",
+    "pydantic-ai>=1.0.9",
+    "minsearch>=0.0.5",
+    "python-frontmatter>=1.1.0",
+    "requests>=2.32.5",
+    "groq>=0.25.0",
+]
+ 
