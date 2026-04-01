@@ -1,30 +1,34 @@
+import os
 import asyncio
 import streamlit as st
 import ingest
 import search_agent
 import logs
-import os
-import streamlit as st
+
 
 REPO_OWNER = "kubernetes"
 REPO_NAME = "website"
 
 
-
 @st.cache_resource
 def init_agent():
     # Read API key from Streamlit secrets or environment
-    groq_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
+    try:
+        groq_key = st.secrets.get("GROQ_API_KEY")
+    except Exception:
+        groq_key = None
+    groq_key = groq_key or os.getenv("GROQ_API_KEY")
     if not groq_key:
         st.error("GROQ_API_KEY not found in secrets!")
         st.stop()
     os.environ["GROQ_API_KEY"] = groq_key
 
-    st.write("🔄 Downloading and indexing Kubernetes docs...")
+    st.write("🔄 Downloading and indexing Kubernetes docs (this may take a minute)...")
     index = ingest.index_data(REPO_OWNER, REPO_NAME)
     agent = search_agent.init_agent(index, REPO_OWNER, REPO_NAME)
     st.write("✅ Ready!")
     return agent
+
 
 agent = init_agent()
 
