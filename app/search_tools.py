@@ -13,6 +13,6 @@ class SearchTool:
             query (str): The search query string.
 
         Returns:
-            List[Any]: A list of up to 5 relevant chunks from the Kubernetes docs.
+            List[Any]: A list of up to 2 relevant chunks from the Kubernetes docs.
         """
-        return self.index.search(query, num_results=5)
+        return self.index.search(query, num_results=2)

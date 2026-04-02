@@ -27,6 +27,6 @@ def init_agent(index, repo_owner, repo_name):
         name="kubernetes_agent",
         instructions=system_prompt,
         tools=[search_tool.search],
-        model='groq:llama-3.3-70b-versatile'
+        model='groq:openai/gpt-oss-120b'
     )
     return agent
