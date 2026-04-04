@@ -1,0 +1,59 @@
+{
+  "agent_name": "kubernetes_agent_v3",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it."
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is a DaemonSet?",
+          "timestamp": "2026-04-01T12:12:20.052310+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-04-01T12:12:20.052488+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it.",
+      "kind": "request",
+      "run_id": "52f58251-85c3-4f99-a81e-db497e614b6d",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "<function=hybrid_search_tool>{\"query\": \"DaemonSet definition\"</function>",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 0,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 0,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-04-01T12:12:20.320246+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": null,
+      "provider_response_id": null,
+      "finish_reason": "error",
+      "run_id": "52f58251-85c3-4f99-a81e-db497e614b6d",
+      "metadata": null
+    }
+  ],
+  "source": "user"
+}

@@ -1,0 +1,329 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "How do you create a RoleBinding that grants access to a specific namespace?",
+          "timestamp": "2026-03-29T19:41:46.106865+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-29T19:41:46.107212+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "8d97d903-ea66-4032-974a-5e5b9cf27d38",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"RoleBinding namespace access\"}",
+          "tool_call_id": "ezfn3gtts",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 480,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 20,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-29T19:41:46.316554+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-29T19:41:46+00:00"
+      },
+      "provider_response_id": "chatcmpl-a729cf8b-b38b-420e-ba07-9166dc1f62ab",
+      "finish_reason": "tool_call",
+      "run_id": "8d97d903-ea66-4032-974a-5e5b9cf27d38",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "Namespace"
+              },
+              "content_type": "api_reference",
+              "description": "Namespace \u4e3a\u540d\u5b57\u63d0\u4f9b\u4f5c\u7528\u57df\u3002",
+              "title": "Namespace",
+              "weight": 7,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/cluster-resources/namespace-v1.md",
+              "chunk": "a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>)\uff1aAccepted\n\n401\uff1aUnauthorized\n\n<!--\n### `update` replace the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}\n\n#### Parameters\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Namespace\n\n#### HTTP \u8bf7\u6c42\n\nPUT /api/v1/namespaces/{name}\n\n#### \u53c2\u6570\n\n<!--\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>, required\n-->\n- **name** (**\u8def\u5f84\u53c2\u6570**)\uff1astring\uff0c\u5fc5\u9700\n\n  Namespace \u7684\u540d\u79f0\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>\uff0c\u5fc5\u9700\n\n<!--\n- **dryRun** (*in query*): string\n-->\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n<!--\n- **fieldManager** (*in query*): string\n-->\n- **fieldManager** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n<!--\n- **fieldValidation** (*in query*): string\n-->\n- **fieldValidation** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n<!--\n- **pretty** (*in query*): string\n-->\n- **pretty** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>)\uff1aOK\n\n201 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>)\uff1aCreated\n\n401\uff1aUnauthorized\n\n<!--\n### `update` replace finalize of the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}/finalize\n\n#### Parameters\n-->\n### `update` \u66ff\u6362\u6307\u5b9a Namespace \u7684\u7ec8\u7ed3\u5668\n\n#### HTTP \u8bf7\u6c42\n\nPUT /api/v1/namespaces/{name}/finalize\n\n#### \u53c2\u6570\n\n<!--\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>, required\n-->\n- *",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "Namespace"
+              },
+              "content_type": "api_reference",
+              "description": "Namespace provides a scope for Names.",
+              "title": "Namespace",
+              "weight": 7,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/cluster-resources/namespace-v1.md",
+              "chunk": "}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): OK\n\n201 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): Created\n\n202 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): OK\n\n201 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): Created\n\n401: Unauthorized\n\n\n### `update` replace finalize of the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}/finalize\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n\n- *",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "erictune",
+                "deads2k",
+                "liggitt"
+              ],
+              "title": "Using RBAC Authorization",
+              "content_type": "concept",
+              "aliases": [
+                "/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/en/docs/reference/access-authn-authz/rbac.md",
+              "chunk": " reference to the\nrole being granted.\nA RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding\ngrants that access cluster-wide.\n\nA RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding\ncan reference a ClusterRole and bind that ClusterRole to the namespace of the RoleBinding.\nIf you want to bind a ClusterRole to all the namespaces in your cluster, you use a\nClusterRoleBinding.\n\nThe name of a RoleBinding or ClusterRoleBinding object must be a valid\n[path segment name](/docs/concepts/overview/working-with-objects/names#path-segment-names).\n\n#### RoleBinding examples {#rolebinding-example}\n\nHere is an example of a RoleBinding that grants the \"pod-reader\" Role to the user \"jane\"\nwithin the \"default\" namespace.\nThis allows \"jane\" to read pods in the \"default\" namespace.\n\n{{% code_sample file=\"access/simple-rolebinding-with-role.yaml\" %}}\n\nA RoleBinding can also reference a ClusterRole to grant the permissions defined in that\nClusterRole to resources inside the RoleBinding's namespace. This kind of reference\nlets you define a set of common roles across your cluster, then reuse them within\nmultiple namespaces.\n\nFor instance, even though the following RoleBinding refers to a ClusterRole,\n\"dave\" (the subject, case sensitive) will only be able to read Secrets in the \"development\"\nnamespace, because the RoleBinding's namespace (in its metadata) is \"development\".\n\n{{% code_sample file=\"access/simple-rolebinding-with-clusterrole.yaml\" %}}\n\n#### ClusterRoleBinding example\n\nTo grant permissions across a whole cluster, you can use a ClusterRoleBinding.\nThe following ClusterRoleBinding allows any user in the group \"manager\" to read\nsecrets in any namespace.\n\n{{% code_sample file=\"access/simple-clusterrolebinding.yaml\" %}}\n\nAfter you create a binding, you cannot change the Role or ClusterRole that it refers to.\nIf you try to change a binding's `roleRef`, you get a validation error. If you do want\nto change the `roleRef`",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "RoleBinding"
+              },
+              "content_type": "api_reference",
+              "description": "RoleBinding \u5f15\u7528\u4e00\u4e2a\u89d2\u8272\uff0c\u4f46\u4e0d\u5305\u542b\u5b83\u3002",
+              "title": "RoleBinding",
+              "weight": 8,
+              "auto_generated": false,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/role-binding-v1.md",
+              "chunk": "## RoleBinding {#RoleBinding}\n\n<!--\nRoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.\n-->\nRoleBinding \u5f15\u7528\u4e00\u4e2a\u89d2\u8272\uff0c\u4f46\u4e0d\u5305\u542b\u5b83\u3002\nRoleBinding \u53ef\u4ee5\u5f15\u7528\u76f8\u540c\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 Role \u6216\u5168\u5c40\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 ClusterRole\u3002\nRoleBinding \u901a\u8fc7 Subjects \u548c\u6240\u5728\u7684\u547d\u540d\u7a7a\u95f4\u4fe1\u606f\u6dfb\u52a0\u4e3b\u4f53\u4fe1\u606f\u3002\n\u5904\u4e8e\u7ed9\u5b9a\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 RoleBinding \u4ec5\u5728\u8be5\u547d\u540d\u7a7a\u95f4\u4e2d\u6709\u6548\u3002\n\n<hr>\n\n- **apiVersion**: rbac.authorization.k8s.io/v1\n\n- **kind**: RoleBinding\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n<!--\n  Standard object's metadata.\n\n- **roleRef** (RoleRef), required\n\n  RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.\n\n  <a name=\"RoleRef\"></a>\n  *RoleRef contains information that points to the role being used*\n-->\n  \u6807\u51c6\u7684\u5bf9\u8c61\u5143\u6570\u636e\u3002\n\n- **roleRef** (RoleRef)\uff0c\u5fc5\u9700\n  \n  roleRef \u53ef\u4ee5\u5f15\u7528\u5f53\u524d\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 Role \u6216\u5168\u5c40\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 ClusterRole\u3002\n  \u5982\u679c\u65e0\u6cd5\u89e3\u6790 roleRef\uff0c\u5219 Authorizer \u5fc5\u5b9a\u8fd4\u56de\u4e00\u4e2a\u9519\u8bef\u3002\u8fd9\u4e2a\u5b57\u6bb5\u662f\u4e0d\u53ef\u53d8\u7684\u3002\n  \n  <a name=\"RoleRef\"></a>\n  **roleRef \u5305\u542b\u6307\u5411\u6b63\u88ab\u4f7f\u7528\u7684\u89d2\u8272\u7684\u4fe1\u606f\u3002**\n<!--\n  - **roleRef.apiGroup** (string), required\n    APIGroup is the group for the resource being referenced\n\n  - **roleRef.kind** (string), required\n    Kind is the type of resource being referenced\n\n  - **roleRef.name** (string), required\n    Name is the name of resource being referenced\n-->  \n  - **roleRef.apiGroup** (string)\uff0c\u5fc5\u9700\n    \n    apiGroup \u662f\u88ab\u5f15\u7528\u8d44\u6e90\u7684\u7ec4\n  \n  - **roleRef.kind** (string)\uff0c\u5fc5\u9700\n    \n    kind \u662f\u88ab\u5f15\u7528\u7684\u8d44\u6e90\u7684\u7c7b\u522b\n  \n  - **roleRef.name** (string)\uff0c\u5fc5\u9700\n    \n    name \u662f\u88ab\u5f15\u7528\u7684\u8d44\u6e90\u7684\u540d\u79f0\n\n- **subjects** ([]Subject)\n  <!--\n  *Atomic: will be replaced during a merge*\n\n  Subjects holds references to the objects the role applies to.\n  <a name=\"Subject\"></a>\n  *Subject contains a reference to the object or user identities a role binding applies to.  ",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 RBAC \u9274\u6743",
+              "content_type": "concept",
+              "aliases": [
+                "/zh-cn/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/zh-cn/docs/reference/access-authn-authz/rbac.md",
+              "chunk": "ce to have a role, no matter what service account they use,\n   you can grant a role to the service account group for that namespace.\n\n   For example, grant read-only permission within \"my-namespace\" to all service accounts in that namespace:\n-->\n3. \u5c06\u89d2\u8272\u6388\u4e88\u540d\u5b57\u7a7a\u95f4\u4e2d\u6240\u6709\u670d\u52a1\u8d26\u6237\n\n   \u5982\u679c\u4f60\u60f3\u8981\u540d\u5b57\u7a7a\u95f4\u4e2d\u6240\u6709\u5e94\u7528\u90fd\u5177\u6709\u67d0\u89d2\u8272\uff0c\u65e0\u8bba\u5b83\u4eec\u4f7f\u7528\u7684\u4ec0\u4e48\u670d\u52a1\u8d26\u6237\uff0c\n   \u53ef\u4ee5\u5c06\u89d2\u8272\u6388\u4e88\u8be5\u540d\u5b57\u7a7a\u95f4\u7684\u670d\u52a1\u8d26\u6237\u7ec4\u3002\n\n   \u4f8b\u5982\uff0c\u5728\u540d\u5b57\u7a7a\u95f4 \u201cmy-namespace\u201d \u4e2d\u7684\u53ea\u8bfb\u6743\u9650\u6388\u4e88\u8be5\u540d\u5b57\u7a7a\u95f4\u4e2d\u7684\u6240\u6709\u670d\u52a1\u8d26\u6237\uff1a\n\n   ```shell\n   kubectl create rolebinding serviceaccounts-view \\\n     --clusterrole=view \\\n     --group=system:serviceaccounts:my-namespace \\\n     --namespace=my-namespace\n   ```\n\n<!--\n4. Grant a limited role to all service accounts cluster-wide (discouraged)\n\n   If you don't want to manage permissions per-namespace, you can grant a cluster-wide role to all service accounts.\n\n   For example, grant read-only permission across all namespaces to all service accounts in the cluster:\n-->\n4. \u5728\u96c6\u7fa4\u8303\u56f4\u5185\u4e3a\u6240\u6709\u670d\u52a1\u8d26\u6237\u6388\u4e88\u4e00\u4e2a\u53d7\u9650\u89d2\u8272\uff08\u4e0d\u9f13\u52b1\uff09\n\n   \u5982\u679c\u4f60\u4e0d\u60f3\u7ba1\u7406\u6bcf\u4e00\u4e2a\u540d\u5b57\u7a7a\u95f4\u7684\u6743\u9650\uff0c\u4f60\u53ef\u4ee5\u5411\u6240\u6709\u7684\u670d\u52a1\u8d26\u6237\u6388\u4e88\u96c6\u7fa4\u8303\u56f4\u7684\u89d2\u8272\u3002\n\n   \u4f8b\u5982\uff0c\u4e3a\u96c6\u7fa4\u8303\u56f4\u7684\u6240\u6709\u670d\u52a1\u8d26\u6237\u6388\u4e88\u8de8\u6240\u6709\u540d\u5b57\u7a7a\u95f4\u7684\u53ea\u8bfb\u6743\u9650\uff1a\n\n   ```shell\n   kubectl create clusterrolebinding serviceaccounts-view \\\n     --clusterrole=view \\\n     --group=system:serviceaccounts\n   ```\n\n<!--\n5. Grant super-user access to all service accounts cluster-wide (strongly discouraged)\n\n   If you don't care about partitioning permissions at all, you can grant super-user access to all service accounts.\n-->\n5. \u6388\u4e88\u8d85\u7ea7\u7528\u6237\u8bbf\u95ee\u6743\u9650\u7ed9\u96c6\u7fa4\u8303\u56f4\u5185\u7684\u6240\u6709\u670d\u52a1\u5e10\u6237\uff08\u5f3a\u70c8\u4e0d\u9f13\u52b1\uff09\n\n   \u5982\u679c\u4f60\u4e0d\u5728\u4e4e\u5982\u4f55\u533a\u5206\u6743\u9650\uff0c\u4f60\u53ef\u4ee5\u5c06\u8d85\u7ea7\u7528\u6237\u8bbf\u95ee\u6743\u9650\u6388\u4e88\u6240\u6709\u670d\u52a1\u8d26\u6237\u3002\n\n   {{< warning >}}\n   <!--\n   This allows any application full access to your cluster, and also grants\n   any user with read access to Secrets (or the ability to create any pod)\n   full access to your cluster.\n   -->\n   \u8fd9\u6837\u505a\u4f1a\u5141\u8bb8\u6240\u6709\u5e94\u7528\u90fd\u5bf9\u4f60\u7684\u96c6\u7fa4\u62e5\u6709\u5b8c\u5168\u7684\u8bbf\u95ee\u6743\u9650\uff0c\u5e76\u5c06\u5141\u8bb8\u6240\u6709\u80fd\u591f\u8bfb\u53d6\n   Secret\uff08\u6216\u521b\u5efa Pod\uff09\u7684\u7528\u6237\u5bf9\u4f60\u7684\u96c6\u7fa4\u6709\u5b8c\u5168\u7684\u8bbf\u95ee\u6743\u9650\u3002\n   {{< /warning >}}\n\n   ```shell\n   kubectl create clusterrolebinding serviceaccounts-cluster-admin \\\n     --clusterrole=cluster-admin \\\n     --group=system:serviceaccounts\n   ```\n\n<!--",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "RoleBinding"
+              },
+              "content_type": "api_reference",
+              "description": "RoleBinding references a role, but does not contain it.",
+              "title": "RoleBinding",
+              "weight": 8,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/authorization-resources/role-binding-v1.md",
+              "chunk": "## RoleBinding {#RoleBinding}\n\nRoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.\n\n<hr>\n\n- **apiVersion**: rbac.authorization.k8s.io/v1\n\n\n- **kind**: RoleBinding\n\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n\n  Standard object's metadata.\n\n- **roleRef** (RoleRef), required\n\n  RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.\n\n  <a name=\"RoleRef\"></a>\n  *RoleRef contains information that points to the role being used*\n\n  - **roleRef.apiGroup** (string), required\n\n    APIGroup is the group for the resource being referenced\n\n  - **roleRef.kind** (string), required\n\n    Kind is the type of resource being referenced\n\n  - **roleRef.name** (string), required\n\n    Name is the name of resource being referenced\n\n- **subjects** ([]Subject)\n\n  *Atomic: will be replaced during a merge*\n  \n  Subjects holds references to the objects the role applies to.\n\n  <a name=\"Subject\"></a>\n  *Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.*\n\n  - **subjects.kind** (string), required\n\n    Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.\n\n  - **subjects.name** (string), required\n\n    Name of the object being referenced.\n\n  - **subjects.apiGroup** (string)\n\n    APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAcc",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "ezfn3gtts",
+          "metadata": null,
+          "timestamp": "2026-03-29T19:41:46.789409+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-29T19:41:46.789817+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "8d97d903-ea66-4032-974a-5e5b9cf27d38",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Creating RoleBinding namespace access\"}",
+          "tool_call_id": "qfmb4yx9r",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4570,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 21,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-29T19:41:48.333308+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-29T19:41:48+00:00"
+      },
+      "provider_response_id": "chatcmpl-0398b8b0-c585-404a-b06f-0767e1423b5c",
+      "finish_reason": "tool_call",
+      "run_id": "8d97d903-ea66-4032-974a-5e5b9cf27d38",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "Namespace"
+              },
+              "content_type": "api_reference",
+              "description": "Namespace \u4e3a\u540d\u5b57\u63d0\u4f9b\u4f5c\u7528\u57df\u3002",
+              "title": "Namespace",
+              "weight": 7,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/cluster-resources/namespace-v1.md",
+              "chunk": "a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>)\uff1aAccepted\n\n401\uff1aUnauthorized\n\n<!--\n### `update` replace the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}\n\n#### Parameters\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Namespace\n\n#### HTTP \u8bf7\u6c42\n\nPUT /api/v1/namespaces/{name}\n\n#### \u53c2\u6570\n\n<!--\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>, required\n-->\n- **name** (**\u8def\u5f84\u53c2\u6570**)\uff1astring\uff0c\u5fc5\u9700\n\n  Namespace \u7684\u540d\u79f0\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>\uff0c\u5fc5\u9700\n\n<!--\n- **dryRun** (*in query*): string\n-->\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n<!--\n- **fieldManager** (*in query*): string\n-->\n- **fieldManager** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n<!--\n- **fieldValidation** (*in query*): string\n-->\n- **fieldValidation** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n<!--\n- **pretty** (*in query*): string\n-->\n- **pretty** (**\u67e5\u8be2\u53c2\u6570**)\uff1astring\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>)\uff1aOK\n\n201 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>)\uff1aCreated\n\n401\uff1aUnauthorized\n\n<!--\n### `update` replace finalize of the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}/finalize\n\n#### Parameters\n-->\n### `update` \u66ff\u6362\u6307\u5b9a Namespace \u7684\u7ec8\u7ed3\u5668\n\n#### HTTP \u8bf7\u6c42\n\nPUT /api/v1/namespaces/{name}/finalize\n\n#### \u53c2\u6570\n\n<!--\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>, required\n-->\n- *",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "Namespace"
+              },
+              "content_type": "api_reference",
+              "description": "Namespace provides a scope for Names.",
+              "title": "Namespace",
+              "weight": 7,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/cluster-resources/namespace-v1.md",
+              "chunk": "}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): OK\n\n201 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): Created\n\n202 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n\n- **body**: <a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): OK\n\n201 (<a href=\"{{< ref \"../cluster-resources/namespace-v1#Namespace\" >}}\">Namespace</a>): Created\n\n401: Unauthorized\n\n\n### `update` replace finalize of the specified Namespace\n\n#### HTTP Request\n\nPUT /api/v1/namespaces/{name}/finalize\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Namespace\n\n\n- *",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "erictune",
+                "deads2k",
+                "liggitt"
+              ],
+              "title": "Using RBAC Authorization",
+              "content_type": "concept",
+              "aliases": [
+                "/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/en/docs/reference/access-authn-authz/rbac.md",
+              "chunk": " reference to the\nrole being granted.\nA RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding\ngrants that access cluster-wide.\n\nA RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding\ncan reference a ClusterRole and bind that ClusterRole to the namespace of the RoleBinding.\nIf you want to bind a ClusterRole to all the namespaces in your cluster, you use a\nClusterRoleBinding.\n\nThe name of a RoleBinding or ClusterRoleBinding object must be a valid\n[path segment name](/docs/concepts/overview/working-with-objects/names#path-segment-names).\n\n#### RoleBinding examples {#rolebinding-example}\n\nHere is an example of a RoleBinding that grants the \"pod-reader\" Role to the user \"jane\"\nwithin the \"default\" namespace.\nThis allows \"jane\" to read pods in the \"default\" namespace.\n\n{{% code_sample file=\"access/simple-rolebinding-with-role.yaml\" %}}\n\nA RoleBinding can also reference a ClusterRole to grant the permissions defined in that\nClusterRole to resources inside the RoleBinding's namespace. This kind of reference\nlets you define a set of common roles across your cluster, then reuse them within\nmultiple namespaces.\n\nFor instance, even though the following RoleBinding refers to a ClusterRole,\n\"dave\" (the subject, case sensitive) will only be able to read Secrets in the \"development\"\nnamespace, because the RoleBinding's namespace (in its metadata) is \"development\".\n\n{{% code_sample file=\"access/simple-rolebinding-with-clusterrole.yaml\" %}}\n\n#### ClusterRoleBinding example\n\nTo grant permissions across a whole cluster, you can use a ClusterRoleBinding.\nThe following ClusterRoleBinding allows any user in the group \"manager\" to read\nsecrets in any namespace.\n\n{{% code_sample file=\"access/simple-clusterrolebinding.yaml\" %}}\n\nAfter you create a binding, you cannot change the Role or ClusterRole that it refers to.\nIf you try to change a binding's `roleRef`, you get a validation error. If you do want\nto change the `roleRef`",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 RBAC \u9274\u6743",
+              "content_type": "concept",
+              "aliases": [
+                "/zh-cn/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/zh-cn/docs/reference/access-authn-authz/rbac.md",
+              "chunk": "ce to have a role, no matter what service account they use,\n   you can grant a role to the service account group for that namespace.\n\n   For example, grant read-only permission within \"my-namespace\" to all service accounts in that namespace:\n-->\n3. \u5c06\u89d2\u8272\u6388\u4e88\u540d\u5b57\u7a7a\u95f4\u4e2d\u6240\u6709\u670d\u52a1\u8d26\u6237\n\n   \u5982\u679c\u4f60\u60f3\u8981\u540d\u5b57\u7a7a\u95f4\u4e2d\u6240\u6709\u5e94\u7528\u90fd\u5177\u6709\u67d0\u89d2\u8272\uff0c\u65e0\u8bba\u5b83\u4eec\u4f7f\u7528\u7684\u4ec0\u4e48\u670d\u52a1\u8d26\u6237\uff0c\n   \u53ef\u4ee5\u5c06\u89d2\u8272\u6388\u4e88\u8be5\u540d\u5b57\u7a7a\u95f4\u7684\u670d\u52a1\u8d26\u6237\u7ec4\u3002\n\n   \u4f8b\u5982\uff0c\u5728\u540d\u5b57\u7a7a\u95f4 \u201cmy-namespace\u201d \u4e2d\u7684\u53ea\u8bfb\u6743\u9650\u6388\u4e88\u8be5\u540d\u5b57\u7a7a\u95f4\u4e2d\u7684\u6240\u6709\u670d\u52a1\u8d26\u6237\uff1a\n\n   ```shell\n   kubectl create rolebinding serviceaccounts-view \\\n     --clusterrole=view \\\n     --group=system:serviceaccounts:my-namespace \\\n     --namespace=my-namespace\n   ```\n\n<!--\n4. Grant a limited role to all service accounts cluster-wide (discouraged)\n\n   If you don't want to manage permissions per-namespace, you can grant a cluster-wide role to all service accounts.\n\n   For example, grant read-only permission across all namespaces to all service accounts in the cluster:\n-->\n4. \u5728\u96c6\u7fa4\u8303\u56f4\u5185\u4e3a\u6240\u6709\u670d\u52a1\u8d26\u6237\u6388\u4e88\u4e00\u4e2a\u53d7\u9650\u89d2\u8272\uff08\u4e0d\u9f13\u52b1\uff09\n\n   \u5982\u679c\u4f60\u4e0d\u60f3\u7ba1\u7406\u6bcf\u4e00\u4e2a\u540d\u5b57\u7a7a\u95f4\u7684\u6743\u9650\uff0c\u4f60\u53ef\u4ee5\u5411\u6240\u6709\u7684\u670d\u52a1\u8d26\u6237\u6388\u4e88\u96c6\u7fa4\u8303\u56f4\u7684\u89d2\u8272\u3002\n\n   \u4f8b\u5982\uff0c\u4e3a\u96c6\u7fa4\u8303\u56f4\u7684\u6240\u6709\u670d\u52a1\u8d26\u6237\u6388\u4e88\u8de8\u6240\u6709\u540d\u5b57\u7a7a\u95f4\u7684\u53ea\u8bfb\u6743\u9650\uff1a\n\n   ```shell\n   kubectl create clusterrolebinding serviceaccounts-view \\\n     --clusterrole=view \\\n     --group=system:serviceaccounts\n   ```\n\n<!--\n5. Grant super-user access to all service accounts cluster-wide (strongly discouraged)\n\n   If you don't care about partitioning permissions at all, you can grant super-user access to all service accounts.\n-->\n5. \u6388\u4e88\u8d85\u7ea7\u7528\u6237\u8bbf\u95ee\u6743\u9650\u7ed9\u96c6\u7fa4\u8303\u56f4\u5185\u7684\u6240\u6709\u670d\u52a1\u5e10\u6237\uff08\u5f3a\u70c8\u4e0d\u9f13\u52b1\uff09\n\n   \u5982\u679c\u4f60\u4e0d\u5728\u4e4e\u5982\u4f55\u533a\u5206\u6743\u9650\uff0c\u4f60\u53ef\u4ee5\u5c06\u8d85\u7ea7\u7528\u6237\u8bbf\u95ee\u6743\u9650\u6388\u4e88\u6240\u6709\u670d\u52a1\u8d26\u6237\u3002\n\n   {{< warning >}}\n   <!--\n   This allows any application full access to your cluster, and also grants\n   any user with read access to Secrets (or the ability to create any pod)\n   full access to your cluster.\n   -->\n   \u8fd9\u6837\u505a\u4f1a\u5141\u8bb8\u6240\u6709\u5e94\u7528\u90fd\u5bf9\u4f60\u7684\u96c6\u7fa4\u62e5\u6709\u5b8c\u5168\u7684\u8bbf\u95ee\u6743\u9650\uff0c\u5e76\u5c06\u5141\u8bb8\u6240\u6709\u80fd\u591f\u8bfb\u53d6\n   Secret\uff08\u6216\u521b\u5efa Pod\uff09\u7684\u7528\u6237\u5bf9\u4f60\u7684\u96c6\u7fa4\u6709\u5b8c\u5168\u7684\u8bbf\u95ee\u6743\u9650\u3002\n   {{< /warning >}}\n\n   ```shell\n   kubectl create clusterrolebinding serviceaccounts-cluster-admin \\\n     --clusterrole=cluster-admin \\\n     --group=system:serviceaccounts\n   ```\n\n<!--",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "RoleBinding"
+              },
+              "content_type": "api_reference",
+              "description": "RoleBinding \u5f15\u7528\u4e00\u4e2a\u89d2\u8272\uff0c\u4f46\u4e0d\u5305\u542b\u5b83\u3002",
+              "title": "RoleBinding",
+              "weight": 8,
+              "auto_generated": false,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/role-binding-v1.md",
+              "chunk": "## RoleBinding {#RoleBinding}\n\n<!--\nRoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.\n-->\nRoleBinding \u5f15\u7528\u4e00\u4e2a\u89d2\u8272\uff0c\u4f46\u4e0d\u5305\u542b\u5b83\u3002\nRoleBinding \u53ef\u4ee5\u5f15\u7528\u76f8\u540c\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 Role \u6216\u5168\u5c40\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 ClusterRole\u3002\nRoleBinding \u901a\u8fc7 Subjects \u548c\u6240\u5728\u7684\u547d\u540d\u7a7a\u95f4\u4fe1\u606f\u6dfb\u52a0\u4e3b\u4f53\u4fe1\u606f\u3002\n\u5904\u4e8e\u7ed9\u5b9a\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 RoleBinding \u4ec5\u5728\u8be5\u547d\u540d\u7a7a\u95f4\u4e2d\u6709\u6548\u3002\n\n<hr>\n\n- **apiVersion**: rbac.authorization.k8s.io/v1\n\n- **kind**: RoleBinding\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n<!--\n  Standard object's metadata.\n\n- **roleRef** (RoleRef), required\n\n  RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.\n\n  <a name=\"RoleRef\"></a>\n  *RoleRef contains information that points to the role being used*\n-->\n  \u6807\u51c6\u7684\u5bf9\u8c61\u5143\u6570\u636e\u3002\n\n- **roleRef** (RoleRef)\uff0c\u5fc5\u9700\n  \n  roleRef \u53ef\u4ee5\u5f15\u7528\u5f53\u524d\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 Role \u6216\u5168\u5c40\u547d\u540d\u7a7a\u95f4\u4e2d\u7684 ClusterRole\u3002\n  \u5982\u679c\u65e0\u6cd5\u89e3\u6790 roleRef\uff0c\u5219 Authorizer \u5fc5\u5b9a\u8fd4\u56de\u4e00\u4e2a\u9519\u8bef\u3002\u8fd9\u4e2a\u5b57\u6bb5\u662f\u4e0d\u53ef\u53d8\u7684\u3002\n  \n  <a name=\"RoleRef\"></a>\n  **roleRef \u5305\u542b\u6307\u5411\u6b63\u88ab\u4f7f\u7528\u7684\u89d2\u8272\u7684\u4fe1\u606f\u3002**\n<!--\n  - **roleRef.apiGroup** (string), required\n    APIGroup is the group for the resource being referenced\n\n  - **roleRef.kind** (string), required\n    Kind is the type of resource being referenced\n\n  - **roleRef.name** (string), required\n    Name is the name of resource being referenced\n-->  \n  - **roleRef.apiGroup** (string)\uff0c\u5fc5\u9700\n    \n    apiGroup \u662f\u88ab\u5f15\u7528\u8d44\u6e90\u7684\u7ec4\n  \n  - **roleRef.kind** (string)\uff0c\u5fc5\u9700\n    \n    kind \u662f\u88ab\u5f15\u7528\u7684\u8d44\u6e90\u7684\u7c7b\u522b\n  \n  - **roleRef.name** (string)\uff0c\u5fc5\u9700\n    \n    name \u662f\u88ab\u5f15\u7528\u7684\u8d44\u6e90\u7684\u540d\u79f0\n\n- **subjects** ([]Subject)\n  <!--\n  *Atomic: will be replaced during a merge*\n\n  Subjects holds references to the objects the role applies to.\n  <a name=\"Subject\"></a>\n  *Subject contains a reference to the object or user identities a role binding applies to.  ",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "qfmb4yx9r",
+          "metadata": null,
+          "timestamp": "2026-03-29T19:41:48.700531+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-29T19:41:48.701165+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "8d97d903-ea66-4032-974a-5e5b9cf27d38",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "To create a RoleBinding that grants access to a specific namespace, you can use the following command:\n```shell\nkubectl create rolebinding <rolebinding-name> --clusterrole=<clusterrole-name> --group=system:serviceaccounts:<namespace-name> --namespace=<namespace-name>\n```\nReplace `<rolebinding-name>` with the name you want to give to the RoleBinding, `<clusterrole-name>` with the name of the ClusterRole you want to bind, `<namespace-name>` with the name of the namespace you want to grant access to, and `<namespace-name>` with the same namespace name again.\n\nFor example:\n```shell\nkubectl create rolebinding serviceaccounts-view --clusterrole=view --group=system:serviceaccounts:my-namespace --namespace=my-namespace\n```\nThis will create a RoleBinding named `serviceaccounts-view` that grants the `view` ClusterRole to all service accounts in the `my-namespace` namespace.\n\nNote: You can also use `kubectl create clusterrolebinding` to grant a ClusterRole to all service accounts in a namespace.\n\nYou can find more information about RoleBindings and ClusterRoleBindings in the [Kubernetes documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).\n[RoleBinding](https://github.com/kubernetes/website/blob/main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/role-binding-v1.md)\n[Using RBAC Authorization](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/access-authn-authz/rbac.md)",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8058,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 313,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-29T19:42:29.500576+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-29T19:42:29+00:00"
+      },
+      "provider_response_id": "chatcmpl-5bfff796-f771-47e5-a722-cdf5650cea48",
+      "finish_reason": "stop",
+      "run_id": "8d97d903-ea66-4032-974a-5e5b9cf27d38",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

@@ -1,0 +1,200 @@
+{
+  "agent_name": "kubernetes_agent_v3",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it."
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is the difference between a Deployment and a StatefulSet?",
+          "timestamp": "2026-04-01T12:13:44.951251+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-04-01T12:13:44.951528+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it.",
+      "kind": "request",
+      "run_id": "b1f69551-c1b1-404c-879d-7b728a5118c9",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Deployment vs StatefulSet\"}",
+          "tool_call_id": "bv7q965wa",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 505,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 21,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-04-01T12:13:47.166802+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-01T12:13:47+00:00"
+      },
+      "provider_response_id": "chatcmpl-d866839f-d932-495d-8342-b9f17d2b1b74",
+      "finish_reason": "tool_call",
+      "run_id": "b1f69551-c1b1-404c-879d-7b728a5118c9",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "StatefulSet",
+              "id": "statefulset",
+              "date": "2018-04-12",
+              "full_link": "/zh-cn/docs/concepts/workloads/controllers/statefulset/",
+              "short_description": "StatefulSet \u7528\u6765\u7ba1\u7406\u67d0 Pod \u96c6\u5408\u7684\u90e8\u7f72\u548c\u6269\u7f29\uff0c\u5e76\u4e3a\u8fd9\u4e9b Pod \u63d0\u4f9b\u6301\u4e45\u5b58\u50a8\u548c\u6301\u4e45\u6807\u8bc6\u7b26\u3002\n",
+              "aka": null,
+              "tags": [
+                "fundamental",
+                "core-object",
+                "workload",
+                "storage"
+              ],
+              "filename": "website-main/content/zh-cn/docs/reference/glossary/statefulset.md",
+              "chunk": "<!--\ntitle: StatefulSet\nid: statefulset\ndate: 2018-04-12\nfull_link: /docs/concepts/workloads/controllers/statefulset/\nshort_description: >\n  A StatefulSet manages deployment and scaling of a set of Pods, with durable storage and persistent identifiers for each Pod.\n\naka: \ntags:\n- fundamental\n- core-object\n- workload\n- storage\n-->\n\n<!--\n Manages the deployment and scaling of a set of {{< glossary_tooltip text=\"Pods\" term_id=\"pod\" >}}, *and provides guarantees about the ordering and uniqueness* of these Pods.\n-->\nStatefulSet \u7528\u6765\u7ba1\u7406\u67d0 {{< glossary_tooltip text=\"Pod\" term_id=\"pod\" >}} \u96c6\u5408\u7684\u90e8\u7f72\u548c\u6269\u7f29\uff0c\n\u5e76\u4e3a\u8fd9\u4e9b Pod \u63d0\u4f9b\u6301\u4e45\u5b58\u50a8\u548c\u6301\u4e45\u6807\u8bc6\u7b26\u3002 \n<!--more--> \n\n<!--\nLike a {{< glossary_tooltip term_id=\"deployment\" >}}, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of its Pods. These pods are created from the same spec, but are not interchangeable&#58; each has a persistent identifier that it maintains across any rescheduling.\n-->\n\n\u548c {{< glossary_tooltip text=\"Deployment\" term_id=\"deployment\" >}} \u7c7b\u4f3c\uff0c\nStatefulSet \u7ba1\u7406\u57fa\u4e8e\u76f8\u540c\u5bb9\u5668\u89c4\u7ea6\u7684\u4e00\u7ec4 Pod\u3002\u4f46\u548c Deployment \u4e0d\u540c\u7684\u662f\uff0c\nStatefulSet \u4e3a\u5b83\u4eec\u7684\u6bcf\u4e2a Pod \u7ef4\u62a4\u4e86\u4e00\u4e2a\u6709\u7c98\u6027\u7684 ID\u3002\u8fd9\u4e9b Pod \u662f\u57fa\u4e8e\u76f8\u540c\u7684\u89c4\u7ea6\u6765\u521b\u5efa\u7684\uff0c\n\u4f46\u662f\u4e0d\u80fd\u76f8\u4e92\u66ff\u6362\uff1a\u65e0\u8bba\u600e\u4e48\u8c03\u5ea6\uff0c\u6bcf\u4e2a Pod \u90fd\u6709\u4e00\u4e2a\u6c38\u4e45\u4e0d\u53d8\u7684 ID\u3002\n<!--\nIf you want to use storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although individual Pods in a StatefulSet are susceptible to failure, the persistent Pod identifiers make it easier to match existing volumes to the new Pods that replace any that have failed.\n-->\n\n\u5982\u679c\u5e0c\u671b\u4f7f\u7528\u5b58\u50a8\u5377\u4e3a\u5de5\u4f5c\u8d1f\u8f7d\u63d0\u4f9b\u6301\u4e45\u5b58\u50a8\uff0c\u53ef\u4ee5\u4f7f\u7528 StatefulSet \u4f5c\u4e3a\u89e3\u51b3\u65b9\u6848\u7684\u4e00\u90e8\u5206\u3002\n\u5c3d\u7ba1 StatefulSet \u4e2d\u7684\u5355\u4e2a Pod \u4ecd\u53ef\u80fd\u51fa\u73b0\u6545\u969c\uff0c\n\u4f46\u6301\u4e45\u7684 Pod \u6807\u8bc6\u7b26\u4f7f\u5f97\u5c06\u73b0\u6709\u5377\u4e0e\u66ff\u6362\u5df2\u5931\u8d25 Pod \u7684\u65b0 Pod \u76f8\u5339\u914d\u53d8\u5f97\u66f4\u52a0\u5bb9\u6613\u3002",
+              "method": "sliding_window"
+            },
+            {
+              "title": "StatefulSet",
+              "id": "statefulset",
+              "full_link": "/docs/concepts/workloads/controllers/statefulset/",
+              "short_description": "A StatefulSet manages deployment and scaling of a set of Pods, with durable storage and persistent identifiers for each Pod.\n",
+              "aka": null,
+              "tags": [
+                "fundamental",
+                "core-object",
+                "workload",
+                "storage"
+              ],
+              "filename": "website-main/content/en/docs/reference/glossary/statefulset.md",
+              "chunk": "Manages the deployment and scaling of a set of {{< glossary_tooltip text=\"Pods\" term_id=\"pod\" >}}, *and provides guarantees about the ordering and uniqueness* of these Pods.\n\n<!--more--> \n\nLike a {{< glossary_tooltip term_id=\"deployment\" >}}, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of its Pods. These pods are created from the same spec, but are not interchangeable&#58; each has a persistent identifier that it maintains across any rescheduling.\n\nIf you want to use storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although individual Pods in a StatefulSet are susceptible to failure, the persistent Pod identifiers make it easier to match existing volumes to the new Pods that replace any that have failed.",
+              "method": "sliding_window"
+            },
+            {
+              "title": "StatefulSet",
+              "api_metadata": [
+                {
+                  "apiVersion": "apps/v1",
+                  "kind": "StatefulSet"
+                }
+              ],
+              "content_type": "concept",
+              "description": "StatefulSet \u8fd0\u884c\u4e00\u7ec4 Pod\uff0c\u5e76\u4e3a\u6bcf\u4e2a Pod \u4fdd\u7559\u4e00\u4e2a\u7a33\u5b9a\u7684\u6807\u8bc6\u3002 \u8fd9\u53ef\u7528\u4e8e\u7ba1\u7406\u9700\u8981\u6301\u4e45\u5316\u5b58\u50a8\u6216\u7a33\u5b9a\u3001\u552f\u4e00\u7f51\u7edc\u6807\u8bc6\u7684\u5e94\u7528\u3002",
+              "weight": 30,
+              "hide_summary": true,
+              "filename": "website-main/content/zh-cn/docs/concepts/workloads/controllers/statefulset.md",
+              "chunk": "## \u66f4\u65b0\u7b56\u7565  {#update-strategies}\n\nStatefulSet \u7684 `.spec.updateStrategy` \u5b57\u6bb5\u8ba9\u4f60\u53ef\u4ee5\u914d\u7f6e\u548c\u7981\u7528\u6389\u81ea\u52a8\u6eda\u52a8\u66f4\u65b0 Pod\n\u7684\u5bb9\u5668\u3001\u6807\u7b7e\u3001\u8d44\u6e90\u8bf7\u6c42\u6216\u9650\u5236\u3001\u4ee5\u53ca\u6ce8\u89e3\u3002\u6709\u4e24\u4e2a\u5141\u8bb8\u7684\u503c\uff1a\n\n<!--\n`OnDelete`\n: When a StatefulSet's `.spec.updateStrategy.type` is set to `OnDelete`,\n  the StatefulSet controller will not automatically update the Pods in a\n  StatefulSet. Users must manually delete Pods to cause the controller to\n  create new Pods that reflect modifications made to a StatefulSet's `.spec.template`.\n\n`RollingUpdate`\n: The `RollingUpdate` update strategy implements automated, rolling updates for the Pods in a\n  StatefulSet. This is the default update strategy.\n-->\n`OnDelete`\n: \u5f53 StatefulSet \u7684 `.spec.updateStrategy.type` \u8bbe\u7f6e\u4e3a `OnDelete` \u65f6\uff0c\n  \u5b83\u7684\u63a7\u5236\u5668\u5c06\u4e0d\u4f1a\u81ea\u52a8\u66f4\u65b0 StatefulSet \u4e2d\u7684 Pod\u3002\n  \u7528\u6237\u5fc5\u987b\u624b\u52a8\u5220\u9664 Pod \u4ee5\u4fbf\u8ba9\u63a7\u5236\u5668\u521b\u5efa\u65b0\u7684 Pod\uff0c\u4ee5\u6b64\u6765\u5bf9 StatefulSet \u7684\n  `.spec.template` \u7684\u53d8\u52a8\u4f5c\u51fa\u53cd\u5e94\u3002\n\n`RollingUpdate`\n: `RollingUpdate` \u66f4\u65b0\u7b56\u7565\u5bf9 StatefulSet \u4e2d\u7684 Pod \u6267\u884c\u81ea\u52a8\u7684\u6eda\u52a8\u66f4\u65b0\u3002\u8fd9\u662f\u9ed8\u8ba4\u7684\u66f4\u65b0\u7b56\u7565\u3002\n\n<!--",
+              "method": "section"
+            },
+            {
+              "reviewers": [
+                "enisoc",
+                "erictune",
+                "foxish",
+                "janetkuo",
+                "kow3ns",
+                "smarterclayton"
+              ],
+              "title": "StatefulSets",
+              "api_metadata": [
+                {
+                  "apiVersion": "apps/v1",
+                  "kind": "StatefulSet"
+                }
+              ],
+              "content_type": "concept",
+              "description": "A StatefulSet runs a group of Pods, and maintains a sticky identity for each of those Pods. This is useful for managing applications that need persistent storage or a stable, unique network identity.",
+              "weight": 30,
+              "hide_summary": true,
+              "filename": "website-main/content/en/docs/concepts/workloads/controllers/statefulset.md",
+              "chunk": "## Using StatefulSets\n\nStatefulSets are valuable for applications that require one or more of the\nfollowing:\n\n* Stable, unique network identifiers.\n* Stable, persistent storage.\n* Ordered, graceful deployment and scaling.\n* Ordered, automated rolling updates.\n\nIn the above, stable is synonymous with persistence across Pod (re)scheduling.\nIf an application doesn't require any stable identifiers or ordered deployment,\ndeletion, or scaling, you should deploy your application using a workload object\nthat provides a set of stateless replicas.\n[Deployment](/docs/concepts/workloads/controllers/deployment/) or\n[ReplicaSet](/docs/concepts/workloads/controllers/replicaset/) may be better suited to your stateless needs.",
+              "method": "section"
+            },
+            {
+              "title": " StatefulSet: Run and Scale Stateful Applications Easily in Kubernetes ",
+              "date": "2016-12-20",
+              "slug": "statefulset-run-scale-stateful-applications-in-kubernetes",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Kenneth Owens (Google), Eric Tune (Google)\n",
+              "filename": "website-main/content/en/blog/_posts/2016/statefulset-run-scale-stateful-applications-in-kubernetes.md",
+              "chunk": "n eventual GA release.\n\n**When is StatefulSet the Right Choice for my Storage Application?**  \n\n[Deployments](/docs/user-guide/deployments/) and [ReplicaSets](/docs/user-guide/replicasets/) are a great way to run stateless replicas of an application on Kubernetes, but their semantics aren\u2019t really right for deploying stateful applications. The purpose of StatefulSet is to provide a controller with the correct semantics for deploying a wide range of stateful workloads. However, moving your storage application onto Kubernetes isn\u2019t always the correct choice. Before you go all in on converging your storage tier and your orchestration framework, you should ask yourself a few questions.  \n\n**Can your application run using remote storage or does it require local storage media?**  \n\nCurrently, we recommend using StatefulSets with remote storage. Therefore, you must be ready to tolerate the performance implications of network attached storage. Even with storage optimized instances, you won\u2019t likely realize the same performance as locally attached, solid state storage media. Does the performance of network attached storage, on your cloud, allow your storage application to meet its SLAs? If so, running your application in a StatefulSet provides compelling benefits from the perspective of automation. If the node on which your storage application is running fails, the Pod containing the application can be rescheduled onto another node, and, as it\u2019s using network attached storage media, its data are still available after it\u2019s rescheduled.  \n\n**Do you need to scale your storage application?**  \n\nWhat is the benefit you hope to gain by running your application in a StatefulSet? Do you have a single instance of your storage application for your entire organization? Is scaling your storage application a problem that you actually have? If you have a few instances of your storage application, and they are successfully meeting the demands of your organization, and those demands are not",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "bv7q965wa",
+          "metadata": null,
+          "timestamp": "2026-04-01T12:13:49.569301+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-01T12:13:49.572239+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it.",
+      "kind": "request",
+      "run_id": "b1f69551-c1b1-404c-879d-7b728a5118c9",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "The main difference between a Deployment and a StatefulSet is that a StatefulSet maintains a sticky identity for each of its Pods, whereas a Deployment does not [1](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/statefulset.md). This means that in a StatefulSet, each Pod has a unique and persistent identifier, which is maintained even if the Pod is rescheduled or replaced. In contrast, Pods in a Deployment are interchangeable and do not have a persistent identity [2](https://github.com/kubernetes/website/blob/main/content/zh-cn/docs/reference/glossary/statefulset.md).\n\nAnother key difference is that StatefulSets are designed for applications that require persistent storage or a stable network identity, whereas Deployments are better suited for stateless applications [3](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/statefulset.md). StatefulSets provide guarantees about the ordering and uniqueness of Pods, which is important for applications that require a specific ordering or identity [4](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/statefulset.md).\n\nIn summary, if your application requires persistent storage, stable network identities, or a specific ordering of Pods, a StatefulSet is likely a better choice [5](https://github.com/kubernetes/website/blob/main/content/en/blog/_posts/2016/statefulset-run-scale-stateful-applications-in-kubernetes.md). However, if your application is stateless and does not require these features, a Deployment may be a better fit [6](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/deployment/).\n\nReferences:\n\n[1](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/statefulset.md)\n[2](https://github.com/kubernetes/website/blob/main/content/zh-cn/docs/reference/glossary/statefulset.md)\n[3](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/statefulset.md)\n[4](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/statefulset.md)\n[5](https://github.com/kubernetes/website/blob/main/content/en/blog/_posts/2016/statefulset-run-scale-stateful-applications-in-kubernetes.md)\n[6](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/deployment/)",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2695,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 508,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-04-01T12:14:02.606915+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-04-01T12:14:02+00:00"
+      },
+      "provider_response_id": "chatcmpl-01a9700b-a0e6-4b49-bd07-37131e5f26f3",
+      "finish_reason": "stop",
+      "run_id": "b1f69551-c1b1-404c-879d-7b728a5118c9",
+      "metadata": null
+    }
+  ],
+  "source": "user"
+}

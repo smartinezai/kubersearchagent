@@ -1,0 +1,184 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is the purpose of a RoleBinding in Kubernetes?",
+          "timestamp": "2026-03-30T11:49:03.211709+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:03.212810+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "16bdd057-a7b0-42de-859c-efbfe50d1a34",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"RoleBinding purpose in Kubernetes\"}",
+          "tool_call_id": "n9dz6sx34",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 476,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 21,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:03.594425+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:49:03+00:00"
+      },
+      "provider_response_id": "chatcmpl-d1c52155-7a0a-41ae-a252-a398aa6764ec",
+      "finish_reason": "tool_call",
+      "run_id": "16bdd057-a7b0-42de-859c-efbfe50d1a34",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "RoleBinding"
+              },
+              "content_type": "api_reference",
+              "description": "RoleBinding \u5f15\u7528\u4e00\u4e2a\u89d2\u8272\uff0c\u4f46\u4e0d\u5305\u542b\u5b83\u3002",
+              "title": "RoleBinding",
+              "weight": 8,
+              "auto_generated": false,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/role-binding-v1.md",
+              "chunk": "rs#pretty\" >}}\">pretty</a>\n-->\n#### \u53c2\u6570\n\n- **namespace** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified RoleBinding\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 RoleBinding\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the RoleBinding\n- **namespace** (*in path*): string, required\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>, required\n- **dryRun** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n- **fieldManager** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n- **fieldValidation** ",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "RoleBinding"
+              },
+              "content_type": "api_reference",
+              "description": "RoleBinding references a role, but does not contain it.",
+              "title": "RoleBinding",
+              "weight": 8,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/authorization-resources/role-binding-v1.md",
+              "chunk": ">}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified RoleBinding\n\n#### HTTP Request\n\nPUT /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the RoleBinding\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-binding-v1#RoleBinding\" >}}\">RoleBinding</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-binding-v",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 RBAC \u9274\u6743",
+              "content_type": "concept",
+              "aliases": [
+                "/zh-cn/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/zh-cn/docs/reference/access-authn-authz/rbac.md",
+              "chunk": " different role is a fundamentally different binding.\n   Requiring a binding to be deleted/recreated in order to change the `roleRef`\n   ensures the full list of subjects in the binding is intended to be granted\n   the new role (as opposed to enabling or accidentally modifying only the roleRef\n   without verifying all of the existing subjects should be given the new role's\n   permissions).\n-->\n2. \u9488\u5bf9\u4e0d\u540c\u89d2\u8272\u7684\u7ed1\u5b9a\u662f\u5b8c\u5168\u4e0d\u4e00\u6837\u7684\u7ed1\u5b9a\u3002\u8981\u6c42\u901a\u8fc7\u5220\u9664/\u91cd\u5efa\u7ed1\u5b9a\u6765\u66f4\u6539 `roleRef`\uff0c\n   \u8fd9\u6837\u53ef\u4ee5\u786e\u4fdd\u8981\u8d4b\u4e88\u7ed1\u5b9a\u7684\u6240\u6709\u4e3b\u4f53\u4f1a\u88ab\u6388\u4e88\u65b0\u7684\u89d2\u8272\uff08\u800c\u4e0d\u662f\u5728\u5141\u8bb8\u6216\u8005\u4e0d\u5c0f\u5fc3\u4fee\u6539\u4e86\n   `roleRef` \u7684\u60c5\u51b5\u4e0b\u5bfc\u81f4\u6240\u6709\u73b0\u6709\u4e3b\u4f53\u672a\u7ecf\u9a8c\u8bc1\u5373\u88ab\u6388\u4e88\u65b0\u89d2\u8272\u5bf9\u5e94\u7684\u6743\u9650\uff09\u3002\n\n<!--\nThe `kubectl auth reconcile` command-line utility creates or updates a manifest file containing RBAC objects,\nand handles deleting and recreating binding objects if required to change the role they refer to.\nSee [command usage and examples](#kubectl-auth-reconcile) for more information.\n-->\n\u547d\u4ee4 `kubectl auth reconcile` \u53ef\u4ee5\u521b\u5efa\u6216\u8005\u66f4\u65b0\u5305\u542b RBAC \u5bf9\u8c61\u7684\u6e05\u5355\u6587\u4ef6\uff0c\n\u5e76\u4e14\u5728\u5fc5\u8981\u7684\u60c5\u51b5\u4e0b\u5220\u9664\u548c\u91cd\u65b0\u521b\u5efa\u7ed1\u5b9a\u5bf9\u8c61\uff0c\u4ee5\u6539\u53d8\u6240\u5f15\u7528\u7684\u89d2\u8272\u3002\n\u66f4\u591a\u76f8\u5173\u4fe1\u606f\u8bf7\u53c2\u7167[\u547d\u4ee4\u7528\u6cd5\u548c\u793a\u4f8b](#kubectl-auth-reconcile)\u3002\n\n<!--\n### Referring to resources\n\nIn the Kubernetes API, most resources are represented and accessed using a string representation of\ntheir object name, such as `pods` for a Pod. RBAC refers to resources using exactly the same\nname that appears in the URL for the relevant API endpoint.\nSome Kubernetes APIs involve a\n_subresource_, such as the logs for a Pod. A request for a Pod's logs looks like:\n-->\n### \u5bf9\u8d44\u6e90\u7684\u5f15\u7528    {#referring-to-resources}\n\n\u5728 Kubernetes API \u4e2d\uff0c\u5927\u591a\u6570\u8d44\u6e90\u90fd\u662f\u4f7f\u7528\u5bf9\u8c61\u540d\u79f0\u7684\u5b57\u7b26\u4e32\u8868\u793a\u6765\u5448\u73b0\u4e0e\u8bbf\u95ee\u7684\u3002\n\u4f8b\u5982\uff0c\u5bf9\u4e8e Pod \u5e94\u4f7f\u7528 \"pods\"\u3002\nRBAC \u4f7f\u7528\u5bf9\u5e94 API \u7aef\u70b9\u7684 URL \u4e2d\u5448\u73b0\u7684\u540d\u5b57\u6765\u5f15\u7528\u8d44\u6e90\u3002\n\u6709\u4e00\u4e9b Kubernetes API \u6d89\u53ca**\u5b50\u8d44\u6e90\uff08subresource\uff09**\uff0c\u4f8b\u5982 Pod \u7684\u65e5\u5fd7\u3002\n\u5bf9 Pod \u65e5\u5fd7\u7684\u8bf7\u6c42\u770b\u8d77\u6765\u50cf\u8fd9\u6837\uff1a\n\n```http\nGET /api/v1/namespaces/{namespace}/pods/{name}/log\n```\n\n<!--\nIn this case, `pods` is the namespaced resource for Pod resources, and `log` is a\nsubresource of `pods`. To represent this in an RBAC role, use a slash (`/`) to\ndelimit the resource and subresource. To allow a subject to read `pods` and\nalso access the `log` subresource for each of those Pods, you write:\n-->\n\u5728\u8fd9\u91cc\uff0c`pods` \u5bf9\u5e94\u540d\u5b57\u7a7a\u95f4\u4f5c\u7528\u57df\u7684 Pod \u8d44\u6e90\uff0c\u800c `log` \u662f",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "erictune",
+                "deads2k",
+                "liggitt"
+              ],
+              "title": "Using RBAC Authorization",
+              "content_type": "concept",
+              "aliases": [
+                "/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/en/docs/reference/access-authn-authz/rbac.md",
+              "chunk": "\n<tr>\n<th>Default ClusterRole</th>\n<th>Default ClusterRoleBinding</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><b>cluster-admin</b></td>\n<td><b>system:masters</b> group</td>\n<td>Allows super-user access to perform any action on any resource.\nWhen used in a <b>ClusterRoleBinding</b>, it gives full control over every resource in the cluster and in all namespaces.\nWhen used in a <b>RoleBinding</b>, it gives full control over every resource in the role binding's namespace, including the namespace itself.</td>\n</tr>\n<tr>\n<td><b>admin</b></td>\n<td>None</td>\n<td>Allows admin access, intended to be granted within a namespace using a <b>RoleBinding</b>.\n\nIf used in a <b>RoleBinding</b>, allows read/write access to most resources in a namespace,\nincluding the ability to create roles and role bindings within the namespace.\nThis role does not allow write access to resource quota or to the namespace itself.\nThis role also does not allow write access to EndpointSlices in clusters created\nusing Kubernetes v1.22+. More information is available in the\n[\"Write Access for EndpointSlices\" section](#write-access-for-endpoints).</td>\n</tr>\n<tr>\n<td><b>edit</b></td>\n<td>None</td>\n<td>Allows read/write access to most objects in a namespace.\n\nThis role does not allow viewing or modifying roles or role bindings.\nHowever, this role allows accessing Secrets and running Pods as any ServiceAccount in\nthe namespace, so it can be used to gain the API access levels of any ServiceAccount in\nthe namespace. This role also does not allow write access to EndpointSlices in\nclusters created using Kubernetes v1.22+. More information is available in the\n[\"Write Access for EndpointSlices\" section](#write-access-for-endpoints).</td>\n</tr>\n<tr>\n<td><b>view</b></td>\n<td>None</td>\n<td>Allows read-only access to see most objects in a namespace.\nIt does not allow viewing roles or role bindings.\n\nThis role does not allow viewing Secrets, since reading\nthe contents of Secrets enables access to ServiceAc",
+              "method": "sliding_window"
+            },
+            {
+              "title": "kubectl create rolebinding",
+              "content_type": "tool-reference",
+              "weight": 30,
+              "auto_generated": true,
+              "description": "Create a role binding for a particular role or cluster role",
+              "filename": "website-main/content/en/docs/reference/kubectl/generated/kubectl_create/kubectl_create_rolebinding.md",
+              "chunk": "## {{% heading \"synopsis\" %}}\n\nCreate a role binding for a particular role or cluster role.\n\n```\nkubectl create rolebinding NAME --clusterrole=NAME|--role=NAME [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```",
+              "method": "section"
+            }
+          ],
+          "tool_call_id": "n9dz6sx34",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:49:09.789197+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:09.797377+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "16bdd057-a7b0-42de-859c-efbfe50d1a34",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "The purpose of a RoleBinding in Kubernetes is to grant a set of permissions to a user, group, or service account within a specific namespace or cluster. It binds a role to a subject, which can be a user, group, or service account, and allows the subject to perform actions on resources within the namespace or cluster.\n\nRoleBindings are used to control access to resources within a Kubernetes cluster, and they are an essential part of the Role-Based Access Control (RBAC) system in Kubernetes. They allow administrators to define permissions for users, groups, or service accounts and ensure that only authorized entities can perform actions on resources within the cluster.\n\nFor example, a RoleBinding might be used to grant a user the ability to create pods in a specific namespace, or to grant a service account the ability to read secrets in a specific namespace. RoleBindings can be created using the `kubectl create rolebinding` command, and they can be managed using the `kubectl` command-line tool.\n\nMore information on RoleBindings and RBAC in Kubernetes can be found in the [Kubernetes documentation](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/access-authn-authz/rbac.md).",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3421,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 240,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:10.835486+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:49:10+00:00"
+      },
+      "provider_response_id": "chatcmpl-cc6fd242-b3b0-4310-b12d-855e3a339b95",
+      "finish_reason": "stop",
+      "run_id": "16bdd057-a7b0-42de-859c-efbfe50d1a34",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

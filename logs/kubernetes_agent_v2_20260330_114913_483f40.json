@@ -1,0 +1,162 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "How do you configure a Pod's security context in Kubernetes?",
+          "timestamp": "2026-03-30T11:49:10.881298+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:10.881657+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "11a73582-f721-4efc-a246-9cb4226fa1b2",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Configure Pod security context in Kubernetes\"}",
+          "tool_call_id": "091gsg6gj",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 477,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 22,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:11.105192+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:49:11+00:00"
+      },
+      "provider_response_id": "chatcmpl-5b069c1c-c717-4a10-bb53-35534bfc721a",
+      "finish_reason": "tool_call",
+      "run_id": "11a73582-f721-4efc-a246-9cb4226fa1b2",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "reviewers": [
+                "erictune",
+                "mikedanese",
+                "thockin"
+              ],
+              "title": "Configure a Security Context for a Pod or Container",
+              "content_type": "task",
+              "weight": 110,
+              "filename": "website-main/content/en/docs/tasks/configure-pod-container/security-context.md",
+              "chunk": "## Clean up\n\nDelete the Pod:\n\n```shell\nkubectl delete pod security-context-demo\nkubectl delete pod security-context-demo-2\nkubectl delete pod security-context-demo-3\nkubectl delete pod security-context-demo-4\n```",
+              "method": "section"
+            },
+            {
+              "title": "\u4e3a Pod \u6216\u5bb9\u5668\u914d\u7f6e\u5b89\u5168\u4e0a\u4e0b\u6587",
+              "content_type": "task",
+              "weight": 110,
+              "filename": "website-main/content/zh-cn/docs/tasks/configure-pod-container/security-context.md",
+              "chunk": "## Set the security context for a Pod\n\nTo specify security settings for a Pod, include the `securityContext` field\nin the Pod specification. The `securityContext` field is a\n[PodSecurityContext](/docs/reference/generated/kubernetes-api/{{< param \"version\" >}}/#podsecuritycontext-v1-core) object.\nThe security settings that you specify for a Pod apply to all Containers in the Pod.\nHere is a configuration file for a Pod that has a `securityContext` and an `emptyDir` volume:\n-->",
+              "method": "section"
+            },
+            {
+              "layout": "blog",
+              "title": "Kubernetes 1.23: Pod Security Graduates to Beta",
+              "date": "2021-12-09",
+              "slug": "pod-security-admission-beta",
+              "author": "Jim Angel (Google), Lachlan Evenson (Microsoft)\n",
+              "filename": "website-main/content/en/blog/_posts/2021/pod-security-admission-beta.md",
+              "chunk": "## Configuring Pod Security\n\n### Pod Security Standards\n    \nIn order to use Pod Security we first need to understand [Pod Security Standards](/docs/concepts/security/pod-security-standards/). These standards define three different policy levels that range from permissive to restrictive. These levels are as follows:\n   * `privileged` \u2014 open and unrestricted\n   * `baseline` \u2014 Covers known privilege escalations while minimizing restrictions\n   * `restricted` \u2014 Highly restricted, hardening against known and unknown privilege escalations. May cause compatibility issues\n\nEach of these policy levels define which fields are restricted within a pod specification and the allowed values. Some of the fields restricted by these policies include:\n   * `spec.securityContext.sysctls`\n   * `spec.hostNetwork`\n   * `spec.volumes[*].hostPath`\n   * `spec.containers[*].securityContext.privileged`\n\nPolicy levels are applied via labels on Namespace resources, which allows for granular per-namespace policy selection. The AdmissionConfiguration in the API server can also be configured to set cluster-wide default levels and exemptions.\n\n### Policy modes\n\nPolicies are applied in a specific mode. Multiple modes (with different policy levels) can be set on the same namespace. Here is a list of modes:\n   * `enforce` \u2014 Any Pods that violate the policy will be rejected\n   * `audit` \u2014 Violations will be recorded as an annotation in the audit logs, but don't affect whether the pod is allowed.\n   * `warn` \u2014 Violations will send a warning message back to the user, but don't affect whether the pod is allowed.\n\nIn addition to modes you can also pin the policy to a specific version (for example v1.22). Pinning to a specific version allows the behavior to remain consistent if the policy definition changes in future Kubernetes releases.",
+              "method": "section"
+            },
+            {
+              "title": "Advanced Pod Configuration",
+              "api_metadata": [
+                {
+                  "apiVersion": "v1",
+                  "kind": "Pod"
+                }
+              ],
+              "content_type": "concept",
+              "weight": 180,
+              "filename": "website-main/content/en/docs/concepts/workloads/pods/advanced-pod-config.md",
+              "chunk": "## Pod and container level security context configuration {#security-context}\n\nThe `Security context` field in the Pod specification provides granular control over security settings for Pods and containers.\n\n### Pod-wide `securityContext` {#pod-level-security-context}\n\nSome aspects of security apply to the whole Pod; for other aspects,\nyou might want to set a default, without any container-level overrides.\n\nHere's an example of using `securityContext` at the Pod level:\n\n#### Example Pod {#pod-level-security-context-example}\n\n{{< highlight yaml \"hl_lines=5-9\" >}}\napiVersion: v1\nkind: Pod\nmetadata:\n  name: security-context-demo\nspec:\n  securityContext:  # This applies to the entire Pod\n    runAsUser: 1000\n    runAsGroup: 3000\n    fsGroup: 2000\n  containers:\n  - name: sec-ctx-demo\n    image: registry.k8s.io/e2e-test-images/agnhost:2.45\n    command: [\"sh\", \"-c\", \"sleep 1h\"]\n{{< /highlight >}}\n\n### Container-level security context {#container-level-security-context}\n\nYou can specify the security context just for a specific container.\nHere's an example:\n\n#### Example Pod {#container-level-security-context-example}\n\n{{< highlight yaml \"hl_lines=9-17\" >}}\napiVersion: v1\nkind: Pod\nmetadata:\n  name: security-context-demo-2\nspec:\n  containers:\n  - name: sec-ctx-demo-2\n    image: gcr.io/google-samples/node-hello:1.0\n    securityContext:\n      allowPrivilegeEscalation: false\n      runAsNonRoot: true\n      runAsUser: 1000\n      capabilities:\n        drop:\n        - ALL\n      seccompProfile:\n        type: RuntimeDefault\n{{< /highlight >}}\n\n### Security context options\n\n- **User and Group IDs**: Control which user/group the container runs as\n- **Capabilities**: Add or drop Linux capabilities\n- **Seccomp Profiles**: Set security computing profiles\n- **SELinux Options**: Configure SELinux context\n- **AppArmor**: Configure AppArmor profiles for additional access control\n- **Windows Options**: Configure Windows-specific security settings\n\n{{< caution >}}\nYou can also use the Pod `secur",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "091gsg6gj",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:49:12.312469+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:12.322443+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "11a73582-f721-4efc-a246-9cb4226fa1b2",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "To configure a Pod's security context in Kubernetes, you can specify security settings for a Pod by including the `securityContext` field in the Pod specification. The `securityContext` field is a [PodSecurityContext](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/generated/kubernetes-api/v1.23/#podsecuritycontext-v1-core) object. \n\nThe security settings that you specify for a Pod apply to all Containers in the Pod. You can also specify the security context just for a specific container.\n\nHere is an example of using `securityContext` at the Pod level:\n```yml\napiVersion: v1\nkind: Pod\nmetadata:\n  name: security-context-demo\nspec:\n  securityContext:  \n    runAsUser: 1000\n    runAsGroup: 3000\n    fsGroup: 2000\n  containers:\n  - name: sec-ctx-demo\n    image: registry.k8s.io/e2e-test-images/agnhost:2.45\n    command: [\"sh\", \"-c\", \"sleep 1h\"]\n```\nAnd here is an example of using `securityContext` at the container level:\n```yml\napiVersion: v1\nkind: Pod\nmetadata:\n  name: security-context-demo-2\nspec:\n  containers:\n  - name: sec-ctx-demo-2\n    image: gcr.io/google-samples/node-hello:1.0\n    securityContext:\n      allowPrivilegeEscalation: false\n      runAsNonRoot: true\n      runAsUser: 1000\n      capabilities:\n        drop:\n        - ALL\n      seccompProfile:\n        type: RuntimeDefault\n```\nYou can also use Pod Security Standards to define three different policy levels that range from permissive to restrictive. These levels are as follows:\n\n* `privileged` \u2014 open and unrestricted\n* `baseline` \u2014 Covers known privilege escalations while minimizing restrictions\n* `restricted` \u2014 Highly restricted, hardening against known and unknown privilege escalations. May cause compatibility issues\n\nYou can apply these policies using labels on Namespace resources, allowing for granular per-namespace policy selection. \n\nFor more information, you can refer to the [Configure a Security Context for a Pod or Container](https://github.com/kubernetes/website/blob/main/content/en/docs/tasks/configure-pod-container/security-context.md) and [Pod Security Standards](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/security/pod-security-standards/) documentation.",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1852,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 523,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:13.703909+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:49:13+00:00"
+      },
+      "provider_response_id": "chatcmpl-19f1e213-f166-4d2d-a5f4-79db5c78b3f2",
+      "finish_reason": "stop",
+      "run_id": "11a73582-f721-4efc-a246-9cb4226fa1b2",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

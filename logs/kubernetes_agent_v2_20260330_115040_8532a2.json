@@ -1,0 +1,243 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "How do you enable AppArmor or SELinux in a Kubernetes cluster?",
+          "timestamp": "2026-03-30T11:50:16.271899+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:50:16.272872+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "f00553a8-2b70-476b-85ea-bdca7028823b",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"enable AppArmor or SELinux in Kubernetes cluster\"}",
+          "tool_call_id": "rr97s18sa",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 479,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 25,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:50:18.602817+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:50:18+00:00"
+      },
+      "provider_response_id": "chatcmpl-c721e546-b70b-4b51-bbf8-097de32ff88c",
+      "finish_reason": "tool_call",
+      "run_id": "f00553a8-2b70-476b-85ea-bdca7028823b",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "AppArmor",
+              "content_type": "feature_gate",
+              "_build": {
+                "list": "never",
+                "render": false
+              },
+              "stages": [
+                {
+                  "stage": "beta",
+                  "defaultValue": true,
+                  "fromVersion": "1.4",
+                  "toVersion": "1.30"
+                },
+                {
+                  "stage": "stable",
+                  "defaultValue": true,
+                  "fromVersion": "1.31",
+                  "toVersion": "1.32"
+                }
+              ],
+              "removed": true,
+              "filename": "website-main/content/en/docs/reference/command-line-tools-reference/feature-gates/AppArmor.md",
+              "chunk": "Enable use of AppArmor mandatory access control for Pods running on Linux nodes.\nSee [AppArmor Tutorial](/docs/tutorials/security/apparmor/) for more details.",
+              "method": "sliding_window"
+            },
+            {
+              "title": "AppArmor",
+              "content_type": "feature_gate",
+              "_build": {
+                "list": "never",
+                "render": false
+              },
+              "stages": [
+                {
+                  "stage": "beta",
+                  "defaultValue": true,
+                  "fromVersion": "1.4",
+                  "toVersion": "1.30"
+                },
+                {
+                  "stage": "stable",
+                  "defaultValue": true,
+                  "fromVersion": "1.31",
+                  "toVersion": "1.32"
+                }
+              ],
+              "removed": true,
+              "filename": "website-main/content/zh-cn/docs/reference/command-line-tools-reference/feature-gates/AppArmor.md",
+              "chunk": "<!--\nEnable use of AppArmor mandatory access control for Pods running on Linux nodes.\nSee [AppArmor Tutorial](/docs/tutorials/security/apparmor/) for more details.\n-->\n\u4e3a Linux \u8282\u70b9\u4e0a\u8fd0\u884c\u7684 Pod \u542f\u7528 AppArmor \u673a\u5236\u7684\u5f3a\u5236\u8bbf\u95ee\u63a7\u5236\u3002\n\u66f4\u591a\u7ec6\u8282\u53c2\u9605 [AppArmor \u6559\u7a0b](/zh-cn/docs/tutorials/security/apparmor/)\u3002",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 AppArmor \u9650\u5236\u5bb9\u5668\u5bf9\u8d44\u6e90\u7684\u8bbf\u95ee",
+              "content_type": "tutorial",
+              "weight": 30,
+              "filename": "website-main/content/zh-cn/docs/tutorials/security/apparmor.md",
+              "chunk": "## {{% heading \"prerequisites\" %}}\n\n<!--\nAppArmor is an optional kernel module and Kubernetes feature, so verify it is supported on your\nNodes before proceeding:\n-->\nAppArmor \u662f\u4e00\u4e2a\u53ef\u9009\u7684\u5185\u6838\u6a21\u5757\u548c Kubernetes \u7279\u6027\uff0c\u56e0\u6b64\u8bf7\u5728\u7ee7\u7eed\u4e4b\u524d\u9a8c\u8bc1\u4f60\u7684\u8282\u70b9\u662f\u5426\u652f\u6301\u5b83\uff1a\n\n<!--\n1. AppArmor kernel module is enabled -- For the Linux kernel to enforce an AppArmor profile, the\n   AppArmor kernel module must be installed and enabled. Several distributions enable the module by\n   default, such as Ubuntu and SUSE, and many others provide optional support. To check whether the\n   module is enabled, check the `/sys/module/apparmor/parameters/enabled` file:\n-->\n1. AppArmor \u5185\u6838\u6a21\u5757\u5df2\u542f\u7528 \u2014\u2014 \u8981\u4f7f Linux \u5185\u6838\u5f3a\u5236\u6267\u884c AppArmor \u914d\u7f6e\u6587\u4ef6\uff0c\n   \u5fc5\u987b\u5b89\u88c5\u5e76\u4e14\u542f\u52a8 AppArmor \u5185\u6838\u6a21\u5757\u3002\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u6709\u51e0\u4e2a\u53d1\u884c\u7248\u652f\u6301\u8be5\u6a21\u5757\uff0c\n   \u5982 Ubuntu \u548c SUSE\uff0c\u8fd8\u6709\u8bb8\u591a\u53d1\u884c\u7248\u63d0\u4f9b\u53ef\u9009\u652f\u6301\u3002\u8981\u68c0\u67e5\u6a21\u5757\u662f\u5426\u5df2\u542f\u7528\uff0c\u8bf7\u68c0\u67e5\n   `/sys/module/apparmor/parameters/enabled` \u6587\u4ef6\uff1a\n\n   ```shell\n   cat /sys/module/apparmor/parameters/enabled\n   Y\n   ```\n\n   <!--\n   The kubelet verifies that AppArmor is enabled on the host before admitting a pod with AppArmor\n   explicitly configured.\n   -->\n   kubelet \u4f1a\u5148\u9a8c\u8bc1\u4e3b\u673a\u4e0a\u662f\u5426\u5df2\u542f\u7528 AppArmor\uff0c\u7136\u540e\u518d\u63a5\u7eb3\u663e\u5f0f\u914d\u7f6e\u4e86 AppArmor \u7684 Pod\u3002\n\n<!--\n1. Container runtime supports AppArmor -- All common Kubernetes-supported container\n   runtimes should support AppArmor, including {{< glossary_tooltip term_id=\"cri-o\" >}} and\n   {{< glossary_tooltip term_id=\"containerd\" >}}. Please refer to the corresponding runtime\n   documentation and verify that the cluster fulfills the requirements to use AppArmor.\n-->\n2. \u5bb9\u5668\u8fd0\u884c\u65f6\u652f\u6301 AppArmor \u2014\u2014 \u6240\u6709\u5e38\u89c1\u7684 Kubernetes \u652f\u6301\u7684\u5bb9\u5668\u8fd0\u884c\u65f6\u90fd\u5e94\u8be5\u652f\u6301 AppArmor\uff0c\n   \u5305\u62ec {{< glossary_tooltip term_id=\"cri-o\" >}} \u548c {{< glossary_tooltip term_id=\"containerd\" >}}\u3002\n   \u8bf7\u53c2\u8003\u76f8\u5e94\u7684\u8fd0\u884c\u65f6\u6587\u6863\u5e76\u9a8c\u8bc1\u96c6\u7fa4\u662f\u5426\u6ee1\u8db3\u4f7f\u7528 AppArmor \u7684\u8981\u6c42\u3002\n\n<!--\n1. Profile is loaded -- AppArmor is applied to a Pod by specifying an AppArmor profile that each\n   container should be run with. If any of the specified profiles is not loaded in the\n   kernel, the kubelet will reject the Pod. You can view which profiles are loaded on a\n   node by checking the `/sys/kernel/security/apparmor/profiles` file. For exam",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u9488\u5bf9 Pod \u548c\u5bb9\u5668\u7684 Linux \u5185\u6838\u5b89\u5168\u7ea6\u675f",
+              "description": "\u6982\u8ff0\u4f60\u53ef\u7528\u4e8e\u589e\u5f3a Pod \u548c\u5bb9\u5668\u5b89\u5168\u6027\u7684 Linux \u5185\u6838\u5b89\u5168\u6a21\u5757\u548c\u7ea6\u675f\n",
+              "content_type": "concept",
+              "weight": 100,
+              "filename": "website-main/content/zh-cn/docs/concepts/security/linux-kernel-security-constraints.md",
+              "chunk": "how to use AppArmor in Kubernetes, refer to\n[Restrict a Container's Access to Resources with AppArmor](/docs/tutorials/security/apparmor/).\n-->\nAppArmor \u53ef\u4ee5\u901a\u8fc7\u9650\u5236\u5bb9\u5668\u88ab\u5141\u8bb8\u6267\u884c\u54ea\u4e9b\u64cd\u4f5c\u6765\u5e2e\u52a9\u4f60\u8fd0\u884c\u66f4\u4e3a\u5b89\u5168\u7684\u90e8\u7f72\uff0c\u8fd8\u53ef\u4ee5\u901a\u8fc7\u7cfb\u7edf\u65e5\u5fd7\u63d0\u4f9b\u66f4\u597d\u7684\u5ba1\u8ba1\u3002\n\u4f60\u4f7f\u7528\u7684\u5bb9\u5668\u8fd0\u884c\u65f6\u53ef\u80fd\u9644\u5e26\u9ed8\u8ba4\u7684 AppArmor \u914d\u7f6e\u6587\u4ef6\uff0c\u6216\u8005\u4f60\u4e5f\u53ef\u4ee5\u4f7f\u7528\u81ea\u5b9a\u4e49\u7684\u914d\u7f6e\u6587\u4ef6\u3002\n\n\u8981\u4e86\u89e3\u5982\u4f55\u5728 Kubernetes \u4e2d\u4f7f\u7528 AppArmor\uff0c\n\u8bf7\u53c2\u9605[\u4f7f\u7528 AppArmor \u9650\u5236\u5bb9\u5668\u5bf9\u8d44\u6e90\u7684\u8bbf\u95ee](/zh-cn/docs/tutorials/security/apparmor/)\u3002\n\n#### SELinux\n\n<!--\nSELinux is a Linux kernel security module that lets you restrict the access\nthat a specific *subject*, such as a process, has to the files on your system.\nYou define security policies that apply to subjects that have specific SELinux\nlabels. When a process that has an SELinux label attempts to access a file, the\nSELinux server checks whether that process' security policy allows the access\nand makes an authorization decision.\n-->\nSELinux \u662f\u4e00\u4e2a Linux \u5185\u6838\u5b89\u5168\u6a21\u5757\uff0c\u5141\u8bb8\u4f60\u9650\u5236\u7279\u5b9a**\u4e3b\u4f53**\uff08\u4f8b\u5982\u8fdb\u7a0b\uff09\u5bf9\u7cfb\u7edf\u4e0a\u6587\u4ef6\u7684\u8bbf\u95ee\u3002\n\u4f60\u53ef\u4ee5\u5b9a\u4e49\u8981\u5e94\u7528\u5230\u5177\u6709\u7279\u5b9a SELinux \u6807\u7b7e\u7684\u4e3b\u4f53\u7684\u5b89\u5168\u7b56\u7565\u3002\n\u5f53\u5177\u6709\u7279\u5b9a SELinux \u6807\u7b7e\u7684\u8fdb\u7a0b\u8bd5\u56fe\u8bbf\u95ee\u67d0\u4e2a\u6587\u4ef6\u65f6\uff0cSELinux \u670d\u52a1\u5668\u4f1a\u68c0\u67e5\u8be5\u8fdb\u7a0b\u7684\u5b89\u5168\u7b56\u7565\u662f\u5426\u5141\u8bb8\u8bbf\u95ee\u5e76\u505a\u51fa\u9274\u6743\u51b3\u7b56\u3002\n\n<!--\nIn Kubernetes, you can set an SELinux label in the `securityContext` field of\nyour manifest. The specified labels are assigned to those processes. If you\nhave configured security policies that affect those labels, the host OS kernel\nenforces these policies.\n\nTo learn how to use SELinux in Kubernetes, refer to\n[Assign SELinux labels to a container](/docs/tasks/configure-pod-container/security-context/#assign-selinux-labels-to-a-container).\n-->\n\u5728 Kubernetes \u4e2d\uff0c\u4f60\u53ef\u4ee5\u5728\u6e05\u5355\u7684 `securityContext` \u5b57\u6bb5\u4e2d\u8bbe\u7f6e SELinux \u6807\u7b7e\u3002\n\u6240\u6307\u5b9a\u7684\u6807\u7b7e\u88ab\u8d4b\u4e88\u7ed9\u90a3\u4e9b\u8fdb\u7a0b\u3002\u5982\u679c\u4f60\u914d\u7f6e\u4e86\u5f71\u54cd\u8fd9\u4e9b\u6807\u7b7e\u7684\u5b89\u5168\u7b56\u7565\uff0c\u5219\u4e3b\u673a\u64cd\u4f5c\u7cfb\u7edf\u5185\u6838\u5c06\u5f3a\u5236\u6267\u884c\u8fd9\u4e9b\u7b56\u7565\u3002\n\n\u8981\u4e86\u89e3\u5982\u4f55\u5728 Kubernetes \u4e2d\u4f7f\u7528 SELinux\uff0c\n\u8bf7\u53c2\u9605[\u4e3a\u5bb9\u5668\u5206\u914d SELinux \u6807\u7b7e](/zh-cn/docs/tasks/configure-pod-container/security-context/#assign-selinux-labels-to-a-container)\u3002\n\n<!--\n#### Differences between AppArmor and SELinux {#apparmor-selinux-diff}\n\nThe operating system on your Linux nodes usually includes one of either\nAppArmor or SELinux. Both mechanisms provide similar types of protection, but\nhave differences such as the following:\n-->\n#### AppArmor \u548c SELinux \u4e4b\u95f4\u7684\u533a\u522b   {#apparmor-seli",
+              "method": "sliding_window"
+            },
+            {
+              "title": "AppArmorFields",
+              "content_type": "feature_gate",
+              "_build": {
+                "list": "never",
+                "render": false
+              },
+              "stages": [
+                {
+                  "stage": "beta",
+                  "defaultValue": true,
+                  "fromVersion": "1.30",
+                  "toVersion": "1.30"
+                },
+                {
+                  "stage": "stable",
+                  "defaultValue": true,
+                  "fromVersion": "1.31",
+                  "toVersion": "1.32"
+                }
+              ],
+              "removed": true,
+              "filename": "website-main/content/en/docs/reference/command-line-tools-reference/feature-gates/AppArmorFields.md",
+              "chunk": "Enable AppArmor related security context settings.\n\nFor more information about AppArmor and Kubernetes, read the\n[AppArmor](/docs/concepts/security/linux-kernel-security-constraints/#apparmor) section\nwithin\n[security features in the Linux kernel](/docs/concepts/security/linux-kernel-security-constraints/#linux-security-features).",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Linux kernel security constraints for Pods and containers",
+              "description": "Overview of Linux kernel security modules and constraints that you can use to harden your Pods and containers.\n",
+              "content_type": "concept",
+              "weight": 100,
+              "filename": "website-main/content/en/docs/concepts/security/linux-kernel-security-constraints.md",
+              "chunk": "a default AppArmor\nprofile, or you can use a custom profile.\n\nTo learn how to use AppArmor in Kubernetes, refer to\n[Restrict a Container's Access to Resources with AppArmor](/docs/tutorials/security/apparmor/).\n\n#### SELinux\n\nSELinux is a Linux kernel security module that lets you restrict the access\nthat a specific *subject*, such as a process, has to the files on your system.\nYou define security policies that apply to subjects that have specific SELinux\nlabels. When a process that has an SELinux label attempts to access a file, the\nSELinux server checks whether that process' security policy allows the access\nand makes an authorization decision.\n\nIn Kubernetes, you can set an SELinux label in the `securityContext` field of\nyour manifest. The specified labels are assigned to those processes. If you\nhave configured security policies that affect those labels, the host OS kernel\nenforces these policies.\n\nTo learn how to use SELinux in Kubernetes, refer to\n[Assign SELinux labels to a container](/docs/tasks/configure-pod-container/security-context/#assign-selinux-labels-to-a-container).\n\n#### Differences between AppArmor and SELinux {#apparmor-selinux-diff}\n\nThe operating system on your Linux nodes usually includes one of either\nAppArmor or SELinux. Both mechanisms provide similar types of protection, but\nhave differences such as the following:\n\n* **Configuration**: AppArmor uses profiles to define access to resources.\n  SELinux uses policies that apply to specific labels.\n* **Policy application**: In AppArmor, you define resources using file paths.\n  SELinux uses the index node (inode) of a resource to identify the resource.\n\n### Summary of features {#summary}\n\nThe following table describes the use cases and scope of each security control.\nYou can use all of these controls together to build a more hardened system.\n\n<table>\n  <caption>Summary of Linux kernel security features</caption>\n  <thead>\n    <tr>\n      <th>Security feature</th>\n      <th>Description</th>\n      <t",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "stclair"
+              ],
+              "title": "Restrict a Container's Access to Resources with AppArmor",
+              "content_type": "tutorial",
+              "weight": 30,
+              "filename": "website-main/content/en/docs/tutorials/security/apparmor.md",
+              "chunk": "## {{% heading \"prerequisites\" %}}\n\nAppArmor is an optional kernel module and Kubernetes feature, so verify it is supported on your\nNodes before proceeding:\n\n1. AppArmor kernel module is enabled -- For the Linux kernel to enforce an AppArmor profile, the\n   AppArmor kernel module must be installed and enabled. Several distributions enable the module by\n   default, such as Ubuntu and SUSE, and many others provide optional support. To check whether the\n   module is enabled, check the `/sys/module/apparmor/parameters/enabled` file:\n\n   ```shell\n   cat /sys/module/apparmor/parameters/enabled\n   Y\n   ```\n\n   The kubelet verifies that AppArmor is enabled on the host before admitting a pod with AppArmor\n   explicitly configured.\n\n1. Container runtime supports AppArmor -- All common Kubernetes-supported container\n   runtimes should support AppArmor, including {{< glossary_tooltip term_id=\"containerd\" >}} and\n   {{< glossary_tooltip term_id=\"cri-o\" >}}. Please refer to the corresponding runtime\n   documentation and verify that the cluster fulfills the requirements to use AppArmor.\n\n1. Profile is loaded -- AppArmor is applied to a Pod by specifying an AppArmor profile that each\n   container should be run with. If any of the specified profiles are not loaded in the\n   kernel, the kubelet will reject the Pod. You can view which profiles are loaded on a\n   node by checking the `/sys/kernel/security/apparmor/profiles` file. For example:\n\n   ```shell\n   ssh gke-test-default-pool-239f5d02-gyn2 \"sudo cat /sys/kernel/security/apparmor/profiles | sort\"\n   ```\n   ```\n   apparmor-test-deny-write (enforce)\n   apparmor-test-audit-write (enforce)\n   docker-default (enforce)\n   k8s-nginx (enforce)\n   ```\n\n   For more details on loading profiles on nodes, see\n   [Setting up nodes with profiles](#setting-up-nodes-with-profiles).\n\n<!-- lessoncontent -->",
+              "method": "section"
+            },
+            {
+              "layout": "blog",
+              "title": "Kubernetes v1.31: Elli",
+              "date": "2024-08-13",
+              "slug": "kubernetes-v1-31-release",
+              "author": "[Kubernetes v1.31 Release Team](https://github.com/kubernetes/sig-release/blob/master/releases/release-1.31/release-team.md)\n",
+              "translator": "[RifeWang](https://github.com/RifeWang)\n",
+              "filename": "website-main/content/zh-cn/blog/_posts/2024/kubernetes-v1-31-release.md",
+              "chunk": "## \u664b\u7ea7\u4e3a\u7a33\u5b9a\u7248\u7684\u529f\u80fd\u4eae\u70b9\n\n_\u4ee5\u4e0b\u662f v1.31 \u53d1\u5e03\u540e\u664b\u7ea7\u4e3a\u7a33\u5b9a\u7248\u7684\u90e8\u5206\u6539\u8fdb\u3002_\n\n<!--\n### AppArmor support is now stable\n-->\n### AppArmor \u652f\u6301\u73b0\u5df2\u7a33\u5b9a\n\n<!--\nKubernetes support for AppArmor is now GA. Protect your containers using AppArmor by setting the `appArmorProfile.type` field in the container's `securityContext`. \nNote that before Kubernetes v1.30, AppArmor was controlled via annotations; starting in v1.30 it is controlled using fields. \nIt is recommended that you should migrate away from using annotations and start using the `appArmorProfile.type` field.\n-->\nKubernetes \u5bf9 AppArmor \u7684\u652f\u6301\u73b0\u5df2\u6b63\u5f0f\u53d1\u5e03\u3002\u901a\u8fc7\u5728\u5bb9\u5668\u7684 `securityContext` \u4e2d\u8bbe\u7f6e `appArmorProfile.type` \u5b57\u6bb5\uff0c\u53ef\u4ee5\u4f7f\u7528 AppArmor \u4fdd\u62a4\u60a8\u7684\u5bb9\u5668\u3002\n\u8bf7\u6ce8\u610f\uff0c\u5728 Kubernetes v1.30 \u4e4b\u524d\uff0cAppArmor \u662f\u901a\u8fc7\u6ce8\u89e3\u63a7\u5236\u7684\uff1b\u4ece v1.30 \u5f00\u59cb\uff0c\u5b83\u662f\u901a\u8fc7\u5b57\u6bb5\u63a7\u5236\u7684\u3002\n\u5efa\u8bae\u60a8\u505c\u6b62\u4f7f\u7528\u6ce8\u89e3\uff0c\u5f00\u59cb\u4f7f\u7528 `appArmorProfile.type` \u5b57\u6bb5\u3002\n\n<!--\nTo learn more read the [AppArmor tutorial](/docs/tutorials/security/apparmor/). \nThis work was done as a part of [KEP #24](https://github.com/kubernetes/enhancements/issues/24), by [SIG Node](https://github.com/kubernetes/community/tree/master/sig-node).\n-->\n\u8981\u4e86\u89e3\u66f4\u591a\u4fe1\u606f\uff0c\u8bf7\u9605\u8bfb [AppArmor \u6559\u7a0b](/zh-cn/docs/tutorials/security/apparmor/)\u3002\n\u8fd9\u9879\u5de5\u4f5c\u662f\u4f5c\u4e3a [KEP #24](https://github.com/kubernetes/enhancements/issues/24) \u7684\u4e00\u90e8\u5206\u7531\n[SIG Node](https://github.com/kubernetes/community/tree/master/sig-node) \u5b8c\u6210\u7684\u3002\n\n<!--\n### Improved ingress connectivity reliability for kube-proxy\n-->\n### \u6539\u8fdb kube-proxy \u7684\u5165\u7ad9\u8fde\u63a5\u53ef\u9760\u6027\n\n<!--\nKube-proxy improved ingress connectivity reliability is stable in v1.31. \nOne of the common problems with load balancers in Kubernetes is the synchronization between the different components involved to avoid traffic drop. \nThis feature implements a mechanism in kube-proxy for load balancers to do connection draining for terminating Nodes exposed by services of `type: LoadBalancer` and `externalTrafficPolicy: Cluster` and establish some best practices for cloud providers and Kubernetes load balancers implementations.\n-->\nkube-proxy \u6539\u8fdb\u7684\u5165\u7ad9\u8fde\u63a5\u53ef\u9760\u6027\u5728 v1.31 \u4e2d\u5df2\u7a33\u5b9a\u3002\nKubernetes \u4e2d\u8d1f\u8f7d\u5747\u8861\u5668\u7684\u4e00\u4e2a\u5e38\u89c1\u95ee\u9898\u662f\u4e3a\u907f\u514d\u6d41\u91cf\u4e22\u5931\u800c\u5728\u4e0d\u540c\u7ec4\u4ef6\u4e4b\u95f4\u8fdb\u884c\u540c\u6b65\u7684\u673a\u5236\u3002\n\u6b64\u7279\u6027\u5728 kube-proxy \u4e2d\u5b9e\u73b0\u4e86\u4e00\u79cd\u673a\u5236\uff0c\u7528\u4e8e\u8d1f\u8f7d\u5747\u8861\u5668\u5bf9 `type: LoadBal",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "rr97s18sa",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:50:26.458555+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:50:26.471698+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "f00553a8-2b70-476b-85ea-bdca7028823b",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "To enable AppArmor or SELinux in a Kubernetes cluster, you need to follow these steps:\n\n1. Verify that AppArmor is enabled on your nodes by checking the `/sys/module/apparmor/parameters/enabled` file. If it's not enabled, you'll need to install and enable the AppArmor kernel module.\n2. Check that your container runtime supports AppArmor. Most common Kubernetes-supported container runtimes, such as containerd and CRI-O, support AppArmor.\n3. Load the AppArmor profiles on your nodes. You can do this by checking the `/sys/kernel/security/apparmor/profiles` file. If the profiles are not loaded, you'll need to load them manually.\n4. Specify the AppArmor profile in the `securityContext` field of your pod's manifest. You can do this by setting the `appArmorProfile.type` field to the name of the profile you want to use.\n\nFor SELinux, you can set an SELinux label in the `securityContext` field of your manifest. The specified labels are assigned to the processes in your container. If you have configured security policies that affect those labels, the host OS kernel enforces these policies.\n\nYou can learn more about using AppArmor in Kubernetes by referring to the [AppArmor tutorial](https://kubernetes.io/docs/tutorials/security/apparmor/). For SELinux, you can refer to the [Assign SELinux labels to a container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#assign-selinux-labels-to-a-container) documentation.\n\n[AppArmor Tutorial](https://github.com/kubernetes/website/blob/main/content/en/docs/tutorials/security/apparmor.md)\n[Assign SELinux labels to a container](https://github.com/kubernetes/website/blob/main/content/en/docs/tasks/configure-pod-container/security-context.md#assign-selinux-labels-to-a-container)",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4180,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 382,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:50:40.402779+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:50:40+00:00"
+      },
+      "provider_response_id": "chatcmpl-fa289af5-5b3a-4f36-8c17-569148e3feb0",
+      "finish_reason": "stop",
+      "run_id": "f00553a8-2b70-476b-85ea-bdca7028823b",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

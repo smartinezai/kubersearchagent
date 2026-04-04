@@ -1,0 +1,195 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is the difference between a ClusterRole and a Role in Kubernetes?",
+          "timestamp": "2026-03-30T11:49:13.721992+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:13.723529+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "de81ac7e-f80d-402f-b589-c02097998661",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"ClusterRole vs Role in Kubernetes\"}",
+          "tool_call_id": "ec8pxm11j",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 479,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 22,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:13.963337+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:49:13+00:00"
+      },
+      "provider_response_id": "chatcmpl-0074c12a-dbad-4fbe-a7dd-52b6c0675b0c",
+      "finish_reason": "tool_call",
+      "run_id": "de81ac7e-f80d-402f-b589-c02097998661",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "ClusterRole"
+              },
+              "content_type": "api_reference",
+              "description": "ClusterRole \u662f\u4e00\u4e2a\u96c6\u7fa4\u7ea7\u522b\u7684 PolicyRule \u903b\u8f91\u5206\u7ec4\uff0c\u53ef\u4ee5\u88ab RoleBinding \u6216 ClusterRoleBinding \u4f5c\u4e3a\u4e00\u4e2a\u5355\u5143\u5f15\u7528\u3002",
+              "title": "ClusterRole",
+              "weight": 5,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/cluster-role-v1.md",
+              "chunk": "*pretty**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified ClusterRole\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 ClusterRole\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the ClusterRole\n- **body**: <a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>, required\n- **dryRun** (*in query*): string\n- **fieldManager** (*in query*): string\n- **fieldValidation** (*in query*): string\n- **pretty** (*in query*): string\n-->\n#### \u53c2\u6570\n\n- **name**\uff08**\u8def\u5f84\u53c2\u6570**\uff09\uff1astring\uff0c\u5fc5\u9700\n  \n  ClusterRole \u7684\u540d\u79f0\n\n- **body**\uff1a<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>\uff0c\u5fc5\u9700\n\n- **dryRun**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): Created\n\n401: Unauthorized\n\n<!--\n### `pat",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "ClusterRole"
+              },
+              "content_type": "api_reference",
+              "description": "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.",
+              "title": "ClusterRole",
+              "weight": 5,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/authorization-resources/cluster-role-v1.md",
+              "chunk": "tty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified ClusterRole\n\n#### HTTP Request\n\nPUT /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the ClusterRole\n\n\n- **body**: <a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/cluster-role-v1#ClusterRole\" >}}\">ClusterRole</a>): Created\n\n401: Unauthorized\n\n\n### `patch` partially update the specified ClusterRole\n\n#### HTTP Request\n\nPATCH /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the ClusterRole\n\n\n- **body**: <a href=\"{{< ref \"../common-definitions/patch#Patch\" >}}\">Patch</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "erictune",
+                "deads2k",
+                "liggitt"
+              ],
+              "title": "Using RBAC Authorization",
+              "content_type": "concept",
+              "aliases": [
+                "/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/en/docs/reference/access-authn-authz/rbac.md",
+              "chunk": "\n<tr>\n<th>Default ClusterRole</th>\n<th>Default ClusterRoleBinding</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><b>cluster-admin</b></td>\n<td><b>system:masters</b> group</td>\n<td>Allows super-user access to perform any action on any resource.\nWhen used in a <b>ClusterRoleBinding</b>, it gives full control over every resource in the cluster and in all namespaces.\nWhen used in a <b>RoleBinding</b>, it gives full control over every resource in the role binding's namespace, including the namespace itself.</td>\n</tr>\n<tr>\n<td><b>admin</b></td>\n<td>None</td>\n<td>Allows admin access, intended to be granted within a namespace using a <b>RoleBinding</b>.\n\nIf used in a <b>RoleBinding</b>, allows read/write access to most resources in a namespace,\nincluding the ability to create roles and role bindings within the namespace.\nThis role does not allow write access to resource quota or to the namespace itself.\nThis role also does not allow write access to EndpointSlices in clusters created\nusing Kubernetes v1.22+. More information is available in the\n[\"Write Access for EndpointSlices\" section](#write-access-for-endpoints).</td>\n</tr>\n<tr>\n<td><b>edit</b></td>\n<td>None</td>\n<td>Allows read/write access to most objects in a namespace.\n\nThis role does not allow viewing or modifying roles or role bindings.\nHowever, this role allows accessing Secrets and running Pods as any ServiceAccount in\nthe namespace, so it can be used to gain the API access levels of any ServiceAccount in\nthe namespace. This role also does not allow write access to EndpointSlices in\nclusters created using Kubernetes v1.22+. More information is available in the\n[\"Write Access for EndpointSlices\" section](#write-access-for-endpoints).</td>\n</tr>\n<tr>\n<td><b>view</b></td>\n<td>None</td>\n<td>Allows read-only access to see most objects in a namespace.\nIt does not allow viewing roles or role bindings.\n\nThis role does not allow viewing Secrets, since reading\nthe contents of Secrets enables access to ServiceAc",
+              "method": "sliding_window"
+            },
+            {
+              "title": " RBAC Support in Kubernetes ",
+              "date": "2017-04-06",
+              "slug": "rbac-support-in-kubernetes",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Jacob Simpson (Google), Greg Castle (Google), CJ Cullen (Google)\n",
+              "filename": "website-main/content/en/blog/_posts/2017/rbac-support-in-kubernetes.md",
+              "chunk": "erRole is just like a Role, but can be used anywhere in the cluster.  \n\n**Role Bindings**  \nA RoleBinding maps a Role to a user or set of users, granting that Role's permissions to those users for resources in that namespace. A ClusterRoleBinding allows users to be granted a ClusterRole for authorization across the entire cluster.  \n\n\n[![](https://1.bp.blogspot.com/-ixDe91-cnqw/WOa0auxC0mI/AAAAAAAABBs/4LxVsr6shEgTYqUapt5QPISUeuTuztVwwCEw/s640/rbac2.png)](https://1.bp.blogspot.com/-ixDe91-cnqw/WOa0auxC0mI/AAAAAAAABBs/4LxVsr6shEgTYqUapt5QPISUeuTuztVwwCEw/s1600/rbac2.png)  \n\n\nAdditionally there are cluster roles and cluster role bindings to consider. Cluster roles and cluster role bindings function like roles and role bindings except they have wider scope. The exact differences and how cluster roles and cluster role bindings interact with roles and role bindings are covered in the [Kubernetes documentation](/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding).  \n\n**RBAC in Kubernetes**  \n\nRBAC is now deeply integrated into Kubernetes and used by the system components to grant the permissions necessary for them to function. [System roles](/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) are typically prefixed with system: so they can be easily recognized.  \n\n\n ```\n\u279c  kubectl get clusterroles --namespace=kube-system\n\nNAME                    KIND\n\nadmin ClusterRole.v1beta1.rbac.authorization.k8s.io\n\ncluster-admin ClusterRole.v1beta1.rbac.authorization.k8s.io\n\nedit ClusterRole.v1beta1.rbac.authorization.k8s.io\n\nkubelet-api-admin ClusterRole.v1beta1.rbac.authorization.k8s.io\n\nsystem:auth-delegator ClusterRole.v1beta1.rbac.authorization.k8s.io\n\nsystem:basic-user ClusterRole.v1beta1.rbac.authorization.k8s.io\n\nsystem:controller:attachdetach-controller ClusterRole.v1beta1.rbac.authorization.k8s.io\n\nsystem:controller:certificate-controller ClusterRole.v1beta1.rbac.authorization.k8s.io\n\n...\n  ```\n\n\nThe RBAC system roles have been e",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "smarterclayton",
+                "liggitt",
+                "enj"
+              ],
+              "title": "Securing a Cluster",
+              "content_type": "task",
+              "weight": 320,
+              "filename": "website-main/content/en/docs/tasks/administer-cluster/securing-a-cluster.md",
+              "chunk": "## Controlling access to the Kubernetes API\n\nAs Kubernetes is entirely API-driven, controlling and limiting who can access the cluster and what actions\nthey are allowed to perform is the first line of defense.\n\n### Use Transport Layer Security (TLS) for all API traffic\n\nKubernetes expects that all API communication in the cluster is encrypted by default with TLS, and the\nmajority of installation methods will allow the necessary certificates to be created and distributed to\nthe cluster components. Note that some components and installation methods may enable local ports over\nHTTP and administrators should familiarize themselves with the settings of each component to identify\npotentially unsecured traffic.\n\n### API Authentication\n\nChoose an authentication mechanism for the API servers to use that matches the common access patterns\nwhen you install a cluster. For instance, small, single-user clusters may wish to use a simple certificate\nor static Bearer token approach. Larger clusters may wish to integrate an existing OIDC or LDAP server that\nallow users to be subdivided into groups.\n\nAll API clients must be authenticated, even those that are part of the infrastructure like nodes,\nproxies, the scheduler, and volume plugins. These clients are typically [service accounts](/docs/reference/access-authn-authz/service-accounts-admin/) or use x509 client certificates, and they are created automatically at cluster startup or are setup as part of the cluster installation.\n\nConsult the [authentication reference document](/docs/reference/access-authn-authz/authentication/) for more information.\n\n### API Authorization\n\nOnce authenticated, every API call is also expected to pass an authorization check. Kubernetes ships\nan integrated [Role-Based Access Control (RBAC)](/docs/reference/access-authn-authz/rbac/) component that matches an incoming user or group to a\nset of permissions bundled into roles. These permissions combine verbs (get, create, delete) with\nresources (pods, service",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": null,
+              "title": "Role Based Access Control Good Practices",
+              "description": "Principles and practices for good RBAC design for cluster operators.\n",
+              "content_type": "concept",
+              "weight": 60,
+              "filename": "website-main/content/en/docs/concepts/security/rbac-good-practices.md",
+              "chunk": "## General good practice\n\n### Least privilege\n\nIdeally, minimal RBAC rights should be assigned to users and service accounts. Only permissions\nexplicitly required for their operation should be used. While each cluster will be different,\nsome general rules that can be applied are :\n\n- Assign permissions at the namespace level where possible. Use RoleBindings as opposed to\n  ClusterRoleBindings to give users rights only within a specific namespace.\n- Avoid providing wildcard permissions when possible, especially to all resources.\n  As Kubernetes is an extensible system, providing wildcard access gives rights\n  not just to all object types that currently exist in the cluster, but also to all object types\n  which are created in the future.\n- Administrators should not use `cluster-admin` accounts except where specifically needed.\n  Providing a low privileged account with\n  [impersonation rights](/docs/reference/access-authn-authz/authentication/#user-impersonation)\n  can avoid accidental modification of cluster resources.\n- Avoid adding users to the `system:masters` group. Any user who is a member of this group\n  bypasses all RBAC rights checks and will always have unrestricted superuser access, which cannot be\n  revoked by removing RoleBindings or ClusterRoleBindings. As an aside, if a cluster is\n  using an authorization webhook, membership of this group also bypasses that webhook (requests\n  from users who are members of that group are never sent to the webhook)\n\n### Minimize distribution of privileged tokens\n\nIdeally, pods shouldn't be assigned service accounts that have been granted powerful permissions\n(for example, any of the rights listed under [privilege escalation risks](#privilege-escalation-risks)).\nIn cases where a workload requires powerful permissions, consider the following practices:\n\n- Limit the number of nodes running powerful pods. Ensure that any DaemonSets you run\n  are necessary and are run with least privilege to limit the blast radius of container",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "ec8pxm11j",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:49:15.045578+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:15.047874+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "de81ac7e-f80d-402f-b589-c02097998661",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "The difference between a ClusterRole and a Role in Kubernetes is that a ClusterRole is a cluster-level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding, while a Role is a namespace-level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.\n\nAccording to the [RBAC documentation](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/access-authn-authz/rbac.md), ClusterRoles are used to grant permissions across the entire cluster, while Roles are used to grant permissions within a specific namespace.\n\nFor example, the `cluster-admin` ClusterRole grants super-user access to perform any action on any resource in the cluster, while the `admin` Role grants admin access, intended to be granted within a namespace using a RoleBinding.\n\nIt's also important to note that ClusterRoles and Roles can be used together to grant permissions. For instance, a ClusterRoleBinding can be used to grant a ClusterRole to a user or group, while a RoleBinding can be used to grant a Role to a user or group within a specific namespace.\n\nIn general, it's recommended to use least privilege when assigning permissions, and to avoid providing wildcard permissions or adding users to the `system:masters` group, as this can bypass all RBAC rights checks and grant unrestricted superuser access.\n\nFor more information, you can refer to the [Kubernetes documentation on RBAC](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/access-authn-authz/rbac.md) and [Role-Based Access Control Good Practices](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/security/rbac-good-practices.md).",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4186,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 348,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:16.635350+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:49:16+00:00"
+      },
+      "provider_response_id": "chatcmpl-9917618b-47f0-4b44-95f5-f17f11779ec4",
+      "finish_reason": "stop",
+      "run_id": "de81ac7e-f80d-402f-b589-c02097998661",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

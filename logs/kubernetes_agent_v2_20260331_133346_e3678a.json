@@ -1,0 +1,167 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "How do I restart a pod?",
+          "timestamp": "2026-03-31T13:33:40.352895+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-31T13:33:40.354190+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "24994412-8dd7-466b-9354-43686da7e17a",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"restart pod kubernetes\"}",
+          "tool_call_id": "y3g1c6dj6",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 472,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 20,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-31T13:33:40.931817+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-31T13:33:40+00:00"
+      },
+      "provider_response_id": "chatcmpl-11e1b9bd-fdc9-485f-852d-24bbc21e30ee",
+      "finish_reason": "tool_call",
+      "run_id": "24994412-8dd7-466b-9354-43686da7e17a",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "layout": "blog",
+              "title": "Kubernetes v1.35: New level of efficiency with in-place Pod restart",
+              "date": "2026-01-02T10:30:00-08:00",
+              "slug": "kubernetes-v1-35-restart-all-containers",
+              "author": "[Yuan Wang](https://github.com/yuanwang04) [Giuseppe Tinti Tomio](https://github.com/GiuseppeTT) [Sergey Kanzhelev](https://github.com/SergeyKanzhelev)\n",
+              "filename": "website-main/content/en/blog/_posts/2026/restart-all-containers.md",
+              "chunk": "## Observing the restart\n\nTo make this process observable, a new Pod condition, `AllContainersRestarting`, is added to the Pod's status. When a restart is triggered, this condition becomes `True` and it reverts to `False` once all containers have terminated and the Pod is ready to start its lifecycle anew. This provides a clear signal to users and other cluster components about the Pod's state.\n\nAll containers restarted by this action will have their restart count incremented in the container status.",
+              "method": "section"
+            },
+            {
+              "title": "kubectl rollout restart",
+              "content_type": "tool-reference",
+              "weight": 30,
+              "auto_generated": true,
+              "description": "Restart a resource",
+              "filename": "website-main/content/en/docs/reference/kubectl/generated/kubectl_rollout/kubectl_rollout_restart.md",
+              "chunk": "## {{% heading \"examples\" %}}\n\n```\n  # Restart all deployments in the test-namespace namespace\n  kubectl rollout restart deployment -n test-namespace\n  \n  # Restart a deployment\n  kubectl rollout restart deployment/nginx\n  \n  # Restart a daemon set\n  kubectl rollout restart daemonset/abc\n  \n  # Restart deployments with the app=nginx label\n  kubectl rollout restart deployment --selector=app=nginx\n```",
+              "method": "section"
+            },
+            {
+              "layout": "blog",
+              "title": "Kubernetes v1.35: \u901a\u8fc7\u5c31\u5730\u91cd\u542f Pod \u5b9e\u73b0\u66f4\u9ad8\u7684\u6548\u7387",
+              "date": "2026-01-05T10:30:00-08:00",
+              "slug": "kubernetes-v1-35-restart-all-containers",
+              "author": "[Yuan Wang](https://github.com/yuanwang04) [Giuseppe Tinti Tomio](https://github.com/GiuseppeTT) [Sergey Kanzhelev](https://github.com/SergeyKanzhelev)\n",
+              "translator": "[Xin Li](https://github.com/my-git9)\n",
+              "filename": "website-main/content/zh-cn/blog/_posts/2026/restart-all-containers.md",
+              "chunk": "## Introducing the `RestartAllContainers` action\n\nTo address this, Kubernetes v1.35 adds a new action to the container restart rules: `RestartAllContainers`. When a container exits in a way that matches a rule with this action, the kubelet initiates a fast, **in-place** restart of the Pod.\n-->",
+              "method": "section"
+            },
+            {
+              "title": "Pod \u7684\u751f\u547d\u5468\u671f",
+              "content_type": "concept",
+              "weight": 30,
+              "math": true,
+              "filename": "website-main/content/zh-cn/docs/concepts/workloads/pods/pod-lifecycle.md",
+              "chunk": "## Pod lifetime\n\nWhilst a Pod is running, the kubelet is able to restart containers to handle some\nkind of faults. Within a Pod, Kubernetes tracks different container\n[states](#container-states) and determines what action to take to make the Pod\nhealthy again.\n-->",
+              "method": "section"
+            },
+            {
+              "layout": "blog",
+              "title": "Kubernetes v1.34: Finer-Grained Control Over Container Restarts",
+              "date": "2025-08-29T10:30:00-08:00",
+              "slug": "kubernetes-v1-34-per-container-restart-policy",
+              "author": "[Yuan Wang](https://github.com/yuanwang04)\n",
+              "filename": "website-main/content/en/blog/_posts/2025/per-container-restart-policy.md",
+              "chunk": "## Learn more\n\n- Read the documentation for\n  [container restart policy](/docs/concepts/workloads/pods/pod-lifecycle/#container-restart-rules).\n- Read the KEP for the\n  [Container Restart Rules](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/5307-container-restart-policy)",
+              "method": "section"
+            }
+          ],
+          "tool_call_id": "y3g1c6dj6",
+          "metadata": null,
+          "timestamp": "2026-03-31T13:33:45.356035+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-31T13:33:45.361595+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "24994412-8dd7-466b-9354-43686da7e17a",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "To restart a pod, you can use the `kubectl rollout restart` command. This command will restart all containers in a pod. For example, to restart all deployments in the test-namespace namespace, you can use the following command:\n\n```\nkubectl rollout restart deployment -n test-namespace\n```\n\nYou can also restart a specific deployment or daemon set by specifying its name:\n\n```\nkubectl rollout restart deployment/nginx\nkubectl rollout restart daemonset/abc\n```\n\nAdditionally, you can restart deployments with a specific label by using the `--selector` option:\n\n```\nkubectl rollout restart deployment --selector=app=nginx\n```\n\nFor more information, you can refer to the [Kubernetes documentation on container restart policy](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/pods/pod-lifecycle.md) and the [Kubernetes documentation on kubectl rollout restart](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/kubectl/generated/kubectl_rollout/kubectl_rollout_restart.md).",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1421,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 210,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-31T13:33:46.599870+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-31T13:33:46+00:00"
+      },
+      "provider_response_id": "chatcmpl-b6214132-596b-4cdd-b336-cf93cb70708c",
+      "finish_reason": "stop",
+      "run_id": "24994412-8dd7-466b-9354-43686da7e17a",
+      "metadata": null
+    }
+  ],
+  "source": "user"
+}

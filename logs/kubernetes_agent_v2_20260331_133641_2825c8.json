@@ -1,0 +1,419 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is a ConfigMap and how do I use it?",
+          "timestamp": "2026-03-31T13:36:01.598628+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-31T13:36:01.598870+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"What is a ConfigMap and how do I use it?\"}",
+          "tool_call_id": "w474x719t",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 477,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 27,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-31T13:36:01.931425+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-31T13:36:01+00:00"
+      },
+      "provider_response_id": "chatcmpl-f99fbc43-7c4a-4ed5-901c-43f90b85cd99",
+      "finish_reason": "tool_call",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "ConfigMap",
+              "api_metadata": [
+                {
+                  "apiVersion": "v1",
+                  "kind": "ConfigMap"
+                }
+              ],
+              "content_type": "concept",
+              "weight": 20,
+              "filename": "website-main/content/zh-cn/docs/concepts/configuration/configmap.md",
+              "chunk": "## \u4f7f\u7528 ConfigMap   {#using-configmaps}\n\nConfigMap \u53ef\u4ee5\u4f5c\u4e3a\u6570\u636e\u5377\u6302\u8f7d\u3002ConfigMap \u4e5f\u53ef\u88ab\u7cfb\u7edf\u7684\u5176\u4ed6\u7ec4\u4ef6\u4f7f\u7528\uff0c\n\u800c\u4e0d\u4e00\u5b9a\u76f4\u63a5\u66b4\u9732\u7ed9 Pod\u3002\u4f8b\u5982\uff0cConfigMap \u53ef\u4ee5\u4fdd\u5b58\u7cfb\u7edf\u4e2d\u5176\u4ed6\u7ec4\u4ef6\u8981\u4f7f\u7528\u7684\u914d\u7f6e\u6570\u636e\u3002\n\n<!--\nThe most common way to use ConfigMaps is to configure settings for\ncontainers running in a Pod in the same namespace. You can also use a\nConfigMap separately.\n\nFor example, you\nmight encounter {{< glossary_tooltip text=\"addons\" term_id=\"addons\" >}}\nor {{< glossary_tooltip text=\"operators\" term_id=\"operator-pattern\" >}} that\nadjust their behavior based on a ConfigMap.\n-->\nConfigMap \u6700\u5e38\u89c1\u7684\u7528\u6cd5\u662f\u4e3a\u540c\u4e00\u547d\u540d\u7a7a\u95f4\u91cc\u67d0 Pod \u4e2d\u8fd0\u884c\u7684\u5bb9\u5668\u6267\u884c\u914d\u7f6e\u3002\n\u4f60\u4e5f\u53ef\u4ee5\u5355\u72ec\u4f7f\u7528 ConfigMap\u3002\n\n\u6bd4\u5982\uff0c\u4f60\u53ef\u80fd\u4f1a\u9047\u5230\u57fa\u4e8e ConfigMap \u6765\u8c03\u6574\u5176\u884c\u4e3a\u7684\n{{< glossary_tooltip text=\"\u63d2\u4ef6\" term_id=\"addons\" >}} \u6216\u8005\n{{< glossary_tooltip text=\"operator\" term_id=\"operator-pattern\" >}}\u3002\n\n<!--\n### Using ConfigMaps as files from a Pod\n\nTo consume a ConfigMap in a volume in a Pod:\n-->\n### \u5728 Pod \u4e2d\u5c06 ConfigMap \u5f53\u505a\u6587\u4ef6\u4f7f\u7528\n\n\u8981\u5728\u4e00\u4e2a Pod \u7684\u5b58\u50a8\u5377\u4e2d\u4f7f\u7528 ConfigMap:\n\n<!--\n1. Create a ConfigMap or use an existing one. Multiple Pods can reference the\n   same ConfigMap.\n1. Modify your Pod definition to add a volume under `.spec.volumes[]`. Name\n   the volume anything, and have a `.spec.volumes[].configMap.name` field set\n   to reference your ConfigMap object.\n1. Add a `.spec.containers[].volumeMounts[]` to each container that needs the\n   ConfigMap. Specify `.spec.containers[].volumeMounts[].readOnly = true` and\n   `.spec.containers[].volumeMounts[].mountPath` to an unused directory name\n   where you would like the ConfigMap to appear.\n1. Modify your image or command line so that the program looks for files in\n   that directory. Each key in the ConfigMap `data` map becomes the filename\n   under `mountPath`.\n-->\n1. \u521b\u5efa\u4e00\u4e2a ConfigMap \u5bf9\u8c61\u6216\u8005\u4f7f\u7528\u73b0\u6709\u7684 ConfigMap \u5bf9\u8c61\u3002\u591a\u4e2a Pod \u53ef\u4ee5\u5f15\u7528\u540c\u4e00\u4e2a\n   ConfigMap\u3002\n1. \u4fee\u6539 Pod \u5b9a\u4e49\uff0c\u5728 `spec.volumes[]` \u4e0b\u6dfb\u52a0\u4e00\u4e2a\u5377\u3002\n   \u4e3a\u8be5\u5377\u8bbe\u7f6e\u4efb\u610f\u540d\u79f0\uff0c\u4e4b\u540e\u5c06 `spec.volumes[].configMap.name` \u5b57\u6bb5\u8bbe\u7f6e\u4e3a\u5bf9\u4f60\u7684\n   ConfigMap \u5bf9\u8c61\u7684\u5f15\u7528\u3002\n1. \u4e3a\u6bcf\u4e2a\u9700\u8981\u8be5 ConfigMap \u7684\u5bb9\u5668\u6dfb\u52a0\u4e00\u4e2a `.spec.containers[].volumeMounts[]`\u3002\n   \u8bbe\u7f6e `.spec.containers[].volumeMounts[].readOnly=true` \u5e76\u5c06\n   `.spec.containers[].volumeMounts[].mountPat",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u914d\u7f6e Pod \u4f7f\u7528 ConfigMap",
+              "content_type": "task",
+              "weight": 190,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/zh-cn/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Understanding ConfigMaps and Pods\n\nThe ConfigMap API resource stores configuration data as key-value pairs. The data can be consumed\nin pods or provide the configurations for system components such as controllers. ConfigMap is\nsimilar to [Secrets](/docs/concepts/configuration/secret/), but provides a means of working\nwith strings that don't contain sensitive information. Users and system components alike can\nstore configuration data in ConfigMap.\n-->",
+              "method": "section"
+            },
+            {
+              "title": "ConfigMap",
+              "id": "configmap",
+              "full_link": "/zh-cn/docs/tasks/configure-pod-container/configure-pod-configmap/",
+              "short_description": "ConfigMap \u662f\u4e00\u79cd API \u5bf9\u8c61\uff0c\u7528\u6765\u5c06\u975e\u673a\u5bc6\u6027\u7684\u6570\u636e\u4fdd\u5b58\u5230\u952e\u503c\u5bf9\u4e2d\u3002\u4f7f\u7528\u65f6\u53ef\u4ee5\u7528\u4f5c\u73af\u5883\u53d8\u91cf\u3001\u547d\u4ee4\u884c\u53c2\u6570\u6216\u8005\u5b58\u50a8\u5377\u4e2d\u7684\u914d\u7f6e\u6587\u4ef6\u3002\n \n",
+              "aka": null,
+              "tags": [
+                "core-object"
+              ],
+              "filename": "website-main/content/zh-cn/docs/reference/glossary/configmap.md",
+              "chunk": "<!--\ntitle: ConfigMap\nid: configmap\nfull_link: /docs/concepts/configuration/configmap/\nshort_description: >\n  An API object used to store non-confidential data in key-value pairs. Can be consumed as environment variables, command-line arguments, or configuration files in a volume.\n\naka: \ntags:\n- core-object\n-->\n\n<!--\n An API object used to store non-confidential data in key-value pairs.\n{{< glossary_tooltip text=\"Pods\" term_id=\"pod\" >}} can consume ConfigMaps as\nenvironment variables, command-line arguments, or as configuration files in a\n{{< glossary_tooltip text=\"volume\" term_id=\"volume\" >}}.\n-->\nConfigMap \u662f\u4e00\u79cd API \u5bf9\u8c61\uff0c\u7528\u6765\u5c06\u975e\u673a\u5bc6\u6027\u7684\u6570\u636e\u4fdd\u5b58\u5230\u952e\u503c\u5bf9\u4e2d\u3002\u4f7f\u7528\u65f6\uff0c\n{{< glossary_tooltip text=\"Pod\" term_id=\"pod\" >}} \u53ef\u4ee5\u5c06\u5176\u7528\u4f5c\u73af\u5883\u53d8\u91cf\u3001\u547d\u4ee4\u884c\u53c2\u6570\u6216\u8005\u5b58\u50a8\u5377\u4e2d\u7684\u914d\u7f6e\u6587\u4ef6\u3002\n\n<!--more--> \n\n<!--\nA ConfigMap allows you to decouple environment-specific configuration from your {{< glossary_tooltip text=\"container images\" term_id=\"image\" >}}, so that your applications are easily portable.\n-->\nConfigMap \u5c06\u4f60\u7684\u73af\u5883\u914d\u7f6e\u4fe1\u606f\u548c{{< glossary_tooltip text=\"\u5bb9\u5668\u955c\u50cf\" term_id=\"image\" >}}\u89e3\u8026\uff0c\u4fbf\u4e8e\u5e94\u7528\u914d\u7f6e\u7684\u4fee\u6539\u3002",
+              "method": "sliding_window"
+            },
+            {
+              "title": " Configuration management with Containers ",
+              "date": "2016-04-04",
+              "slug": "configuration-management-with-containers",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Paul Morie (Red Hat)\n",
+              "filename": "website-main/content/en/blog/_posts/2016/configuration-management-with-containers.md",
+              "chunk": "ation data. There are three ways to consume a ConfigMap in a pod:  \n\n\n- Command line arguments\n- Environment variables\n- Files in a volume\n\nThese different methods lend themselves to different ways of modeling the data being consumed. To be as flexible as possible, we made ConfigMap hold both fine- and/or coarse-grained data. Further, because applications read configuration settings from both environment variables and files containing configuration data, we built ConfigMap to support either method of access. Let\u2019s take a look at an example ConfigMap that contains both types of configuration:  \n\n\n```\napiVersion: v1\n\nkind: ConfigMap\n\nmetadata:\n\n  Name: example-configmap\n\ndata:\n\n  # property-like keys\n\n  game-properties-file-name: game.properties\n\n  ui-properties-file-name: ui.properties\n\n  # file-like keys\n\n  game.properties: |\n\n    enemies=aliens\n\n    lives=3\n\n    enemies.cheat=true\n\n    enemies.cheat.level=noGoodRotten\n\n    secret.code.passphrase=UUDDLRLRBABAS\n\n    secret.code.allowed=true\n\n    secret.code.lives=30\n\n  ui.properties: |\n\n    color.good=purple\n\n    color.bad=yellow\n\n    allow.textmode=true\n\n    how.nice.to.look=fairlyNice\n```\n\n\nUsers that have used Secrets will find it easy to begin using ConfigMap \u2014 they\u2019re very similar. One major difference in these APIs is that Secret values are stored as byte arrays in order to support storing binaries like SSH keys. In JSON and YAML, byte arrays are serialized as base64 encoded strings. This means that it\u2019s not easy to tell what the content of a Secret is from looking at the serialized form. Since ConfigMap is intended to hold only configuration information and not binaries, values are stored as strings, and thus are readable in the serialized form.\n\n\n\nWe want creating ConfigMaps to be as flexible as storing data in them. To create a ConfigMap object, we\u2019ve added a kubectl command called `kubectl create configmap` that offers three different ways to specify key-value pairs:  \n\n\n- Specify literal keys and value\n- S",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "ConfigMap"
+              },
+              "content_type": "api_reference",
+              "description": "ConfigMap holds configuration data for pods to consume.",
+              "title": "ConfigMap",
+              "weight": 1,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/config-and-storage-resources/config-map-v1.md",
+              "chunk": "## ConfigMapList {#ConfigMapList}\n\nConfigMapList is a resource containing a list of ConfigMap objects.\n\n<hr>\n\n- **apiVersion**: v1\n\n\n- **kind**: ConfigMapList\n\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/list-meta#ListMeta\" >}}\">ListMeta</a>)\n\n  More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata\n\n- **items** ([]<a href=\"{{< ref \"../config-and-storage-resources/config-map-v1#ConfigMap\" >}}\">ConfigMap</a>), required\n\n  Items is the list of ConfigMaps.",
+              "method": "section"
+            },
+            {
+              "title": "Configurer un pod pour utiliser une ConfigMap",
+              "content_template": "templates/task",
+              "weight": 150,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/fr/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Comprendre le lien entre les ConfigMaps et les Pods\n\nLa ressource API ConfigMap stocke les donn\u00e9es de configuration sous forme de paires cl\u00e9-valeur.\nLes donn\u00e9es peuvent \u00eatre consomm\u00e9es dans des pods ou fournir les configurations des composants du syst\u00e8me tels que les contr\u00f4leurs.\nConfigMap est similaire \u00e0 [Secrets](/docs/concepts/configuration/secret/), mais fournit un moyen de travailler avec des cha\u00eenes de caract\u00e8res qui ne contiennent pas d'informations sensibles.\nLes utilisateurs comme les composants du syst\u00e8me peuvent stocker des donn\u00e9es de configuration dans un ConfigMap.\n\n{{< note >}}\nLes ConfigMaps doivent faire r\u00e9f\u00e9rence aux fichiers de propri\u00e9t\u00e9s, et non les remplacer.\nPensez \u00e0 la ConfigMap comme repr\u00e9sentant quelque chose de similaire au r\u00e9pertoire `/etc` de Linux et \u00e0 son contenu.\nPar exemple, si vous cr\u00e9ez un [volume Kubernetes](/docs/concepts/storage/volumes/) \u00e0 partir d'une ConfigMap, chaque \u00e9l\u00e9ment de donn\u00e9es de la ConfigMap est repr\u00e9sent\u00e9 par un fichier individuel dans le volume.\n{{< /note >}}\n\nLe champ `data` de la ConfigMap contient les donn\u00e9es de configuration.\nComme le montre l'exemple ci-dessous, cela peut \u00eatre simple -- comme des propri\u00e9t\u00e9s individuelles d\u00e9finies \u00e0 l'aide de `--from-literal` -- ou complexe -- comme des fichiers de configuration ou des blobs JSON d\u00e9finis \u00e0 l'aide de `--from-file`.\n\n```yaml\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  creationTimestamp: 2016-02-18T19:14:38Z\n  name: example-config\n  namespace: default\ndata:\n  # example of a simple property defined using --from-literal\n  example.property.1: hello\n  example.property.2: world\n  # example of a complex property defined using --from-file\n  example.property.file: |-\n    property.1=value-1\n    property.2=value-2\n    property.3=value-3\n```\n\n### Restrictions\n\n* Vous devez cr\u00e9er un ConfigMap avant de le r\u00e9f\u00e9rencer dans une sp\u00e9cification de Pod (sauf si vous marquez le ConfigMap comme \"facultatif\").\n  Si vous faites r\u00e9f\u00e9rence \u00e0 un ConfigMap qui n'existe pas, le Pod ne d\u00e9mar",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "w474x719t",
+          "metadata": null,
+          "timestamp": "2026-03-31T13:36:03.028883+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-31T13:36:03.034841+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"ConfigMap and how to create it in k8s?\"}",
+          "tool_call_id": "6e70bxpjw",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3190,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 26,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-31T13:36:03.627498+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-31T13:36:03+00:00"
+      },
+      "provider_response_id": "chatcmpl-e1d06bba-1cf1-4245-a9c1-83067af67abe",
+      "finish_reason": "tool_call",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "ConfigMap",
+              "api_metadata": [
+                {
+                  "apiVersion": "v1",
+                  "kind": "ConfigMap"
+                }
+              ],
+              "content_type": "concept",
+              "weight": 20,
+              "filename": "website-main/content/zh-cn/docs/concepts/configuration/configmap.md",
+              "chunk": "## \u4f7f\u7528 ConfigMap   {#using-configmaps}\n\nConfigMap \u53ef\u4ee5\u4f5c\u4e3a\u6570\u636e\u5377\u6302\u8f7d\u3002ConfigMap \u4e5f\u53ef\u88ab\u7cfb\u7edf\u7684\u5176\u4ed6\u7ec4\u4ef6\u4f7f\u7528\uff0c\n\u800c\u4e0d\u4e00\u5b9a\u76f4\u63a5\u66b4\u9732\u7ed9 Pod\u3002\u4f8b\u5982\uff0cConfigMap \u53ef\u4ee5\u4fdd\u5b58\u7cfb\u7edf\u4e2d\u5176\u4ed6\u7ec4\u4ef6\u8981\u4f7f\u7528\u7684\u914d\u7f6e\u6570\u636e\u3002\n\n<!--\nThe most common way to use ConfigMaps is to configure settings for\ncontainers running in a Pod in the same namespace. You can also use a\nConfigMap separately.\n\nFor example, you\nmight encounter {{< glossary_tooltip text=\"addons\" term_id=\"addons\" >}}\nor {{< glossary_tooltip text=\"operators\" term_id=\"operator-pattern\" >}} that\nadjust their behavior based on a ConfigMap.\n-->\nConfigMap \u6700\u5e38\u89c1\u7684\u7528\u6cd5\u662f\u4e3a\u540c\u4e00\u547d\u540d\u7a7a\u95f4\u91cc\u67d0 Pod \u4e2d\u8fd0\u884c\u7684\u5bb9\u5668\u6267\u884c\u914d\u7f6e\u3002\n\u4f60\u4e5f\u53ef\u4ee5\u5355\u72ec\u4f7f\u7528 ConfigMap\u3002\n\n\u6bd4\u5982\uff0c\u4f60\u53ef\u80fd\u4f1a\u9047\u5230\u57fa\u4e8e ConfigMap \u6765\u8c03\u6574\u5176\u884c\u4e3a\u7684\n{{< glossary_tooltip text=\"\u63d2\u4ef6\" term_id=\"addons\" >}} \u6216\u8005\n{{< glossary_tooltip text=\"operator\" term_id=\"operator-pattern\" >}}\u3002\n\n<!--\n### Using ConfigMaps as files from a Pod\n\nTo consume a ConfigMap in a volume in a Pod:\n-->\n### \u5728 Pod \u4e2d\u5c06 ConfigMap \u5f53\u505a\u6587\u4ef6\u4f7f\u7528\n\n\u8981\u5728\u4e00\u4e2a Pod \u7684\u5b58\u50a8\u5377\u4e2d\u4f7f\u7528 ConfigMap:\n\n<!--\n1. Create a ConfigMap or use an existing one. Multiple Pods can reference the\n   same ConfigMap.\n1. Modify your Pod definition to add a volume under `.spec.volumes[]`. Name\n   the volume anything, and have a `.spec.volumes[].configMap.name` field set\n   to reference your ConfigMap object.\n1. Add a `.spec.containers[].volumeMounts[]` to each container that needs the\n   ConfigMap. Specify `.spec.containers[].volumeMounts[].readOnly = true` and\n   `.spec.containers[].volumeMounts[].mountPath` to an unused directory name\n   where you would like the ConfigMap to appear.\n1. Modify your image or command line so that the program looks for files in\n   that directory. Each key in the ConfigMap `data` map becomes the filename\n   under `mountPath`.\n-->\n1. \u521b\u5efa\u4e00\u4e2a ConfigMap \u5bf9\u8c61\u6216\u8005\u4f7f\u7528\u73b0\u6709\u7684 ConfigMap \u5bf9\u8c61\u3002\u591a\u4e2a Pod \u53ef\u4ee5\u5f15\u7528\u540c\u4e00\u4e2a\n   ConfigMap\u3002\n1. \u4fee\u6539 Pod \u5b9a\u4e49\uff0c\u5728 `spec.volumes[]` \u4e0b\u6dfb\u52a0\u4e00\u4e2a\u5377\u3002\n   \u4e3a\u8be5\u5377\u8bbe\u7f6e\u4efb\u610f\u540d\u79f0\uff0c\u4e4b\u540e\u5c06 `spec.volumes[].configMap.name` \u5b57\u6bb5\u8bbe\u7f6e\u4e3a\u5bf9\u4f60\u7684\n   ConfigMap \u5bf9\u8c61\u7684\u5f15\u7528\u3002\n1. \u4e3a\u6bcf\u4e2a\u9700\u8981\u8be5 ConfigMap \u7684\u5bb9\u5668\u6dfb\u52a0\u4e00\u4e2a `.spec.containers[].volumeMounts[]`\u3002\n   \u8bbe\u7f6e `.spec.containers[].volumeMounts[].readOnly=true` \u5e76\u5c06\n   `.spec.containers[].volumeMounts[].mountPat",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u914d\u7f6e Pod \u4f7f\u7528 ConfigMap",
+              "content_type": "task",
+              "weight": 190,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/zh-cn/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Create a ConfigMap\n\nYou can use either `kubectl create configmap` or a ConfigMap generator in `kustomization.yaml`\nto create a ConfigMap.\n-->",
+              "method": "section"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "Node"
+              },
+              "content_type": "api_reference",
+              "description": "Node \u662f Kubernetes \u4e2d\u7684\u5de5\u4f5c\u8282\u70b9\u3002",
+              "title": "Node",
+              "weight": 8,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/cluster-resources/node-v1.md",
+              "chunk": "     <a name=\"ConfigMapNodeConfigSource\"></a>\n      <!--\n      *ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node. This API is deprecated since 1.22: https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration*\n      -->\n\n      ConfigMapNodeConfigSource \u5305\u542b\u5f15\u7528\u67d0 ConfigMap \u4f5c\u4e3a\u8282\u70b9\u914d\u7f6e\u6e90\u7684\u4fe1\u606f\u3002\n      \u6b64 API \u81ea 1.22 \u7248\u672c\u8d77\u5df2\u88ab\u5f03\u7528\uff1ahttps://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration\n\n      <!--\n      - **config.lastKnownGood.configMap.kubeletConfigKey** (string), required\n\n        KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.\n      -->\n\n      - **config.lastKnownGood.configMap.kubeletConfigKey** (string)\uff0c\u5fc5\u9700\n\n        `kubeletConfigKey` \u58f0\u660e\u6240\u5f15\u7528\u7684 ConfigMap \u7684\u54ea\u4e2a\u952e\u5bf9\u5e94\u4e8e KubeletConfiguration \u7ed3\u6784\u4f53\uff0c\n        \u8be5\u5b57\u6bb5\u5728\u6240\u6709\u60c5\u51b5\u4e0b\u90fd\u662f\u5fc5\u9700\u7684\u3002\n\n      <!--\n      - **config.lastKnownGood.configMap.name** (string), required\n\n        Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.\n      -->\n\n      - **config.lastKnownGood.configMap.name** (string)\uff0c\u5fc5\u9700\n\n        `name` \u662f\u6240\u5f15\u7528\u7684 ConfigMap \u7684 `metadata.name`\u3002\n        \u6b64\u5b57\u6bb5\u5728\u6240\u6709\u60c5\u51b5\u4e0b\u90fd\u662f\u5fc5\u9700\u7684\u3002\n\n      <!--\n      - **config.lastKnownGood.configMap.namespace** (string), required\n\n        Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.\n      -->\n\n      - **config.lastKnownGood.configMap.namespace** (string)\uff0c\u5fc5\u9700\n\n        `namespace` \u662f\u6240\u5f15\u7528\u7684 ConfigMap \u7684 `metadata.namespace`\u3002\n        \u6b64\u5b57\u6bb5\u5728\u6240\u6709\u60c5\u51b5\u4e0b\u90fd\u662f\u5fc5\u9700\u7684\u3002\n\n      - **config.lastKnownGood.configMap.resourceVersion** (string)\n\n        <!--\n        ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.\n        -->\n\n        `resourceVersion` \u662f\u6240\u5f15\u7528\u7684 ConfigMap \u7684 `metadata.resourceVersion`\u3002\n        \u8be5\u5b57\u6bb5\u5728 `Node.spec` \u4e2d\u662f\u7981\u6b62\u7684\uff0c\u5728 `Node.status` \u4e2d\u662f\u5fc5\u9700\u7684\u3002\n\n      - **config.lastKnownGood.configMa",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "Node"
+              },
+              "content_type": "api_reference",
+              "description": "Node is a worker node in Kubernetes.",
+              "title": "Node",
+              "weight": 8,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/cluster-resources/node-v1.md",
+              "chunk": "ence to a Node's ConfigMap\n\n      <a name=\"ConfigMapNodeConfigSource\"></a>\n      *ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node. This API is deprecated since 1.22: https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration*\n\n      - **config.assigned.configMap.kubeletConfigKey** (string), required\n\n        KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.\n\n      - **config.assigned.configMap.name** (string), required\n\n        Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.\n\n      - **config.assigned.configMap.namespace** (string), required\n\n        Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.\n\n      - **config.assigned.configMap.resourceVersion** (string)\n\n        ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.\n\n      - **config.assigned.configMap.uid** (string)\n\n        UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.\n\n  - **config.error** (string)\n\n    Error describes any problems reconciling the Spec.ConfigSource to the Active config. Errors may occur, for example, attempting to checkpoint Spec.ConfigSource to the local Assigned record, attempting to checkpoint the payload associated with Spec.ConfigSource, attempting to load or validate the Assigned config, etc. Errors may occur at different points while syncing config. Earlier errors (e.g. download or checkpointing errors) will not result in a rollback to LastKnownGood, and may resolve across Kubelet retries. Later errors (e.g. loading or validating a checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually possible to resolve",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "v1",
+                "import": "k8s.io/api/core/v1",
+                "kind": "ConfigMap"
+              },
+              "content_type": "api_reference",
+              "description": "ConfigMap holds configuration data for pods to consume.",
+              "title": "ConfigMap",
+              "weight": 1,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/config-and-storage-resources/config-map-v1.md",
+              "chunk": "## ConfigMap {#ConfigMap}\n\nConfigMap holds configuration data for pods to consume.\n\n<hr>\n\n- **apiVersion**: v1\n\n\n- **kind**: ConfigMap\n\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n\n  Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata\n\n- **binaryData** (map[string][]byte)\n\n  BinaryData contains the binary data. Each key must consist of alphanumeric characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones in the Data field, this is enforced during validation process. Using this field will require 1.10+ apiserver and kubelet.\n\n- **data** (map[string]string)\n\n  Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data must not overlap with the keys in the BinaryData field, this is enforced during validation process.\n\n- **immutable** (boolean)\n\n  Immutable, if set to true, ensures that data stored in the ConfigMap cannot be updated (only object metadata can be modified). If not set to true, the field can be modified at any time. Defaulted to nil.",
+              "method": "section"
+            }
+          ],
+          "tool_call_id": "6e70bxpjw",
+          "metadata": null,
+          "timestamp": "2026-03-31T13:36:05.672434+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-31T13:36:05.698814+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Kubernetes ConfigMap example\"}",
+          "tool_call_id": "z6pas3z89",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 5623,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 20,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-31T13:36:06.721727+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-31T13:36:06+00:00"
+      },
+      "provider_response_id": "chatcmpl-d7944372-4ee9-46a8-ba5a-e7edbc449362",
+      "finish_reason": "tool_call",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "ConfigMap",
+              "api_metadata": [
+                {
+                  "apiVersion": "v1",
+                  "kind": "ConfigMap"
+                }
+              ],
+              "content_type": "concept",
+              "weight": 20,
+              "filename": "website-main/content/zh-cn/docs/concepts/configuration/configmap.md",
+              "chunk": "## \u4f7f\u7528 ConfigMap   {#using-configmaps}\n\nConfigMap \u53ef\u4ee5\u4f5c\u4e3a\u6570\u636e\u5377\u6302\u8f7d\u3002ConfigMap \u4e5f\u53ef\u88ab\u7cfb\u7edf\u7684\u5176\u4ed6\u7ec4\u4ef6\u4f7f\u7528\uff0c\n\u800c\u4e0d\u4e00\u5b9a\u76f4\u63a5\u66b4\u9732\u7ed9 Pod\u3002\u4f8b\u5982\uff0cConfigMap \u53ef\u4ee5\u4fdd\u5b58\u7cfb\u7edf\u4e2d\u5176\u4ed6\u7ec4\u4ef6\u8981\u4f7f\u7528\u7684\u914d\u7f6e\u6570\u636e\u3002\n\n<!--\nThe most common way to use ConfigMaps is to configure settings for\ncontainers running in a Pod in the same namespace. You can also use a\nConfigMap separately.\n\nFor example, you\nmight encounter {{< glossary_tooltip text=\"addons\" term_id=\"addons\" >}}\nor {{< glossary_tooltip text=\"operators\" term_id=\"operator-pattern\" >}} that\nadjust their behavior based on a ConfigMap.\n-->\nConfigMap \u6700\u5e38\u89c1\u7684\u7528\u6cd5\u662f\u4e3a\u540c\u4e00\u547d\u540d\u7a7a\u95f4\u91cc\u67d0 Pod \u4e2d\u8fd0\u884c\u7684\u5bb9\u5668\u6267\u884c\u914d\u7f6e\u3002\n\u4f60\u4e5f\u53ef\u4ee5\u5355\u72ec\u4f7f\u7528 ConfigMap\u3002\n\n\u6bd4\u5982\uff0c\u4f60\u53ef\u80fd\u4f1a\u9047\u5230\u57fa\u4e8e ConfigMap \u6765\u8c03\u6574\u5176\u884c\u4e3a\u7684\n{{< glossary_tooltip text=\"\u63d2\u4ef6\" term_id=\"addons\" >}} \u6216\u8005\n{{< glossary_tooltip text=\"operator\" term_id=\"operator-pattern\" >}}\u3002\n\n<!--\n### Using ConfigMaps as files from a Pod\n\nTo consume a ConfigMap in a volume in a Pod:\n-->\n### \u5728 Pod \u4e2d\u5c06 ConfigMap \u5f53\u505a\u6587\u4ef6\u4f7f\u7528\n\n\u8981\u5728\u4e00\u4e2a Pod \u7684\u5b58\u50a8\u5377\u4e2d\u4f7f\u7528 ConfigMap:\n\n<!--\n1. Create a ConfigMap or use an existing one. Multiple Pods can reference the\n   same ConfigMap.\n1. Modify your Pod definition to add a volume under `.spec.volumes[]`. Name\n   the volume anything, and have a `.spec.volumes[].configMap.name` field set\n   to reference your ConfigMap object.\n1. Add a `.spec.containers[].volumeMounts[]` to each container that needs the\n   ConfigMap. Specify `.spec.containers[].volumeMounts[].readOnly = true` and\n   `.spec.containers[].volumeMounts[].mountPath` to an unused directory name\n   where you would like the ConfigMap to appear.\n1. Modify your image or command line so that the program looks for files in\n   that directory. Each key in the ConfigMap `data` map becomes the filename\n   under `mountPath`.\n-->\n1. \u521b\u5efa\u4e00\u4e2a ConfigMap \u5bf9\u8c61\u6216\u8005\u4f7f\u7528\u73b0\u6709\u7684 ConfigMap \u5bf9\u8c61\u3002\u591a\u4e2a Pod \u53ef\u4ee5\u5f15\u7528\u540c\u4e00\u4e2a\n   ConfigMap\u3002\n1. \u4fee\u6539 Pod \u5b9a\u4e49\uff0c\u5728 `spec.volumes[]` \u4e0b\u6dfb\u52a0\u4e00\u4e2a\u5377\u3002\n   \u4e3a\u8be5\u5377\u8bbe\u7f6e\u4efb\u610f\u540d\u79f0\uff0c\u4e4b\u540e\u5c06 `spec.volumes[].configMap.name` \u5b57\u6bb5\u8bbe\u7f6e\u4e3a\u5bf9\u4f60\u7684\n   ConfigMap \u5bf9\u8c61\u7684\u5f15\u7528\u3002\n1. \u4e3a\u6bcf\u4e2a\u9700\u8981\u8be5 ConfigMap \u7684\u5bb9\u5668\u6dfb\u52a0\u4e00\u4e2a `.spec.containers[].volumeMounts[]`\u3002\n   \u8bbe\u7f6e `.spec.containers[].volumeMounts[].readOnly=true` \u5e76\u5c06\n   `.spec.containers[].volumeMounts[].mountPat",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Configure a Pod to Use a ConfigMap",
+              "content_type": "task",
+              "weight": 190,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "kubectl/kubectl-commands/#describe) or\n[`kubectl get`](/docs/reference/generated/kubectl/kubectl-commands/#get) to retrieve information\nabout a ConfigMap.\n\n#### Create a ConfigMap from a directory {#create-configmaps-from-directories}\n\nYou can use `kubectl create configmap` to create a ConfigMap from multiple files in the same\ndirectory. When you are creating a ConfigMap based on a directory, kubectl identifies files\nwhose filename is a valid key in the directory and packages each of those files into the new\nConfigMap. Any directory entries except regular files are ignored (for example: subdirectories,\nsymlinks, devices, pipes, and more).\n\n{{< note >}}\nEach filename being used for ConfigMap creation must consist of only acceptable characters,\nwhich are: letters (`A` to `Z` and `a` to `z`), digits (`0` to `9`), '-', '_', or '.'.\nIf you use `kubectl create configmap` with a directory where any of the file names contains\nan unacceptable character, the `kubectl` command may fail.\n\nThe `kubectl` command does not print an error when it encounters an invalid filename.\n{{< /note >}}\n\nCreate the local directory:\n\n```shell\nmkdir -p configure-pod-container/configmap/\n```\n\nNow, download the sample configuration and create the ConfigMap:\n\n```shell\n# Download the sample files into `configure-pod-container/configmap/` directory\nwget https://kubernetes.io/examples/configmap/game.properties -O configure-pod-container/configmap/game.properties\nwget https://kubernetes.io/examples/configmap/ui.properties -O configure-pod-container/configmap/ui.properties\n\n# Create the ConfigMap\nkubectl create configmap game-config --from-file=configure-pod-container/configmap/\n```\n\nThe above command packages each file, in this case, `game.properties` and `ui.properties`\nin the `configure-pod-container/configmap/` directory into the game-config ConfigMap. You can\ndisplay details of the ConfigMap using the following command:\n\n```shell\nkubectl describe configmaps game-config\n```\n\nThe output is similar to ",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u914d\u7f6e Pod \u4f7f\u7528 ConfigMap",
+              "content_type": "task",
+              "weight": 190,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/zh-cn/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Create a ConfigMap\n\nYou can use either `kubectl create configmap` or a ConfigMap generator in `kustomization.yaml`\nto create a ConfigMap.\n-->",
+              "method": "section"
+            },
+            {
+              "title": "Declarative Management of Kubernetes Objects Using Kustomize",
+              "content_type": "task",
+              "weight": 20,
+              "filename": "website-main/content/en/docs/tasks/manage-kubernetes-objects/kustomization.md",
+              "chunk": "## Overview of Kustomize\n\nKustomize is a tool for customizing Kubernetes configurations. It has the following\nfeatures to manage application configuration files:\n\n* generating resources from other sources\n* setting cross-cutting fields for resources\n* composing and customizing collections of resources\n\n### Generating Resources\n\nConfigMaps and Secrets hold configuration or sensitive data that are used by other Kubernetes\nobjects, such as Pods. The source of truth of ConfigMaps or Secrets are usually external to\na cluster, such as a `.properties` file or an SSH keyfile.\nKustomize has `secretGenerator` and `configMapGenerator`, which generate Secret and ConfigMap from files or literals.\n\n#### configMapGenerator\n\nTo generate a ConfigMap from a file, add an entry to the `files` list in `configMapGenerator`.\nHere is an example of generating a ConfigMap with a data item from a `.properties` file:\n\n```shell\n# Create a application.properties file\ncat <<EOF >application.properties\nFOO=Bar\nEOF\n\ncat <<EOF >./kustomization.yaml\nconfigMapGenerator:\n- name: example-configmap-1\n  files:\n  - application.properties\nEOF\n```\n\nThe generated ConfigMap can be examined with the following command:\n\n```shell\nkubectl kustomize ./\n```\n\nThe generated ConfigMap is:\n\n```yaml\napiVersion: v1\ndata:\n  application.properties: |\n    FOO=Bar\nkind: ConfigMap\nmetadata:\n  name: example-configmap-1-8mbdf7882g\n```\n\nTo generate a ConfigMap from an env file, add an entry to the `envs` list in `configMapGenerator`.\nHere is an example of generating a ConfigMap with a data item from a `.env` file:\n\n```shell\n# Create a .env file\ncat <<EOF >.env\nFOO=Bar\nEOF\n\ncat <<EOF >./kustomization.yaml\nconfigMapGenerator:\n- name: example-configmap-1\n  envs:\n  - .env\nEOF\n```\n\nThe generated ConfigMap can be examined with the following command:\n\n```shell\nkubectl kustomize ./\n```\n\nThe generated ConfigMap is:\n\n```yaml\napiVersion: v1\ndata:\n  FOO: Bar\nkind: ConfigMap\nmetadata:\n  name: example-configmap-1-42cfbf598f\n```\n\n{{< note >}}\nE",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "z6pas3z89",
+          "metadata": null,
+          "timestamp": "2026-03-31T13:36:08.055538+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-31T13:36:08.057409+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "To create a ConfigMap in Kubernetes, you can use the `kubectl create configmap` command. Here is an example:\n\n```bash\nkubectl create configmap my-config --from-file=path/to/config.properties\n```\n\nThis will create a ConfigMap named \"my-config\" from the properties file located at \"path/to/config.properties\".\n\nYou can also use `kubectl create configmap` with a directory containing multiple files, like this:\n\n```bash\nkubectl create configmap my-config --from-file=path/to/config/directory/\n```\n\nThis will create a ConfigMap named \"my-config\" from all the files in the directory \"path/to/config/directory/\".\n\nAlternatively, you can use a ConfigMap generator in a `kustomization.yaml` file to create a ConfigMap.\n\n```yaml\nconfigMapGenerator:\n- name: my-config\n  files:\n  - path/to/config.properties\n```\n\nOr, you can use the `envs` list to generate a ConfigMap from an env file:\n\n```yaml\nconfigMapGenerator:\n- name: my-config\n  envs:\n  - .env\n```\n\nTo use a ConfigMap in a Pod, you need to create a volume and mount it to the container. Here is an example:\n\n```yaml\napiVersion: v1\nkind: Pod\nmetadata:\n  name: my-pod\nspec:\n  containers:\n  - name: my-container\n    image: my-image\n    volumeMounts:\n    - name: my-config\n      mountPath: /etc/config\n  volumes:\n  - name: my-config\n    configMap:\n      name: my-config\n```\n\nThis will mount the ConfigMap named \"my-config\" to the container at /etc/config.\n\nFor more information, you can refer to the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/). \n\n[Configure a Pod to Use a ConfigMap](https://github.com/kubernetes/website/blob/main/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md) \n[ConfigMap](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/configuration/configmap.md)",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7596,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 451,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-31T13:36:41.337527+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-31T13:36:41+00:00"
+      },
+      "provider_response_id": "chatcmpl-56ffde59-dc27-4c0f-bf26-36fd97dcbe84",
+      "finish_reason": "stop",
+      "run_id": "00fba52f-d699-4120-a4a8-cfe739d4fa84",
+      "metadata": null
+    }
+  ],
+  "source": "user"
+}

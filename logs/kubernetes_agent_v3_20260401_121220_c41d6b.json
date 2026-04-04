@@ -1,0 +1,205 @@
+{
+  "agent_name": "kubernetes_agent_v3",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it."
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "How do I scale a deployment?",
+          "timestamp": "2026-04-01T12:12:13.013999+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-04-01T12:12:13.014331+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it.",
+      "kind": "request",
+      "run_id": "708693a6-caf2-4f78-b673-7c5abc9adfb9",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"scaling a deployment in kubernetes\"}",
+          "tool_call_id": "15f6s0s93",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 499,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 22,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-04-01T12:12:13.178239+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-01T12:12:13+00:00"
+      },
+      "provider_response_id": "chatcmpl-8c2ba529-1be1-4489-9883-025c2855c66f",
+      "finish_reason": "tool_call",
+      "run_id": "708693a6-caf2-4f78-b673-7c5abc9adfb9",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "apps/v1",
+                "import": "k8s.io/api/apps/v1",
+                "kind": "Deployment"
+              },
+              "content_type": "api_reference",
+              "description": "Deployment enables declarative updates for Pods and ReplicaSets.",
+              "title": "Deployment",
+              "weight": 6,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/workload-resources/deployment-v1.md",
+              "chunk": "}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n202 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Deployment\n\n#### HTTP Request\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Deployment\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n401: Unauthorized\n\n\n### `update` replace status of the specified Deployment\n\n#### HTTP Request\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Deployment\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a ",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "apps/v1",
+                "import": "k8s.io/api/apps/v1",
+                "kind": "Deployment"
+              },
+              "content_type": "api_reference",
+              "description": "Deployment \u4f7f\u5f97 Pod \u548c ReplicaSet \u80fd\u591f\u8fdb\u884c\u58f0\u660e\u5f0f\u66f4\u65b0\u3002",
+              "title": "Deployment",
+              "weight": 6,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1.md",
+              "chunk": "pace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n202 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified Deployment\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Deployment\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the Deployment\n- **namespace** (*in path*): string, required\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n- **dryRun** (*in query*): string\n- **fieldManager** (*in query*): string\n- **fieldValidation** (*in query*): string\n- **pretty** (*in query*): string\n-->\n#### \u53c2\u6570\n\n- **name** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  Deployment \u7684\u540d\u79f0\u3002\n\n- **namespace** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fie",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "janetkuo"
+              ],
+              "title": "Deployments",
+              "api_metadata": [
+                {
+                  "apiVersion": "apps/v1",
+                  "kind": "Deployment"
+                }
+              ],
+              "feature": {
+                "title": "Automated rollouts and rollbacks",
+                "description": "Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, Kubernetes will rollback the change for you. Take advantage of a growing ecosystem of deployment solutions.\n"
+              },
+              "description": "A Deployment manages a set of Pods to run an application workload, usually one that doesn't maintain state.",
+              "content_type": "concept",
+              "weight": 10,
+              "hide_summary": true,
+              "filename": "website-main/content/en/docs/concepts/workloads/controllers/deployment.md",
+              "chunk": "## Scaling a Deployment\n\nYou can scale a Deployment by using the following command:\n\n```shell\nkubectl scale deployment/nginx-deployment --replicas=10\n```\nThe output is similar to this:\n```\ndeployment.apps/nginx-deployment scaled\n```\n\nAssuming [horizontal Pod autoscaling](/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/) is enabled\nin your cluster, you can set up an autoscaler for your Deployment and choose the minimum and maximum number of\nPods you want to run based on the CPU utilization of your existing Pods.\n\n```shell\nkubectl autoscale deployment/nginx-deployment --min=10 --max=15 --cpu-percent=80%\n```\nThe output is similar to this:\n```\ndeployment.apps/nginx-deployment scaled\n```\n\n### Proportional scaling\n\nRollingUpdate Deployments support running multiple versions of an application at the same time. When you\nor an autoscaler scales a RollingUpdate Deployment that is in the middle of a rollout (either in progress\nor paused), the Deployment controller balances the additional replicas in the existing active\nReplicaSets (ReplicaSets with Pods) in order to mitigate risk. This is called *proportional scaling*.\n\nFor example, you are running a Deployment with 10 replicas, [maxSurge](#max-surge)=3, and [maxUnavailable](#max-unavailable)=2.\n\n* Ensure that the 10 replicas in your Deployment are running.\n  ```shell\n  kubectl get deploy\n  ```\n  The output is similar to this:\n\n  ```\n  NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE\n  nginx-deployment     10        10        10           10          50s\n  ```\n\n* You update to a new image which happens to be unresolvable from inside the cluster.\n  ```shell\n  kubectl set image deployment/nginx-deployment nginx=nginx:sometag\n  ```\n\n  The output is similar to this:\n  ```\n  deployment.apps/nginx-deployment image updated\n  ```\n\n* The image update starts a new rollout with ReplicaSet nginx-deployment-1989198191, but it's blocked due to the\n`maxUnavailable` requirement that you mentioned above. Chec",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Deployments",
+              "api_metadata": [
+                {
+                  "apiVersion": "apps/v1",
+                  "kind": "Deployment"
+                }
+              ],
+              "feature": {
+                "title": "\u81ea\u52a8\u5316\u4e0a\u7ebf\u548c\u56de\u6eda",
+                "description": "Kubernetes \u4f1a\u5206\u6b65\u9aa4\u5730\u5c06\u9488\u5bf9\u5e94\u7528\u6216\u5176\u914d\u7f6e\u7684\u66f4\u6539\u4e0a\u7ebf\uff0c \u540c\u65f6\u76d1\u89c6\u5e94\u7528\u7a0b\u5e8f\u8fd0\u884c\u72b6\u51b5\u4ee5\u786e\u4fdd\u4f60\u4e0d\u4f1a\u540c\u65f6\u7ec8\u6b62\u6240\u6709\u5b9e\u4f8b\u3002 \u5982\u679c\u51fa\u73b0\u95ee\u9898\uff0cKubernetes \u4f1a\u4e3a\u4f60\u56de\u6eda\u6240\u4f5c\u66f4\u6539\u3002\u4f60\u5e94\u8be5\u5145\u5206\u5229\u7528\u4e0d\u65ad\u6210\u957f\u7684\u90e8\u7f72\u65b9\u6848\u751f\u6001\u7cfb\u7edf\u3002"
+              },
+              "description": "Deployment \u7528\u4e8e\u7ba1\u7406\u8fd0\u884c\u4e00\u4e2a\u5e94\u7528\u8d1f\u8f7d\u7684\u4e00\u7ec4 Pod\uff0c\u901a\u5e38\u9002\u7528\u4e8e\u4e0d\u4fdd\u6301\u72b6\u6001\u7684\u8d1f\u8f7d\u3002",
+              "content_type": "concept",
+              "weight": 10,
+              "hide_summary": true,
+              "filename": "website-main/content/zh-cn/docs/concepts/workloads/controllers/deployment.md",
+              "chunk": "deployment\ndeployment --replicas=X`, and then you update that Deployment based on a manifest\n(for example: by running `kubectl apply -f deployment.yaml`),\nthen applying that manifest overwrites the manual scaling that you previously did.\n-->\n\u5982\u679c\u4f60\u5bf9\u67d0\u4e2a Deployment \u6267\u884c\u4e86\u624b\u52a8\u6269\u7f29\u64cd\u4f5c\uff08\u4f8b\u5982\uff0c\u901a\u8fc7\n`kubectl scale deployment deployment --replicas=X`\uff09\uff0c\n\u4e4b\u540e\u57fa\u4e8e\u6e05\u5355\u5bf9 Deployment \u6267\u884c\u4e86\u66f4\u65b0\u64cd\u4f5c\uff08\u4f8b\u5982\u901a\u8fc7\u8fd0\u884c\n`kubectl apply -f deployment.yaml`\uff09\uff0c\u90a3\u4e48\u901a\u8fc7\u5e94\u7528\u6e05\u5355\u800c\u5b8c\u6210\u7684\u66f4\u65b0\u4f1a\u8986\u76d6\u4e4b\u524d\u624b\u52a8\u6269\u7f29\u6240\u4f5c\u7684\u53d8\u66f4\u3002\n\n<!--\nIf a [HorizontalPodAutoscaler](/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/) (or any\nsimilar API for horizontal scaling) is managing scaling for a Deployment, don't set `.spec.replicas`.\n-->\n\u5982\u679c\u4e00\u4e2a [HorizontalPodAutoscaler](/zh-cn/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/)\n\uff08\u6216\u8005\u5176\u4ed6\u6267\u884c\u6c34\u5e73\u6269\u7f29\u64cd\u4f5c\u7684\u7c7b\u4f3c API\uff09\u5728\u7ba1\u7406 Deployment \u7684\u6269\u7f29\uff0c\n\u5219\u4e0d\u8981\u8bbe\u7f6e `.spec.replicas`\u3002\n\n<!--\nInstead, allow the Kubernetes\n{{< glossary_tooltip text=\"control plane\" term_id=\"control-plane\" >}} to manage the\n`.spec.replicas` field automatically.\n-->\n\u6070\u6070\u76f8\u53cd\uff0c\u5e94\u8be5\u5141\u8bb8 Kubernetes\n{{< glossary_tooltip text=\"\u63a7\u5236\u9762\" term_id=\"control-plane\" >}}\u6765\u81ea\u52a8\u7ba1\u7406\n`.spec.replicas` \u5b57\u6bb5\u3002\n\n<!--\n### Selector\n\n`.spec.selector` is a required field that specifies a [label selector](/docs/concepts/overview/working-with-objects/labels/)\nfor the Pods targeted by this Deployment.\n\n`.spec.selector` must match `.spec.template.metadata.labels`, or it will be rejected by the API.\n-->\n### \u9009\u62e9\u7b97\u7b26   {#selector}\n\n`.spec.selector` \u662f\u6307\u5b9a\u672c Deployment \u7684 Pod\n[\u6807\u7b7e\u9009\u62e9\u7b97\u7b26](/zh-cn/docs/concepts/overview/working-with-objects/labels/)\u7684\u5fc5\u9700\u5b57\u6bb5\u3002\n\n`.spec.selector` \u5fc5\u987b\u5339\u914d `.spec.template.metadata.labels`\uff0c\u5426\u5219\u8bf7\u6c42\u4f1a\u88ab API \u62d2\u7edd\u3002\n\n<!--\nIn API version `apps/v1`, `.spec.selector` and `.metadata.labels` do not default to `.spec.template.metadata.labels` if not set. So they must be set explicitly. Also note that `.spec.selector` is immutable after creation of the Deployment in `apps/v1`.\n-->\n\u5728 API `apps/v1`\u7248\u672c\u4e2d\uff0c`.spec.selector` \u548c `.metadata.labels` \u5982\u679c\u6ca1\u6709\u8bbe\u7f6e\u7684\u8bdd\uff0c\n\u4e0d\u4f1a\u88ab\u9ed8\u8ba4\u8bbe\u7f6e\u4e3a `.spec.template.metadata.labels`\uff0c\u6240\u4ee5\u9700\u8981\u660e\u786e\u8fdb\u884c\u8bbe\u7f6e\u3002\n\u540c\u65f6\u5728 `apps/v1`\u7248\u672c\u4e2d\uff0cDeployment \u521b\u5efa\u540e `.spec.",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Autoscaling Workloads",
+              "description": "With autoscaling, you can automatically update your workloads in one way or another. This allows your cluster to react to changes in resource demand more elastically and efficiently.",
+              "content_type": "concept",
+              "weight": 50,
+              "filename": "website-main/content/en/docs/concepts/workloads/autoscaling.md",
+              "chunk": "## Scaling workloads manually\n\nKubernetes supports _manual scaling_ of workloads. Horizontal scaling can be done\nusing the `kubectl` CLI.\nFor vertical scaling, you need to _patch_ the resource definition of your workload.\n\nSee below for examples of both strategies.\n\n- **Horizontal scaling**: [Running multiple instances of your app](/docs/tutorials/kubernetes-basics/scale/scale-intro/)\n- **Vertical scaling**: [Resizing CPU and memory resources assigned to containers](/docs/tasks/configure-pod-container/resize-container-resources)",
+              "method": "section"
+            },
+            {
+              "title": "Running Multiple Instances of Your App",
+              "weight": 10,
+              "filename": "website-main/content/en/docs/tutorials/kubernetes-basics/scale/scale-intro.md",
+              "chunk": "## Scaling an application\n\n{{% alert %}}\n_You can create from the start a Deployment with multiple instances using the --replicas\nparameter for the kubectl create deployment command._\n{{% /alert %}}\n\nPreviously we created a [Deployment](/docs/concepts/workloads/controllers/deployment/),\nand then exposed it publicly via a [Service](/docs/concepts/services-networking/service/).\nThe Deployment created only one Pod for running our application. When traffic increases,\nwe will need to scale the application to keep up with user demand.\n\nIf you haven't worked through the earlier sections, start from\n[Using minikube to create a cluster](/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/).\n\n_Scaling_ is accomplished by changing the number of replicas in a Deployment.\n\n{{< note >}}\nIf you are trying this after the\n[previous section](/docs/tutorials/kubernetes-basics/expose/expose-intro/), then you\nmay have deleted the service you created, or have created a Service of `type: NodePort`.\nIn this section, it is assumed that a service with `type: LoadBalancer` is created\nfor the kubernetes-bootcamp Deployment.\n\nIf you have _not_ deleted the Service created in\n[the previous section](/docs/tutorials/kubernetes-basics/expose/expose-intro),\nfirst delete that Service and then run the following command to create a new Service\nwith its `type` set to `LoadBalancer`:\n\n```shell\nkubectl expose deployment/kubernetes-bootcamp --type=\"LoadBalancer\" --port 8080\n```\n{{< /note >}}",
+              "method": "section"
+            }
+          ],
+          "tool_call_id": "15f6s0s93",
+          "metadata": null,
+          "timestamp": "2026-04-01T12:12:18.807078+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-01T12:12:18.811162+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)\n\nEvery paragraph in your answer must include at least one citation.\nIf you cannot find a source for a statement, do not include it.",
+      "kind": "request",
+      "run_id": "708693a6-caf2-4f78-b673-7c5abc9adfb9",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "You can scale a deployment by using the `kubectl scale` command. For example, to scale a deployment named \"nginx-deployment\" to 10 replicas, you can use the following command:\n```shell\nkubectl scale deployment/nginx-deployment --replicas=10\n```\nThis will update the deployment to have 10 replicas. You can also use the `kubectl autoscale` command to enable autoscaling for a deployment. For example:\n```shell\nkubectl autoscale deployment/nginx-deployment --min=10 --max=15 --cpu-percent=80\n```\nThis will configure the deployment to automatically scale up or down based on CPU usage, with a minimum of 10 replicas and a maximum of 15 replicas.\n\nIt's also important to note that if you are using a HorizontalPodAutoscaler, you should not set the `.spec.replicas` field, as this can interfere with the autoscaler. Instead, allow the Kubernetes control plane to manage the `.spec.replicas` field automatically.\n\nFor more information, you can refer to the [Kubernetes documentation on deployments](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/controllers/deployment.md) and [autoscaling](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/autoscaling.md).",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4059,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 267,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-04-01T12:12:20.012890+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-04-01T12:12:20+00:00"
+      },
+      "provider_response_id": "chatcmpl-3690d19b-b13c-4980-86a7-35fd75e6d2a7",
+      "finish_reason": "stop",
+      "run_id": "708693a6-caf2-4f78-b673-7c5abc9adfb9",
+      "metadata": null
+    }
+  ],
+  "source": "user"
+}

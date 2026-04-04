@@ -1,0 +1,119 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is a ConfigMap and how do I use it?",
+          "timestamp": "2026-03-29T19:36:31.957314+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-29T19:36:31.957552+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "a81f4bee-5ded-446f-9665-9ef419d9aef6",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"ConfigMap and how to use it\"}",
+          "tool_call_id": "yzaw44e1y",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 477,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 23,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-29T19:36:32.165628+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-29T19:36:32+00:00"
+      },
+      "provider_response_id": "chatcmpl-12c3576f-acae-412a-811d-4dad0877d87c",
+      "finish_reason": "tool_call",
+      "run_id": "a81f4bee-5ded-446f-9665-9ef419d9aef6",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "ConfigMap",
+              "api_metadata": [
+                {
+                  "apiVersion": "v1",
+                  "kind": "ConfigMap"
+                }
+              ],
+              "content_type": "concept",
+              "weight": 20,
+              "filename": "website-main/content/zh-cn/docs/concepts/configuration/configmap.md",
+              "chunk": "## \u4f7f\u7528 ConfigMap   {#using-configmaps}\n\nConfigMap \u53ef\u4ee5\u4f5c\u4e3a\u6570\u636e\u5377\u6302\u8f7d\u3002ConfigMap \u4e5f\u53ef\u88ab\u7cfb\u7edf\u7684\u5176\u4ed6\u7ec4\u4ef6\u4f7f\u7528\uff0c\n\u800c\u4e0d\u4e00\u5b9a\u76f4\u63a5\u66b4\u9732\u7ed9 Pod\u3002\u4f8b\u5982\uff0cConfigMap \u53ef\u4ee5\u4fdd\u5b58\u7cfb\u7edf\u4e2d\u5176\u4ed6\u7ec4\u4ef6\u8981\u4f7f\u7528\u7684\u914d\u7f6e\u6570\u636e\u3002\n\n<!--\nThe most common way to use ConfigMaps is to configure settings for\ncontainers running in a Pod in the same namespace. You can also use a\nConfigMap separately.\n\nFor example, you\nmight encounter {{< glossary_tooltip text=\"addons\" term_id=\"addons\" >}}\nor {{< glossary_tooltip text=\"operators\" term_id=\"operator-pattern\" >}} that\nadjust their behavior based on a ConfigMap.\n-->\nConfigMap \u6700\u5e38\u89c1\u7684\u7528\u6cd5\u662f\u4e3a\u540c\u4e00\u547d\u540d\u7a7a\u95f4\u91cc\u67d0 Pod \u4e2d\u8fd0\u884c\u7684\u5bb9\u5668\u6267\u884c\u914d\u7f6e\u3002\n\u4f60\u4e5f\u53ef\u4ee5\u5355\u72ec\u4f7f\u7528 ConfigMap\u3002\n\n\u6bd4\u5982\uff0c\u4f60\u53ef\u80fd\u4f1a\u9047\u5230\u57fa\u4e8e ConfigMap \u6765\u8c03\u6574\u5176\u884c\u4e3a\u7684\n{{< glossary_tooltip text=\"\u63d2\u4ef6\" term_id=\"addons\" >}} \u6216\u8005\n{{< glossary_tooltip text=\"operator\" term_id=\"operator-pattern\" >}}\u3002\n\n<!--\n### Using ConfigMaps as files from a Pod\n\nTo consume a ConfigMap in a volume in a Pod:\n-->\n### \u5728 Pod \u4e2d\u5c06 ConfigMap \u5f53\u505a\u6587\u4ef6\u4f7f\u7528\n\n\u8981\u5728\u4e00\u4e2a Pod \u7684\u5b58\u50a8\u5377\u4e2d\u4f7f\u7528 ConfigMap:\n\n<!--\n1. Create a ConfigMap or use an existing one. Multiple Pods can reference the\n   same ConfigMap.\n1. Modify your Pod definition to add a volume under `.spec.volumes[]`. Name\n   the volume anything, and have a `.spec.volumes[].configMap.name` field set\n   to reference your ConfigMap object.\n1. Add a `.spec.containers[].volumeMounts[]` to each container that needs the\n   ConfigMap. Specify `.spec.containers[].volumeMounts[].readOnly = true` and\n   `.spec.containers[].volumeMounts[].mountPath` to an unused directory name\n   where you would like the ConfigMap to appear.\n1. Modify your image or command line so that the program looks for files in\n   that directory. Each key in the ConfigMap `data` map becomes the filename\n   under `mountPath`.\n-->\n1. \u521b\u5efa\u4e00\u4e2a ConfigMap \u5bf9\u8c61\u6216\u8005\u4f7f\u7528\u73b0\u6709\u7684 ConfigMap \u5bf9\u8c61\u3002\u591a\u4e2a Pod \u53ef\u4ee5\u5f15\u7528\u540c\u4e00\u4e2a\n   ConfigMap\u3002\n1. \u4fee\u6539 Pod \u5b9a\u4e49\uff0c\u5728 `spec.volumes[]` \u4e0b\u6dfb\u52a0\u4e00\u4e2a\u5377\u3002\n   \u4e3a\u8be5\u5377\u8bbe\u7f6e\u4efb\u610f\u540d\u79f0\uff0c\u4e4b\u540e\u5c06 `spec.volumes[].configMap.name` \u5b57\u6bb5\u8bbe\u7f6e\u4e3a\u5bf9\u4f60\u7684\n   ConfigMap \u5bf9\u8c61\u7684\u5f15\u7528\u3002\n1. \u4e3a\u6bcf\u4e2a\u9700\u8981\u8be5 ConfigMap \u7684\u5bb9\u5668\u6dfb\u52a0\u4e00\u4e2a `.spec.containers[].volumeMounts[]`\u3002\n   \u8bbe\u7f6e `.spec.containers[].volumeMounts[].readOnly=true` \u5e76\u5c06\n   `.spec.containers[].volumeMounts[].mountPat",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Configure a Pod to Use a ConfigMap",
+              "content_type": "task",
+              "weight": 190,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/en/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Add ConfigMap data to a Volume\n\nAs explained in [Create ConfigMaps from files](#create-configmaps-from-files), when you create\na ConfigMap using `--from-file`, the filename becomes a key stored in the `data` section of\nthe ConfigMap. The file contents become the key's value.\n\nThe examples in this section refer to a ConfigMap named `special-config`:\n\n{{% code_sample file=\"configmap/configmap-multikeys.yaml\" %}}\n\nCreate the ConfigMap:\n\n```shell\nkubectl create -f https://kubernetes.io/examples/configmap/configmap-multikeys.yaml\n```\n\n### Populate a Volume with data stored in a ConfigMap\n\nAdd the ConfigMap name under the `volumes` section of the Pod specification.\nThis adds the ConfigMap data to the directory specified as `volumeMounts.mountPath` (in this\ncase, `/etc/config`). The `command` section lists directory files with names that match the\nkeys in ConfigMap.\n\n{{% code_sample file=\"pods/pod-configmap-volume.yaml\" %}}\n\nCreate the Pod:\n\n```shell\nkubectl create -f https://kubernetes.io/examples/pods/pod-configmap-volume.yaml\n```\n\nWhen the pod runs, the command `ls /etc/config/` produces the output below:\n\n```\nSPECIAL_LEVEL\nSPECIAL_TYPE\n```\n\nText data is exposed as files using the UTF-8 character encoding. To use some other\ncharacter encoding, use `binaryData`\n(see [ConfigMap object](/docs/concepts/configuration/configmap/#configmap-object) for more details).\n\n{{< note >}}\nIf there are any files in the `/etc/config` directory of that container image, the volume\nmount will make those files from the image inaccessible.\n{{< /note >}}\n\nOnce you're happy to move on, delete that Pod:\n```shell\nkubectl delete pod dapi-test-pod --now\n```\n\n### Add ConfigMap data to a specific path in the Volume\n\nUse the `path` field to specify the desired file path for specific ConfigMap items.\nIn this case, the `SPECIAL_LEVEL` item will be mounted in the `config-volume` volume at `/etc/config/keys`.\n\n{{% code_sample file=\"pods/pod-configmap-volume-specific-key.yaml\" %}}\n\nCreate the Pod:\n\n```s",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u914d\u7f6e Pod \u4f7f\u7528 ConfigMap",
+              "content_type": "task",
+              "weight": 190,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/zh-cn/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Understanding ConfigMaps and Pods\n\nThe ConfigMap API resource stores configuration data as key-value pairs. The data can be consumed\nin pods or provide the configurations for system components such as controllers. ConfigMap is\nsimilar to [Secrets](/docs/concepts/configuration/secret/), but provides a means of working\nwith strings that don't contain sensitive information. Users and system components alike can\nstore configuration data in ConfigMap.\n-->",
+              "method": "section"
+            },
+            {
+              "title": "Configurer un pod pour utiliser une ConfigMap",
+              "content_template": "templates/task",
+              "weight": 150,
+              "card": {
+                "name": "tasks",
+                "weight": 50
+              },
+              "filename": "website-main/content/fr/docs/tasks/configure-pod-container/configure-pod-configmap.md",
+              "chunk": "## Comprendre le lien entre les ConfigMaps et les Pods\n\nLa ressource API ConfigMap stocke les donn\u00e9es de configuration sous forme de paires cl\u00e9-valeur.\nLes donn\u00e9es peuvent \u00eatre consomm\u00e9es dans des pods ou fournir les configurations des composants du syst\u00e8me tels que les contr\u00f4leurs.\nConfigMap est similaire \u00e0 [Secrets](/docs/concepts/configuration/secret/), mais fournit un moyen de travailler avec des cha\u00eenes de caract\u00e8res qui ne contiennent pas d'informations sensibles.\nLes utilisateurs comme les composants du syst\u00e8me peuvent stocker des donn\u00e9es de configuration dans un ConfigMap.\n\n{{< note >}}\nLes ConfigMaps doivent faire r\u00e9f\u00e9rence aux fichiers de propri\u00e9t\u00e9s, et non les remplacer.\nPensez \u00e0 la ConfigMap comme repr\u00e9sentant quelque chose de similaire au r\u00e9pertoire `/etc` de Linux et \u00e0 son contenu.\nPar exemple, si vous cr\u00e9ez un [volume Kubernetes](/docs/concepts/storage/volumes/) \u00e0 partir d'une ConfigMap, chaque \u00e9l\u00e9ment de donn\u00e9es de la ConfigMap est repr\u00e9sent\u00e9 par un fichier individuel dans le volume.\n{{< /note >}}\n\nLe champ `data` de la ConfigMap contient les donn\u00e9es de configuration.\nComme le montre l'exemple ci-dessous, cela peut \u00eatre simple -- comme des propri\u00e9t\u00e9s individuelles d\u00e9finies \u00e0 l'aide de `--from-literal` -- ou complexe -- comme des fichiers de configuration ou des blobs JSON d\u00e9finis \u00e0 l'aide de `--from-file`.\n\n```yaml\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  creationTimestamp: 2016-02-18T19:14:38Z\n  name: example-config\n  namespace: default\ndata:\n  # example of a simple property defined using --from-literal\n  example.property.1: hello\n  example.property.2: world\n  # example of a complex property defined using --from-file\n  example.property.file: |-\n    property.1=value-1\n    property.2=value-2\n    property.3=value-3\n```\n\n### Restrictions\n\n* Vous devez cr\u00e9er un ConfigMap avant de le r\u00e9f\u00e9rencer dans une sp\u00e9cification de Pod (sauf si vous marquez le ConfigMap comme \"facultatif\").\n  Si vous faites r\u00e9f\u00e9rence \u00e0 un ConfigMap qui n'existe pas, le Pod ne d\u00e9mar",
+              "method": "sliding_window"
+            },
+            {
+              "title": " Configuration management with Containers ",
+              "date": 

@@ -1,0 +1,411 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "How do you deploy a Kafka cluster in a Kubernetes environment?",
+          "timestamp": "2026-03-30T11:51:10.959683+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:51:10.959901+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "bfa1cc1e-624b-4c28-a1b6-d6b0954a0933",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Kafka cluster deployment on Kubernetes\"}",
+          "tool_call_id": "vrvht0272",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 477,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 22,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:51:12.221450+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:51:12+00:00"
+      },
+      "provider_response_id": "chatcmpl-c6e2bbbf-ef2c-4bcc-854d-ef88349b605f",
+      "finish_reason": "tool_call",
+      "run_id": "bfa1cc1e-624b-4c28-a1b6-d6b0954a0933",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "apps/v1",
+                "import": "k8s.io/api/apps/v1",
+                "kind": "Deployment"
+              },
+              "content_type": "api_reference",
+              "description": "Deployment enables declarative updates for Pods and ReplicaSets.",
+              "title": "Deployment",
+              "weight": 6,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/workload-resources/deployment-v1.md",
+              "chunk": "}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n202 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Deployment\n\n#### HTTP Request\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Deployment\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n401: Unauthorized\n\n\n### `update` replace status of the specified Deployment\n\n#### HTTP Request\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Deployment\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a ",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "apps/v1",
+                "import": "k8s.io/api/apps/v1",
+                "kind": "Deployment"
+              },
+              "content_type": "api_reference",
+              "description": "Deployment \u4f7f\u5f97 Pod \u548c ReplicaSet \u80fd\u591f\u8fdb\u884c\u58f0\u660e\u5f0f\u66f4\u65b0\u3002",
+              "title": "Deployment",
+              "weight": 6,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1.md",
+              "chunk": "pace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n202 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified Deployment\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Deployment\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the Deployment\n- **namespace** (*in path*): string, required\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n- **dryRun** (*in query*): string\n- **fieldManager** (*in query*): string\n- **fieldValidation** (*in query*): string\n- **pretty** (*in query*): string\n-->\n#### \u53c2\u6570\n\n- **name** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  Deployment \u7684\u540d\u79f0\u3002\n\n- **namespace** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fie",
+              "method": "sliding_window"
+            },
+            {
+              "title": " Kubernetes StatefulSets & DaemonSets Updates ",
+              "date": "2017-09-27",
+              "slug": "kubernetes-statefulsets-daemonsets",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Janet Kuo (Google), Kenneth Owens (Kenneth Owens)\n",
+              "filename": "website-main/content/en/blog/_posts/2017/kubernetes-statefulsets-daemonsets.md",
+              "chunk": "## Deploying a Kafka Cluster\n\nApache Kafka is a popular distributed streaming platform. Kafka producers write data to partitioned topics which are stored, with a configurable replication factor, on a cluster of brokers. Consumers consume the produced data from the partitions stored on the brokers.\n\n\n\nNote: Details of the manifests contents can be found [here](https://kow3ns.github.io/kubernetes-kafka/manifests/). You can learn more about running a Kafka cluster on Kubernetes [here](https://kow3ns.github.io/kubernetes-kafka/).\n\n\n\nTo create a cluster, you only need to download and apply the [kafka\\_mini.yaml](https://kow3ns.github.io/kubernetes-kafka/manifests/kafka_mini.yaml) manifest. When you apply the manifest, you will see output like the following:\n\n\n\n```  \n$ kubectl apply -f kafka\\_mini.yaml\n\nservice \"kafka-hs\" created\n\npoddisruptionbudget \"kafka-pdb\" created\n\nstatefulset \"kafka\" created\n ```\n\n\n\n\nThe manifest creates a three broker cluster using the kafka StatefulSet, a Headless Service, kafka-hs, to control the domain of the brokers; and a PodDisruptionBudget, kafka-pdb, that allows for one planned disruption. The brokers are configured to use the ZooKeeper ensemble we created above by connecting through the zk-cs Service. As with the ZooKeeper ensemble deployed above, this Kafka cluster is fine for demonstration purposes, but it\u2019s probably not sized correctly for production use.\n\n\n\nIf you watch Pod creation, you will notice that, like the ZooKeeper ensemble created above, the Kafka cluster uses the Parallel podManagementPolicy.\n\n\n\n```  \n$ kubectl get po -lapp=kafka -w\n\nNAME           READY         STATUS        RESTARTS     AGE\n\n\nkafka-0     0/1             Pending      0                   0s\n\n\nkafka-0     0/1             Pending      0                  0s\n\n\nkafka-1     0/1             Pending      0                  0s\n\n\nkafka-1     0/1             Pending      0                  0s\n\n\nkafka-2     0/1             Pending      0                  0s\n\n\nkafka-0  ",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 Minikube \u521b\u5efa\u96c6\u7fa4",
+              "weight": 10,
+              "filename": "website-main/content/zh-cn/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md",
+              "chunk": "## Kubernetes Clusters\n\n-->",
+              "method": "merged_short_sections"
+            },
+            {
+              "title": " Five Days of Kubernetes 1.3 ",
+              "date": "2016-07-11",
+              "slug": "five-days-of-kubernetes-1-3",
+              "url": "/:section/:year/:month/:slug/",
+              "filename": "website-main/content/en/blog/_posts/2016/five-days-of-kubernetes-1-3.md",
+              "chunk": "Last week we [released Kubernetes 1.3](https://kubernetes.io/blog/2016/07/kubernetes-1-3-bridging-cloud-native-and-enterprise-workloads/), two years from the day when the first Kubernetes commit was pushed to GitHub. Now 30,000+ commits later from over 800 contributors, this 1.3 releases is jam packed with updates driven by feedback from users.\n\nWhile many new improvements and features have been added in the latest release, we\u2019ll be highlighting several that stand-out. Follow along and read these in-depth posts on what\u2019s new and how we continue to make Kubernetes the best way to manage containers at scale.&nbsp;  \n\n\n|\nDay 1\n |\n\n\\* [Minikube: easily run Kubernetes locally](https://kubernetes.io/blog/2016/07/minikube-easily-run-kubernetes-locally)\n\\* [rktnetes: brings rkt container engine to Kubernetes](https://kubernetes.io/blog/2016/07/rktnetes-brings-rkt-container-engine-to-Kubernetes)\n |\n|\nDay 2\n |\n\\* [Autoscaling in Kubernetes](https://kubernetes.io/blog/2016/07/autoscaling-in-kubernetes)  \n\\* _Partner post: [Kubernetes in Rancher, the further evolution](https://kubernetes.io/blog/2016/07/kubernetes-in-rancher-further-evolution)_\n |\n|\nDay 3\n |\n\\* [Deploying thousand instances of Cassandra using Pet Set](https://kubernetes.io/blog/2016/07/thousand-instances-of-cassandra-using-kubernetes-pet-set)  \n\\* _Partner post: [Stateful Applications in Containers, by Diamanti](https://kubernetes.io/blog/2016/07/stateful-applications-in-containers-kubernetes)_\n |\n|\nDay 4\n |\n\\* [Cross Cluster Services](https://kubernetes.io/blog/2016/07/cross-cluster-services)  \n_\\* Partner post: [Citrix and NetScaler CPX](https://kubernetes.io/blog/2016/07/Citrix-NetScaler-and-Kubernetes)_\n |\n|\nDay 5\n |\n\\* [Dashboard - Full Featured Web Interface for Kubernetes](https://kubernetes.io/blog/2016/07/dashboard-web-interface-for-kubernetes)  \n\\* _Partner post: [Steering an Automation Platform at Wercker with Kubernetes](https://kubernetes.io/blog/2016/07/automation-platform-at-wercker-with-kubernet",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "vrvht0272",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:51:20.132242+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:51:20.144028+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "bfa1cc1e-624b-4c28-a1b6-d6b0954a0933",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Kafka cluster deployment in Kubernetes environment example\"}",
+          "tool_call_id": "xs1csvr3q",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Kubernetes Kafka cluster tutorial\"}",
+          "tool_call_id": "75whny58y",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Kubernetes StatefulSets \\u0026 DaemonSets Updates\"}",
+          "tool_call_id": "ea9a3zzsf",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3264,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 68,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:51:29.029780+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:51:29+00:00"
+      },
+      "provider_response_id": "chatcmpl-1b83face-bc29-4f4b-9178-df92c0abf5d3",
+      "finish_reason": "tool_call",
+      "run_id": "bfa1cc1e-624b-4c28-a1b6-d6b0954a0933",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "apps/v1",
+                "import": "k8s.io/api/apps/v1",
+                "kind": "Deployment"
+              },
+              "content_type": "api_reference",
+              "description": "Deployment enables declarative updates for Pods and ReplicaSets.",
+              "title": "Deployment",
+              "weight": 6,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/workload-resources/deployment-v1.md",
+              "chunk": "}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n202 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Deployment\n\n#### HTTP Request\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Deployment\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n401: Unauthorized\n\n\n### `update` replace status of the specified Deployment\n\n#### HTTP Request\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Deployment\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a ",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "apps/v1",
+                "import": "k8s.io/api/apps/v1",
+                "kind": "Deployment"
+              },
+              "content_type": "api_reference",
+              "description": "Deployment \u4f7f\u5f97 Pod \u548c ReplicaSet \u80fd\u591f\u8fdb\u884c\u58f0\u660e\u5f0f\u66f4\u65b0\u3002",
+              "title": "Deployment",
+              "weight": 6,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1.md",
+              "chunk": "pace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): OK\n\n201 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Created\n\n202 (<a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified Deployment\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Deployment\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/apps/v1/namespaces/{namespace}/deployments/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the Deployment\n- **namespace** (*in path*): string, required\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>, required\n- **dryRun** (*in query*): string\n- **fieldManager** (*in query*): string\n- **fieldValidation** (*in query*): string\n- **pretty** (*in query*): string\n-->\n#### \u53c2\u6570\n\n- **name** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  Deployment \u7684\u540d\u79f0\u3002\n\n- **namespace** (**\u8def\u5f84\u53c2\u6570**): string\uff0c\u5fc5\u9700\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n- **body**: <a href=\"{{< ref \"../workload-resources/deployment-v1#Deployment\" >}}\">Deployment</a>\uff0c\u5fc5\u9700\n\n- **dryRun** (**\u67e5\u8be2\u53c2\u6570**): string\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fie",
+              "method": "sliding_window"
+            },
+            {
+              "title": " Kubernetes StatefulSets & DaemonSets Updates ",
+              "date": "2017-09-27",
+              "slug": "kubernetes-statefulsets-daemonsets",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Janet Kuo (Google), Kenneth Owens (Kenneth Owens)\n",
+              "filename": "website-main/content/en/blog/_posts/2017/kubernetes-statefulsets-daemonsets.md",
+              "chunk": "## Deploying a Kafka Cluster\n\nApache Kafka is a popular distributed streaming platform. Kafka producers write data to partitioned topics which are stored, with a configurable replication factor, on a cluster of brokers. Consumers consume the produced data from the partitions stored on the brokers.\n\n\n\nNote: Details of the manifests contents can be found [here](https://kow3ns.github.io/kubernetes-kafka/manifests/). You can learn more about running a Kafka cluster on Kubernetes [here](https://kow3ns.github.io/kubernetes-kafka/).\n\n\n\nTo create a cluster, you only need to download and apply the [kafka\\_mini.yaml](https://kow3ns.github.io/kubernetes-kafka/manifests/kafka_mini.yaml) manifest. When you apply the manifest, you will see output like the following:\n\n\n\n```  \n$ kubectl apply -f kafka\\_mini.yaml\n\nservice \"kafka-hs\" created\n\npoddisruptionbudget \"kafka-pdb\" created\n\nstatefulset \"kafka\" created\n ```\n\n\n\n\nThe manifest creates a three broker cluster using the kafka StatefulSet, a Headless Service, kafka-hs, to control the domain of the brokers; and a PodDisruptionBudget, kafka-pdb, that allows for one planned disruption. The brokers are configured to use the ZooKeeper ensemble we created above by connecting through the zk-cs Service. As with the ZooKeeper ensemble deployed above, this Kafka cluster is fine for demonstration purposes, but it\u2019s probably not sized correctly for production use.\n\n\n\nIf you watch Pod creation, you will notice that, like the ZooKeeper ensemble created above, the Kafka cluster uses the Parallel podManagementPolicy.\n\n\n\n```  \n$ kubectl get po -lapp=kafka -w\n\nNAME           READY         STATUS        RESTARTS     AGE\n\n\nkafka-0     0/1             Pending      0                   0s\n\n\nkafka-0     0/1             Pending      0                  0s\n\n\nkafka-1     0/1             Pending      0                  0s\n\n\nkafka-1     0/1             Pending      0                  0s\n\n\nkafka-2     0/1             Pending      0                  0s\n\n\nkafka-0  ",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 Minikube \u521b\u5efa\u96c6\u7fa4",
+              "weight": 10,
+              "filename": "website-main/content/zh-cn/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md",
+              "chunk": "## Kubernetes Clusters\n\n-->",
+              "method": "merged_short_sections"
+            },
+            {
+              "title": "Using kubectl to Create a Deployment",
+              "weight": 10,
+              "filename": "website-main/content/en/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro.md",
+              "chunk": "\n* configured the cluster to reschedule the instance on a new Node when needed\n\nTo list your deployments use the `kubectl get deployments` command:\n\n```shell\nkubectl get deployments\n```\n\nWe see that there is 1 deployment running a single instance of your app. The instance\nis running inside a container on your node.\n\n### View the app\n\n[Pods](/docs/concepts/workloads/pods/) that are running inside Kubernetes are running\non a private, isolated network. By default they are visible from other pods and services\nwithin the same Kubernetes cluster, but not outside that network. When we use `kubectl`,\nwe're interacting through an API endpoint to communicate with our application.\n\nWe will cover other options on how to expose your application outside the Kubernetes\ncluster later, in [Module 4](/docs/tutorials/kubernetes-basics/expose/).\nAlso as a basic tutorial, we're not explaining what `Pods` are in any\ndetail here, it will be covered in later topics.\n\nThe `kubectl proxy` command can create a proxy that will forward communications\ninto the cluster-wide, private network. The proxy can be terminated by pressing\ncontrol-C and won't show any output while it's running.\n\n**You need to open a second terminal window to run the proxy.**\n\n```shell\nkubectl proxy\n```\nWe now have a connection between our host (the terminal) and the Kubernetes cluster.\nThe proxy enables direct access to the API from these terminals.\n\nYou can see all those APIs hosted through the proxy endpoint. For example, we can\nquery the version directly through the API using the `curl` command:\n\n```shell\ncurl http://localhost:8001/version\n```\n\n{{< note >}}\nIf port 8001 is not accessible, ensure that the `kubectl proxy` that you started\nabove is running in the second terminal.\n{{< /note >}}\n\nThe API server will automatically create an endpoint for each pod, based on the\npod name, that is also accessible through the proxy.\n\nFirst we need to get the Pod name, and we'll store it in the environment variable `POD_NAME`.\n\n``",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "xs1csvr3q",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:51:33.547323+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "Tutorial",
+              "main_menu": true,
+              "weight": 60,
+              "content_type": "concept",
+              "filename": "website-main/content/id/docs/tutorials/_index.md",
+              "chunk": "## Servis\n\n* [Menggunakan Source IP](/docs/tutorials/services/source-ip/)\n\n## {{% heading \"whatsnext\" %}}\n\nTertarik menulis tutorial? Lihat\n[Menggunakan Template Halaman](/docs/home/contribute/page-templates/)\nuntuk info mengenai template dan ragam halaman tutorial.",
+              "method": "section_merged"
+            },
+            {
+              "title": " Kubernetes StatefulSets & DaemonSets Updates ",
+              "date": "2017-09-27",
+              "slug": "kubernetes-statefulsets-daemonsets",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Janet Kuo (Google), Kenneth Owens (Kenneth Owens)\n",
+              "filename": "website-main/content/en/blog/_posts/2017/kubernetes-statefulsets-daemonsets.md",
+              "chunk": "## Deploying a Kafka Cluster\n\nApache Kafka is a popular distributed streaming platform. Kafka producers write data to partitioned topics which are stored, with a configurable replication factor, on a cluster of brokers. Consumers consume the produced data from the partitions stored on the brokers.\n\n\n\nNote: Details of the manifests contents can be found [here](https://kow3ns.github.io/kubernetes-kafka/manifests/). You can learn more about running a Kafka cluster on Kubernetes [here](https://kow3ns.github.io/kubernetes-kafka/).\n\n\n\nTo create a cluster, you only need to download and apply the [kafka\\_mini.yaml](https://kow3ns.github.io/kubernetes-kafka/manifests/kafka_mini.yaml) manifest. When you apply the manifest, you will see output like the following:\n\n\n\n```  \n$ kubectl apply -f kafka\\_mini.yaml\n\nservice \"kafka-hs\" created\n\npoddisruptionbudget \"kafka-pdb\" created\n\nstatefulset \"kafka\" created\n ```\n\n\n\n\nThe manifest creates a three broker cluster using the kafka StatefulSet, a Headless Service, kafka-hs, to control the domain of the brokers; and a PodDisruptionBudget, kafka-pdb, that allows for one planned disruption. The brokers are configured to use the ZooKeeper ensemble we created above by connecting through the zk-cs Service. As with the ZooKeeper ensemble deployed above, this Kafka cluster is fine for demonstration purposes, but it\u2019s probably not sized correctly for production use.\n\n\n\nIf you watch Pod creation, you will notice that, like the ZooKeeper ensemble created above, the Kafka cluster uses the Parallel podManagementPolicy.\n\n\n\n```  \n$ kubectl get po -lapp=kafka -w\n\nNAME           READY         STATUS        RESTARTS     AGE\n\n\nkafka-0     0/1             Pending      0                   0s\n\n\nkafka-0     0/1             Pending      0                  0s\n\n\nkafka-1     0/1             Pending      0                  0s\n\n\nkafka-1     0/1             Pending      0                  0s\n\n\nkafka-2     0/1             Pending      0                  0s\n\n\nkafka-0  ",
+              "method": "sliding_window"
+            },
+            {
+              "title": "\u4f7f\u7528 Minikube \u521b\u5efa\u96c6\u7fa4",
+              "weight": 10,
+              "filename": "website-main/content/zh-cn/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro.md",
+              "chunk": "## Kubernetes Clusters\n\n-->",
+              "method": "merged_short_sections"
+            },
+            {
+              "title": "Learn Kubernetes Basics",
+              "main_menu": true,
+              "no_list": true,
+              "weight": 20,
+              "content_type": "concept",
+              "card": {
+                "name": "tutorials",
+                "weight": 20,
+                "title": "Walkthrough the basics"
+              },
+              "filename": "website-main/content/en/docs/tutorials/kubernetes-basics/_index.md",
+              "chunk": "## {{% heading \"whatsnext\" %}}\n\n* See the [Learning environment](/docs/setup/learning-environment/) page to learn more about practice clusters and how you can run your own one.\n* Tutorial [Using Minikube to Create a Cluster](/docs/tutorials/kubernetes-basics/create-cluster/)",
+              "method": "section"
+            }
+          ],
+          "tool_call_id": "75whny58y",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:51:33.547145+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": " Kubernetes StatefulSets & DaemonSets Updates ",
+              "date": "2017-09-27",
+              "slug": "kubernetes-statefulsets-daemonsets",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Janet Kuo (Google), Kenneth Owens (Kenneth Owens)\n",
+              "filename": "website-main/content/en/blog/_posts/2017/kubernetes-statefulsets-daemonsets.md",
+              "chunk": "## Cleaning up\n\n```  \n$ kubectl delete ds node-exporter\n ```\n\n\n\n\n# What\u2019s next for DaemonSet and StatefulSet\n\nRolling updates and roll backs close an important feature gap for DaemonSets and StatefulSets. As we plan for Kubernetes 1.8, we want to continue to focus on advancing the core controllers to GA. This likely means that some advanced feature requests (e.g. automatic roll back, infant mortality detection) will be deferred in favor of ensuring the consistency, usability, and stability of the core controllers. We welcome feedback and contributions, so please feel free to reach out on [Slack](http://slack.k8s.io/), to ask questions on [Stack Overflow](http://stackoverflow.com/questions/tagged/kubernetes), or open issues or pull requests on [GitHub](https://github.com/kubernetes/kubernetes).\n\n\n\n- Post questions (or answer questions) on [Stack Overflow](http://stackoverflow.com/questions/tagged/kubernetes)\n- Join the community portal for advocates on [K8sPort](http://k8sport.org/)\n- Follow us on Twitter [@Kubernetesio](https://twitter.com/kubernetesio) for latest updates\n- Connect with the community on [Slack](http://slack.k8s.io/)\n- Get involved with the Kubernetes project on [GitHub](https://github.com/kubernetes/kubernetes)",
+              "method": "section"
+            },
+            {
+              "title": "Run a Single-Instance Stateful Application",
+              "content_type": "tutorial",
+              "weight": 20,
+              "filename": "website-main/content/en/docs/tasks/run-application/run-single-instance-stateful-application.md",
+              "chunk": "## Updating\n\nThe image or any other part of the Deployment can be updated as usual\nwith the `kubectl apply` command. Here are some precautions that are\nspecific to stateful apps:\n\n- Don't scale the app. This setup is for single-instance apps\n  only. The underlying PersistentVolume can only be mounted to one\n  Pod. For clustered stateful apps, see the\n  [StatefulSet documentation](/docs/concepts/workloads/controllers/statefulset/).\n- Use `strategy:` `type: Recreate` in the Deployment configuration\n  YAML file. This instructs Kubernetes to _not_ use rolling\n  updates. Rolling updates will not work, as you cannot have more than\n  one Pod running at a time. The `Recreate` strategy will stop the\n  first pod before creating a new one with the updated configuration.",
+              "method": "section"
+            },
+            {
+              "title": "Escalar um StatefulSet",
+              "content_type": "task",
+              "weight": 50,
+              "filename": "website-main/content/pt-br/docs/tasks/run-application/scale-stateful-set.md",
+              "chunk": "## Escalando StatefulSets\n\n### Use kubectl para escalar StatefulSets\n\nPrimeiro, encontre o StatefulSet que voc\u00ea deseja escalar:\n\n```shell\nkubectl get statefulsets <stateful-set-name>\n```\n\nAltere o n\u00famero de r\u00e9plicas do seu StatefulSet:\n\n```shell\nkubectl scale statefulsets <stateful-set-name> --replicas=<new-replicas>\n```\n\n### Fa\u00e7a atualiza\u00e7\u00f5es in-place nos seus StatefulSets\n\nAlternativamente, voc\u00ea pode fazer\n[atualiza\u00e7\u00f5es in-place](/docs/concepts/cluster-administration/manage-deployment/#in-place-updates-of-resources)\nem seus StatefulSets.\n\nSe o seu StatefulSet foi criado inicialmente com `kubectl apply`,\natualize o `.spec.replicas` dos manifestos do StatefulSet e, em seguida, execute um `kubectl apply`:\n\n```shell\nkubectl apply -f <stateful-set-file-updated>\n```\n\nCaso contr\u00e1rio, edite esse campo com `kubectl edit`:\n\n```shell\nkubectl edit statefulsets <stateful-set-name>\n```\n\nOu use `kubectl patch`:\n\n```shell\nkubectl patch statefulsets <stateful-set-name> -p '{\"spec\":{\"replicas\":<new-replicas>}}'\n```",
+              "method": "section"
+            },
+            {
+              "reviewers": [
+                "enisoc",
+                "erictune",
+                "foxish",
+                "janetkuo",
+                "kow3ns",
+                "smarterclayton"
+              ],
+              "title": "StatefulSet Basics",
+              "content_type": "tutorial",
+              "weight": 10,
+              "filename": "website-main/content/en/docs/tutorials/stateful-application/basic-stateful-set.md",
+              "chunk": "## Updating StatefulSets\n\nThe StatefulSet controller supports automated updates.  The\nstrategy used is determined by the `spec.updateStrategy` field of the\nStatefulSet API object. This feature can be used to upgrade the container\nimages, resource requests and/or limits, labels, and annotations of the Pods in a\nStatefulSet.\n\nThere are two valid update strategies, `RollingUpdate` (the default) and\n`OnDelete`.\n\n### RollingUpdate {#rolling-update}\n\nThe `RollingUpdate` update strategy will update all Pods in a StatefulSet, in\nreverse ordinal order, while respecting the StatefulSet guarantees.\n\nYou can split updates to a StatefulSet that uses the `RollingUpdate` strategy\ninto _partitions_, by specifying `.spec.updateStrategy.rollingUpdate.partition`.\nYou'll practice that later in this tutorial.\n\nFirst, try a simple rolling update.\n\nIn one terminal window, patch the `web` StatefulSet to change the container\nimage again:\n\n```shell\nkubectl patch statefulset web --type='json' -p='[{\"op\": \"replace\", \"path\": \"/spec/template/spec/containers/0/image\", \"value\":\"registry.k8s.io/nginx-slim:0.24\"}]'\n```\n```\nstatefulset.apps/web patched\n```\n\nIn another terminal, watch the Pods in the StatefulSet:\n\n```shell\n# End this watch when the rollout is complete\n#\n# If you're not sure, leave it running one more minute\nkubectl get pod -l app=nginx --watch\n```\nThe output is similar to:\n```\nNAME      READY     STATUS    RESTARTS   AGE\nweb-0     1/1       Running   0          7m\nweb-1     1/1       Running   0          7m\nweb-2     1/1       Running   0          8m\nweb-2     1/1       Terminating   0         8m\nweb-2     1/1       Terminating   0         8m\nweb-2     0/1       Terminating   0         8m\nweb-2     0/1       Terminating   0         8m\nweb-2     0/1       Terminating   0         8m\nweb-2     0/1       Terminating   0         8m\nweb-2     0/1       Pending   0         0s\nweb-2     0/1       Pending   0         0s\nweb-2     0/1       ContainerCreating   0         0s\nweb-2     1/1       R",
+              "method": "sliding_window"
+            },
+            {
+              "title": " StatefulSet: Run and Scale Stateful Applications Easily in Kubernetes ",
+              "date": "2016-12-20",
+              "slug": "statefulset-run-scale-stateful-applications-in-kubernetes",
+              "url": "/:section/:year/:month/:slug/",
+              "author": "Kenneth Owens (Google), Eric Tune (Google)\n",
+              "filename": "website-main/content/en/blog/_posts/2016/statefulset-run-scale-stateful-applications-in-kubernetes.md",
+              "chunk": "_**Editor's note:** this post is part of a [series of in-depth articles](/blog/2016/12/five-days-of-kubernetes-1-5/) on what's new in Kubernetes 1.5_\n\nIn the latest release, [Kubernetes 1.5](https://kubernetes.io/blog/2016/12/kubernetes-1-5-supporting-production-workloads/), we\u2019ve moved the feature formerly known as PetSet into beta as [StatefulSet](/docs/concepts/abstractions/controllers/statefulsets/). There were no major changes to the API Object, other than the community selected name, but we added the semantics of \u201cat most one pod per index\u201d for deployment of the Pods in the set. Along with ordered deployment, ordered termination, unique network names, and persistent stable storage, we think we have the right primitives to support many containerized stateful workloads. We don\u2019t claim that the feature is 100% complete (it is software after all), but we believe that it is useful in its current form, and that we can extend the API in a backwards-compatible way as we progress toward an eventual GA release.\n\n**When is StatefulSet the Right Choice for my Storage Application?**  \n\n[Deployments](/docs/user-guide/deployments/) and [ReplicaSets](/docs/user-guide/replicasets/) are a great way to run stateless replicas of an application on Kubernetes, but their semantics aren\u2019t really right for deploying stateful applications. The purpose of StatefulSet is to provide a controller with the correct semantics for deploying a wide range of stateful workloads. However, moving your storage application onto Kubernetes isn\u2019t always the correct choice. Before you go all in on converging your storage tier and your orchestration framework, you should ask yourself a few questions.  \n\n**Can your application run using remote storage or does it require local storage media?**  \n\nCurrently, we recommend using StatefulSets with remote storage. Therefore, you must be ready to tolerate the performance implications of network attached storage. Even with storage optimized instances, you won\u2019t l",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "ea9a3zzsf",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:51:33.960503+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:51:33.966608+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "bfa1cc1e-624b-4c28-a1b6-d6b0954a0933",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "To deploy a Kafka cluster in a Kubernetes environment, you can use the `kafka-mini.yaml` manifest provided by the Kubernetes Kafka project. This manifest creates a three-broker cluster using the Kafka StatefulSet, a Headless Service, and a PodDisruptionBudget.\n\nHere's an example of how to deploy a Kafka cluster using this manifest:\n\n1. Download the `kafka-mini.yaml` manifest from the Kubernetes Kafka project.\n2. Apply the manifest using the `kubectl apply` command: `kubectl apply -f kafka-mini.yaml`\n3. Verify that the Kafka cluster is running by checking the pods: `kubectl get pods -l app=kafka`\n4. Use the `kubectl` command to scale the Kafka cluster as needed: `kubectl scale statefulsets <stateful-set-name> --replicas=<new-replicas>`\n\nNote that this is just a basic example, and you may need to customize the manifest and configuration for your specific use case.\n\nFor more information, see the [Kubernetes Kafka project](https://kow3ns.github.io/kubernetes-kafka/) and the [Kubernetes StatefulSets documentation](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).\n\n[StatefulSets](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) \n[Deploying a Kafka Cluster](https://kow3ns.github.io/kubernetes-kafka/) \n[StatefulSet: Run and Scale Stateful Applications Easily in Kubernetes](https://kubernetes.io/blog/2016/12/statefulset-run-scale-stateful-applications-in-kubernetes/)",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9097,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 328,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:52:15.767990+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:52:15+00:00"
+      },
+      "provider_response_id": "chatcmpl-b2789b68-be19-49e9-863e-ce7a1bf326c2",
+      "finish_reason": "stop",
+      "run_id": "bfa1cc1e-624b-4c28-a1b6-d6b0954a0933",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

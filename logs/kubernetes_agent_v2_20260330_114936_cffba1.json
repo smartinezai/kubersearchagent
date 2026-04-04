@@ -1,0 +1,193 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is the role of the kubelet in a Kubernetes cluster?",
+          "timestamp": "2026-03-30T11:49:16.955385+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:16.956844+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "98df074c-5f52-423d-a258-7173353fb58d",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"kubelet role in Kubernetes cluster\"}",
+          "tool_call_id": "tb4b63s6s",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 478,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 22,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:17.122856+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:49:17+00:00"
+      },
+      "provider_response_id": "chatcmpl-57612469-2837-4339-a556-05e66859a2c8",
+      "finish_reason": "tool_call",
+      "run_id": "98df074c-5f52-423d-a258-7173353fb58d",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "Role"
+              },
+              "content_type": "api_reference",
+              "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
+              "title": "Role",
+              "weight": 7,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/authorization-resources/role-v1.md",
+              "chunk": "a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Role\n\n#### HTTP Request\n\nPUT /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Role\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Created\n\n401: Unauthorized\n\n\n### `patch` partially update the specified Role\n\n#### HTTP Request\n\nPATCH /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Role\n\n\n- **namesp",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "Role"
+              },
+              "content_type": "api_reference",
+              "description": "Role \u662f\u4e00\u4e2a\u6309\u547d\u540d\u7a7a\u95f4\u5212\u5206\u7684 PolicyRule \u903b\u8f91\u5206\u7ec4\uff0c\u53ef\u4ee5\u88ab RoleBinding \u4f5c\u4e3a\u4e00\u4e2a\u5355\u5143\u5f15\u7528\u3002",
+              "title": "Role",
+              "weight": 7,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/role-v1.md",
+              "chunk": "role-v1#Role\" >}}\">Role</a>\uff0c\u5fc5\u9700\n\n- **dryRun**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified Role\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Role\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the Role\n- **namespace** (*in path*): string, required\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>, required\n- **dryRun** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n- **fieldManager** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n- **fieldValidation** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n- **pretty** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n-->\n#### \u53c2\u6570\n\n- **name**\uff08**\u8def\u5f84\u53c2\u6570**\uff09\uff1astring\uff0c\u5fc5\u9700\n  \n  Role \u7684\u540d\u79f0\n\n- **namespace**\uff08**\u8def\u5f84\u53c2\u6570**\uff09\uff1astring\uff0c\u5fc5\u9700\n  \n  <a href=\"{{< ref \"../common-paramet",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "erictune",
+                "deads2k",
+                "liggitt"
+              ],
+              "title": "Using RBAC Authorization",
+              "content_type": "concept",
+              "aliases": [
+                "/rbac/"
+              ],
+              "weight": 33,
+              "filename": "website-main/content/en/docs/reference/access-authn-authz/rbac.md",
+              "chunk": "d\nusing Kubernetes v1.22+. More information is available in the\n[\"Write Access for EndpointSlices\" section](#write-access-for-endpoints).</td>\n</tr>\n<tr>\n<td><b>edit</b></td>\n<td>None</td>\n<td>Allows read/write access to most objects in a namespace.\n\nThis role does not allow viewing or modifying roles or role bindings.\nHowever, this role allows accessing Secrets and running Pods as any ServiceAccount in\nthe namespace, so it can be used to gain the API access levels of any ServiceAccount in\nthe namespace. This role also does not allow write access to EndpointSlices in\nclusters created using Kubernetes v1.22+. More information is available in the\n[\"Write Access for EndpointSlices\" section](#write-access-for-endpoints).</td>\n</tr>\n<tr>\n<td><b>view</b></td>\n<td>None</td>\n<td>Allows read-only access to see most objects in a namespace.\nIt does not allow viewing roles or role bindings.\n\nThis role does not allow viewing Secrets, since reading\nthe contents of Secrets enables access to ServiceAccount credentials\nin the namespace, which would allow API access as any ServiceAccount\nin the namespace (a form of privilege escalation).</td>\n</tr>\n</tbody>\n</table>\n\n### Core component roles\n\n<table>\n<colgroup><col style=\"width: 25%;\" /><col style=\"width: 25%;\" /><col /></colgroup>\n<thead>\n<tr>\n<th>Default ClusterRole</th>\n<th>Default ClusterRoleBinding</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><b>system:kube-scheduler</b></td>\n<td><b>system:kube-scheduler</b> user</td>\n<td>Allows access to the resources required by the {{< glossary_tooltip term_id=\"kube-scheduler\" text=\"scheduler\" >}} component.</td>\n</tr>\n<tr>\n<td><b>system:volume-scheduler</b></td>\n<td><b>system:kube-scheduler</b> user</td>\n<td>Allows access to the volume resources required by the kube-scheduler component.</td>\n</tr>\n<tr>\n<td><b>system:kube-controller-manager</b></td>\n<td><b>system:kube-controller-manager</b> user</td>\n<td>Allows access to the resources required by the {{< glossary_tooltip term_id=",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Kubernetes API Server Bypass Risks",
+              "description": "Security architecture information relating to the API server and other components\n",
+              "content_type": "concept",
+              "weight": 90,
+              "filename": "website-main/content/en/docs/concepts/security/api-server-bypass-risks.md",
+              "chunk": "## The kubelet API {#kubelet-api}\n\nThe kubelet provides an HTTP API that is typically exposed on TCP port 10250 on cluster\nworker nodes. The API might also be exposed on control plane nodes depending on the Kubernetes\ndistribution in use. Direct access to the API allows for disclosure of information about\nthe pods running on a node, the logs from those pods, and execution of commands in\nevery container running on the node.\n\nSome of these endpoints support Websocket protocols via HTTP `GET` requests, which are authorized with the **get** verb.\nThis means that **get** permission on `nodes/proxy` is not a read-only permission,\nand authorizes access to endpoints which can be used to execute commands in any container running on the node.\n\nWhen Kubernetes cluster users have RBAC access to `Node` object sub-resources, that access\nserves as authorization to interact with the kubelet API. The exact access depends on\nwhich sub-resource access has been granted, as detailed in\n[kubelet authorization](/docs/reference/access-authn-authz/kubelet-authn-authz/#kubelet-authorization).\n\nDirect access to the kubelet API is not subject to admission control and is not logged\nby Kubernetes audit logging. An attacker with direct access to this API may be able to\nbypass controls that detect or prevent certain actions.\n\nThe kubelet API can be configured to authenticate requests in a number of ways.\nBy default, the kubelet configuration allows anonymous access. Most Kubernetes providers\nchange the default to use webhook and certificate authentication. This lets the control plane\nensure that the caller is authorized to access the `nodes` API resource or sub-resources.\nThe default anonymous access doesn't make this assertion with the control plane.\n\n### Mitigations\n\n- Restrict access to sub-resources of the `nodes` API object using mechanisms such as\n  [RBAC](/docs/reference/access-authn-authz/rbac/). Only grant this access when required,\n  such as by monitoring services.\n- Avoid granting the `",
+              "method": "sliding_window"
+            },
+            {
+              "title": "kubelet",
+              "content_type": "tool-reference",
+              "weight": 30,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/command-line-tools-reference/kubelet.md",
+              "chunk": "SReserved feature gate to be enabled. (DEPRECATED: This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.)</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--read-only-port int32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 10255</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>The read-only port for the Kubelet to serve on with no authentication/authorization (set to 0 to disable) (DEPRECATED: This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.)</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--register-node&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: true</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Register the node with the apiserver. If --kubeconfig is not provided, this flag is irrelevant, as the Kubelet won't have an apiserver to register with. (DEPRECATED: This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.)</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--register-with-taints []v1.Taint</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Register the node with the given list of taints (comma separated &quot;&lt;key&gt;=&lt;value&gt;:&lt;effect&gt;&quot;). No-op if register-node is false. (DEPRECATED: This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.)</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--registry-burst int32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 10</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Maximum size of a bursty pulls, te",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "smarterclayton",
+                "liggitt",
+                "enj"
+              ],
+              "title": "Securing a Cluster",
+              "content_type": "task",
+              "weight": 320,
+              "filename": "website-main/content/en/docs/tasks/administer-cluster/securing-a-cluster.md",
+              "chunk": "## Controlling access to the Kubernetes API\n\nAs Kubernetes is entirely API-driven, controlling and limiting who can access the cluster and what actions\nthey are allowed to perform is the first line of defense.\n\n### Use Transport Layer Security (TLS) for all API traffic\n\nKubernetes expects that all API communication in the cluster is encrypted by default with TLS, and the\nmajority of installation methods will allow the necessary certificates to be created and distributed to\nthe cluster components. Note that some components and installation methods may enable local ports over\nHTTP and administrators should familiarize themselves with the settings of each component to identify\npotentially unsecured traffic.\n\n### API Authentication\n\nChoose an authentication mechanism for the API servers to use that matches the common access patterns\nwhen you install a cluster. For instance, small, single-user clusters may wish to use a simple certificate\nor static Bearer token approach. Larger clusters may wish to integrate an existing OIDC or LDAP server that\nallow users to be subdivided into groups.\n\nAll API clients must be authenticated, even those that are part of the infrastructure like nodes,\nproxies, the scheduler, and volume plugins. These clients are typically [service accounts](/docs/reference/access-authn-authz/service-accounts-admin/) or use x509 client certificates, and they are created automatically at cluster startup or are setup as part of the cluster installation.\n\nConsult the [authentication reference document](/docs/reference/access-authn-authz/authentication/) for more information.\n\n### API Authorization\n\nOnce authenticated, every API call is also expected to pass an authorization check. Kubernetes ships\nan integrated [Role-Based Access Control (RBAC)](/docs/reference/access-authn-authz/rbac/) component that matches an incoming user or group to a\nset of permissions bundled into roles. These permissions combine verbs (get, create, delete) with\nresources (pods, service",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "tb4b63s6s",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:49:18.590362+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:18.602085+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "98df074c-5f52-423d-a258-7173353fb58d",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "The role of the Kubelet in a Kubernetes cluster is to manage the lifecycle of pods on a node, including creating, updating, and deleting them. It also provides information about the node and its resources to the Kubernetes control plane. The Kubelet API can be used to access information about the pods running on a node, the logs from those pods, and execution of commands in every container running on the node. However, direct access to the Kubelet API is not subject to admission control and is not logged by Kubernetes audit logging, which can be a security risk if not properly configured. \n\nFor more information, see [Kubelet](https://github.com/kubernetes/website/blob/main/content/en/docs/reference/command-line-tools-reference/kubelet.md) and [Kubernetes API Server Bypass Risks](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/security/api-server-bypass-risks.md).",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4256,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 188,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:36.983395+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:49:36+00:00"
+      },
+      "provider_response_id": "chatcmpl-4860a6be-faa3-4c45-a797-bacd26cdfb62",
+      "finish_reason": "stop",
+      "run_id": "98df074c-5f52-423d-a258-7173353fb58d",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

@@ -1,0 +1,172 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is the purpose of the seccomp filter in Kubernetes?",
+          "timestamp": "2026-03-30T11:49:56.290704+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:49:56.291239+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "2e95a0d8-01eb-401e-b461-678f99a654c6",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"seccomp filter purpose in Kubernetes\"}",
+          "tool_call_id": "v34k7kwk1",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 478,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 23,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:49:59.734430+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:49:59+00:00"
+      },
+      "provider_response_id": "chatcmpl-90f5b6c4-b436-45fa-b2cc-a0c5b136bebf",
+      "finish_reason": "tool_call",
+      "run_id": "2e95a0d8-01eb-401e-b461-678f99a654c6",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "content_type": "reference",
+              "title": "Seccomp \u548c Kubernetes",
+              "weight": 80,
+              "filename": "website-main/content/zh-cn/docs/reference/node/seccomp.md",
+              "chunk": "## Seccomp fields\n\n-->",
+              "method": "merged_short_sections"
+            },
+            {
+              "title": "Using eBPF in Kubernetes",
+              "date": "2017-12-07",
+              "slug": "using-ebpf-in-kubernetes",
+              "url": "/:section/:year/:month/:slug/",
+              "filename": "website-main/content/en/blog/_posts/2017/using-ebpf-in-kubernetes.md",
+              "chunk": "## Limiting syscalls with seccomp-bpf\n\nLinux has more than 300 system calls (read, write, open, close, etc.) available for use\u2014or misuse. Most applications only need a small subset of syscalls to function properly. [seccomp](https://en.wikipedia.org/wiki/Seccomp) is a Linux security facility used to limit the set of syscalls that an application can use, thereby limiting potential misuse.  \n\nThe original implementation of seccomp was highly restrictive. Once applied, if an application attempted to do anything beyond reading and writing to files it had already opened, seccomp sent a `SIGKILL` signal.  \n\n[seccomp-bpf](https://blog.yadutaf.fr/2014/05/29/introduction-to-seccomp-bpf-linux-syscall-filter/) enables more complex filters and a wider range of actions. Seccomp-bpf, also known as seccomp mode 2, allows for applying custom filters in the form of BPF programs. When the BPF program is loaded, the filter is applied to each syscall and the appropriate action is taken (Allow, Kill, Trap, etc.).  \n\nseccomp-bpf is widely used in Kubernetes tools and exposed in Kubernetes itself. For example, seccomp-bpf is used in Docker to apply custom [seccomp security profiles](https://docs.docker.com/engine/security/seccomp/), in rkt to apply [seccomp isolators](https://github.com/rkt/rkt/blob/5fadf0f1f444cdfde40d57e1d199b6dd6371594c/Documentation/seccomp-guide.md), and in Kubernetes itself in its [Security Context](/docs/tasks/configure-pod-container/security-context/).  \n\nBut in all of these cases the use of BPF is hidden behind [libseccomp](https://github.com/seccomp/libseccomp). Behind the scenes, libseccomp generates BPF code from rules provided to it. Once generated, the BPF program is loaded and the rules applied.",
+              "method": "section"
+            },
+            {
+              "title": "\u5b89\u5168\u68c0\u67e5\u6e05\u5355",
+              "description": "\u786e\u4fdd Kubernetes \u96c6\u7fa4\u5b89\u5168\u7684\u57fa\u7ebf\u68c0\u67e5\u6e05\u5355\u3002\n",
+              "content_type": "concept",
+              "weight": 100,
+              "filename": "website-main/content/zh-cn/docs/concepts/security/security-checklist.md",
+              "chunk": "e inside containers. The seccomp filter mode leverages BPF to create an allow or\ndeny list of specific syscalls, named profiles.\n\nSince Kubernetes 1.27, you can enable the use of `RuntimeDefault` as the default seccomp profile\nfor all workloads. A [security tutorial](/docs/tutorials/security/seccomp/) is available on this\ntopic. In addition, the\n[Kubernetes Security Profiles Operator](https://github.com/kubernetes-sigs/security-profiles-operator)\nis a project that facilitates the management and use of seccomp in clusters.\n-->\n### \u542f\u7528 Seccomp {#enabling-seccomp}\n\nSeccomp \u4ee3\u8868\u5b89\u5168\u8ba1\u7b97\u6a21\u5f0f\uff08Secure computing mode\uff09\uff0c\u8fd9\u662f\u4e00\u4e2a\u81ea Linux \u5185\u6838\u7248\u672c 2.6.12 \u88ab\u52a0\u5165\u7684\u7279\u6027\u3002\n\u5b83\u53ef\u4ee5\u5c06\u8fdb\u7a0b\u7684\u7279\u6743\u6c99\u7bb1\u5316\uff0c\u6765\u9650\u5236\u4ece\u7528\u6237\u7a7a\u95f4\u53d1\u8d77\u7684\u5bf9\u5185\u6838\u7684\u8c03\u7528\u3002\nKubernetes \u5141\u8bb8\u4f60\u5c06\u52a0\u8f7d\u5230\u8282\u70b9\u4e0a\u7684 Seccomp \u914d\u7f6e\u6587\u4ef6\u81ea\u52a8\u5e94\u7528\u4e8e\u4f60\u7684 Pod \u548c\u5bb9\u5668\u3002\n\nSeccomp \u901a\u8fc7\u51cf\u5c11\u5bb9\u5668\u5185\u5bf9 Linux \u5185\u6838\u7684\u7cfb\u7edf\u8c03\u7528\uff08System Call\uff09\u4ee5\u7f29\u5c0f\u653b\u51fb\u9762\uff0c\u4ece\u800c\u63d0\u9ad8\u5de5\u4f5c\u8d1f\u8f7d\u7684\u5b89\u5168\u6027\u3002\nSeccomp \u8fc7\u6ee4\u5668\u6a21\u5f0f\u501f\u52a9 BPF \u521b\u5efa\u5177\u4f53\u7cfb\u7edf\u8c03\u7528\u7684\u5141\u8bb8\u6e05\u5355\u6216\u62d2\u7edd\u6e05\u5355\uff0c\u540d\u4e3a\u914d\u7f6e\u6587\u4ef6\uff08Profile\uff09\u3002\n\n\u4ece Kubernetes 1.27 \u5f00\u59cb\uff0c\u4f60\u53ef\u4ee5\u5c06 `RuntimeDefault` \u8bbe\u7f6e\u4e3a\u5de5\u4f5c\u8d1f\u8f7d\u7684\u9ed8\u8ba4 Seccomp \u914d\u7f6e\u3002\n\u4f60\u53ef\u4ee5\u9605\u8bfb\u76f8\u5e94\u7684[\u5b89\u5168\u6559\u7a0b](/zh-cn/docs/tutorials/security/seccomp/)\u3002\n\u6b64\u5916\uff0c[Kubernetes Security Profiles Operator](https://github.com/kubernetes-sigs/security-profiles-operator)\n\u662f\u4e00\u4e2a\u65b9\u4fbf\u5728\u96c6\u7fa4\u4e2d\u7ba1\u7406\u548c\u4f7f\u7528 Seccomp \u7684\u9879\u76ee\u3002\n\n{{< note >}}\n<!--\nSeccomp is only available on Linux nodes.\n-->\nSeccomp \u4ec5\u9002\u7528\u4e8e Linux \u8282\u70b9\u3002\n{{< /note >}}\n\n<!--\n### Enabling AppArmor or SELinux\n-->\n### \u542f\u7528 AppArmor \u6216 SELinux {#enabling-appArmor-or-SELinux}\n\n#### AppArmor\n\n<!--\n[AppArmor](/docs/tutorials/security/apparmor/) is a Linux kernel security module that can\nprovide an easy way to implement Mandatory Access Control (MAC) and better\nauditing through system logs. A default AppArmor profile is enforced on nodes that support it, or a custom profile can be configured.\nLike seccomp, AppArmor is also configured\nthrough profiles, where each profile is either running in enforcing mode, which\nblocks access to disallowed resources or complain mode, which only reports\nviolations. AppArmor profiles are enforced on a per-container basis, with an\nannotation, allowing for processes to gain just the right privileges.\n-->\n[AppArmor](/zh-cn/docs/tut",
+              "method": "sliding_window"
+            },
+            {
+              "layout": "blog",
+              "title": "Enable seccomp for all workloads with a new v1.22 alpha feature",
+              "date": "2021-08-25",
+              "slug": "seccomp-default",
+              "author": "Sascha Grunert (Red Hat)\n",
+              "filename": "website-main/content/en/blog/_posts/2021/seccomp-default.md",
+              "chunk": "## Conclusion\n\nThank you for reading this blog post! I hope you enjoyed to see how the usage of\nseccomp profiles has been evolved in Kubernetes over the past releases as much\nas I do. On your own cluster, change the default seccomp profile to\n`RuntimeDefault` (using this new feature) and see the security benefits, and, of\ncourse, feel free to reach out any time for feedback or questions.\n\n---\n\n_Editor's note: If you have any questions or feedback about this blog post, feel\nfree to reach out via the [Kubernetes slack in #sig-node][slack]._\n\n[slack]: https://kubernetes.slack.com/messages/sig-node",
+              "method": "section"
+            },
+            {
+              "title": "\u9488\u5bf9 Pod \u548c\u5bb9\u5668\u7684 Linux \u5185\u6838\u5b89\u5168\u7ea6\u675f",
+              "description": "\u6982\u8ff0\u4f60\u53ef\u7528\u4e8e\u589e\u5f3a Pod \u548c\u5bb9\u5668\u5b89\u5168\u6027\u7684 Linux \u5185\u6838\u5b89\u5168\u6a21\u5757\u548c\u7ea6\u675f\n",
+              "content_type": "concept",
+              "weight": 100,
+              "filename": "website-main/content/zh-cn/docs/concepts/security/linux-kernel-security-constraints.md",
+              "chunk": "\nKubernetes \u5141\u8bb8\u4f60\u81ea\u52a8\u5c06\u52a0\u8f7d\u5230\u67d0\u4e2a\u8282\u70b9\u4e0a\u7684\u90a3\u4e9b seccomp \u914d\u7f6e\u6587\u4ef6\u5e94\u7528\u5230\u4f60\u7684 Pod \u548c\u5bb9\u5668\u3002\n\n{{<note>}}\n<!--\nKubernetes also has the `allowPrivilegeEscalation` setting for Pods and\ncontainers. When set to `false`, this prevents processes from gaining new\ncapabilities and restricts unprivileged users from changing the applied seccomp\nprofile to a more permissive profile.\n-->\nKubernetes \u8fd8\u53ef\u4ee5\u4e3a Pod \u548c\u5bb9\u5668\u8bbe\u7f6e `allowPrivilegeEscalation`\u3002\u5f53\u6b64\u5b57\u6bb5\u8bbe\u7f6e\u4e3a `false` \u65f6\uff0c\n\u5c06\u963b\u6b62\u8fdb\u7a0b\u83b7\u53d6\u65b0\u6743\u80fd\uff0c\u5e76\u9650\u5236\u975e\u7279\u6743\u7528\u6237\u5c06\u5df2\u5e94\u7528\u7684 seccomp \u914d\u7f6e\u6587\u4ef6\u66f4\u6539\u4e3a\u67d0\u4e2a\u66f4\u5bbd\u677e\u7684\u914d\u7f6e\u6587\u4ef6\u3002\n{{</note>}}\n\n<!--\nTo learn how to implement seccomp in Kubernetes, refer to\n[Restrict a Container's Syscalls with seccomp](/docs/tutorials/security/seccomp/)\nor the [Seccomp node reference](/docs/reference/node/seccomp/)\n\nTo learn more about seccomp, see\n[Seccomp BPF](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)\nin the Linux kernel documentation.\n-->\n\u8981\u4e86\u89e3\u5982\u4f55\u5728 Kubernetes \u4e2d\u5b9e\u73b0 seccomp\uff0c\n\u8bf7\u53c2\u9605[\u4f7f\u7528 seccomp \u9650\u5236\u5bb9\u5668\u7684\u7cfb\u7edf\u8c03\u7528](/zh-cn/docs/tutorials/security/seccomp/)\u6216\n[Seccomp \u8282\u70b9\u53c2\u8003](/zh-cn/docs/reference/node/seccomp/)\u3002\n\n\u8981\u4e86\u89e3 seccomp \u7684\u66f4\u591a\u7ec6\u8282\uff0c\u8bf7\u53c2\u9605 Linux \u5185\u6838\u6587\u6863\u4e2d\u7684\n[Seccomp BPF](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)\u3002\n\n<!--\n#### Considerations for seccomp {#seccomp-considerations}\n\nseccomp is a low-level security configuration that you should only configure\nyourself if you require fine-grained control over Linux syscalls. Using\nseccomp, especially at scale, has the following risks:\n-->\n#### seccomp \u7684\u6ce8\u610f\u4e8b\u9879   {#seccomp-considerations}\n\nseccomp \u662f\u4e00\u79cd\u5e95\u5c42\u5b89\u5168\u914d\u7f6e\uff0c\u53ea\u6709\u5728\u4f60\u9700\u8981\u5bf9 Linux \u7cfb\u7edf\u8c03\u7528\u8fdb\u884c\u7ec6\u7c92\u5ea6\u63a7\u5236\u65f6\u624d\u5e94\u81ea\u884c\u914d\u7f6e\u3002\n\u4f7f\u7528 seccomp\uff0c\u5c24\u5176\u662f\u5728\u5927\u89c4\u6a21\u4f7f\u7528\u65f6\uff0c\u4f1a\u6709\u4ee5\u4e0b\u98ce\u9669\uff1a\n\n<!--\n* Configurations might break during application updates\n* Attackers can still use allowed syscalls to exploit vulnerabilities\n* Profile management for individual applications becomes challenging at scale\n-->\n* \u5728\u5e94\u7528\u66f4\u65b0\u671f\u95f4\u8fd9\u4e9b\u914d\u7f6e\u53ef\u80fd\u88ab\u7834\u574f\n* \u653b\u51fb\u8005\u4ecd\u7136\u53ef\u4ee5\u4f7f\u7528\u88ab\u5141\u8bb8\u7684\u7cfb\u7edf\u8c03\u7528\u6765\u5229\u7528\u6f0f\u6d1e\n* \u9010\u4e2a\u5e94\u7528\u5730\u7ba1\u7406\u914d\u7f6e\u6587\u4ef6\u5728\u89c4\u6a21\u8f83\u5927\u65f6\u53d8\u5f97\u5177\u6709\u6311\u6218\u6027\n\n<!--\n**Recommendation**: Use the default seccomp profile that's bundled with your\ncontainer runtime. If you need a more isolated environment, consider using a\nsandbox, such as gVisor. Sa",
+              "method": "sliding_window"
+            },
+            {
+              "layout": "blog",
+              "title": "Kubernetes v1.27: Chill Vibes",
+              "date": "2023-04-11",
+              "slug": "kubernetes-v1-27-release",
+              "author": "[Kubernetes v1.27 Release Team](https://github.com/kubernetes/sig-release/blob/master/releases/release-1.27/release-team.md)\n",
+              "filename": "website-main/content/en/blog/_posts/2023/kubernetes-1.27-release.md",
+              "chunk": "## `SeccompDefault` graduates to stable\n\nTo use seccomp profile defaulting, you must run the kubelet with the `--seccomp-default` [command line flag](/docs/reference/command-line-tools-reference/kubelet) enabled for each node where you want to use it. \nIf enabled, the kubelet will use the `RuntimeDefault` seccomp profile by default, which is defined by the container runtime, instead of using the `Unconfined` (seccomp disabled) mode. The default profiles aim to provide a strong set of security defaults while preserving the functionality of the workload. It is possible that the default profiles differ between container runtimes and their release versions.\n\nYou can find detailed information about a possible upgrade and downgrade strategy in the related Kubernetes Enhancement Proposal (KEP): [Enable seccomp by default](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/2413-seccomp-by-default).",
+              "method": "section"
+            }
+          ],
+          "tool_call_id": "v34k7kwk1",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:50:06.118689+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:50:06.125487+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "2e95a0d8-01eb-401e-b461-678f99a654c6",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "The purpose of the seccomp filter in Kubernetes is to restrict the set of syscalls that an application can use, thereby limiting potential misuse. Seccomp filters can be used to create an allow or deny list of specific syscalls, named profiles. The seccomp filter mode leverages BPF to create these profiles. By limiting the syscalls available to a container, seccomp can help to improve the security of workloads in a Kubernetes cluster.\n\nFor more information, see the [Seccomp and Kubernetes](https://github.com/kubernetes/website/blob/main/content/zh-cn/docs/reference/node/seccomp.md) documentation. \n\nAdditionally, you can find more information about seccomp in the [Using eBPF in Kubernetes](https://github.com/kubernetes/website/blob/main/content/en/blog/_posts/2017/using-ebpf-in-kubernetes.md) blog post and the [Security Checklist](https://github.com/kubernetes/website/blob/main/content/zh-cn/docs/concepts/security/security-checklist.md) documentation. \n\nYou can also learn more about seccomp in the [Linux kernel documentation](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html). \n\nTo learn how to implement seccomp in Kubernetes, refer to the [Restrict a Container's Syscalls with seccomp](https://github.com/kubernetes/website/blob/main/docs/tutorials/security/seccomp/) tutorial or the [Seccomp node reference](https://github.com/kubernetes/website/blob/main/docs/reference/node/seccomp/).",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3064,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 317,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:50:16.192470+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:50:16+00:00"
+      },
+      "provider_response_id": "chatcmpl-2599ba16-46d4-42c5-a3be-20a78214b8a8",
+      "finish_reason": "stop",
+      "run_id": "2e95a0d8-01eb-401e-b461-678f99a654c6",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}

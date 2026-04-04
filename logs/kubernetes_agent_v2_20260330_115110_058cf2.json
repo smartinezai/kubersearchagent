@@ -1,0 +1,265 @@
+{
+  "agent_name": "kubernetes_agent_v2",
+  "system_prompt": [
+    "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)"
+  ],
+  "provider": "groq",
+  "model": "llama-3.3-70b-versatile",
+  "tools": [
+    "hybrid_search_tool"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What is the role of a PodDisruptionBudget in a Kubernetes cluster?",
+          "timestamp": "2026-03-30T11:50:40.511984+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-03-30T11:50:40.522252+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "259d7b92-4032-48e5-b83a-af51cb7d53fb",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"PodDisruptionBudget role in Kubernetes cluster\"}",
+          "tool_call_id": "rj7j6csst",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 480,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 24,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:50:43.969051+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-03-30T11:50:43+00:00"
+      },
+      "provider_response_id": "chatcmpl-92061d2a-960c-4092-9441-3bdc6af0bb46",
+      "finish_reason": "tool_call",
+      "run_id": "259d7b92-4032-48e5-b83a-af51cb7d53fb",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "title": "PodDisruptionBudget",
+              "content_type": "feature_gate",
+              "_build": {
+                "list": "never",
+                "render": false
+              },
+              "stages": [
+                {
+                  "stage": "alpha",
+                  "defaultValue": false,
+                  "fromVersion": "1.3",
+                  "toVersion": "1.4"
+                },
+                {
+                  "stage": "beta",
+                  "defaultValue": true,
+                  "fromVersion": "1.5",
+                  "toVersion": "1.20"
+                },
+                {
+                  "stage": "stable",
+                  "defaultValue": true,
+                  "fromVersion": "1.21",
+                  "toVersion": "1.25"
+                }
+              ],
+              "removed": true,
+              "filename": "website-main/content/en/docs/reference/command-line-tools-reference/feature-gates/PodDisruptionBudget.md",
+              "chunk": "Enable the [PodDisruptionBudget](/docs/tasks/run-application/configure-pdb/) feature.",
+              "method": "sliding_window"
+            },
+            {
+              "title": "PodDisruptionBudget",
+              "content_type": "feature_gate",
+              "_build": {
+                "list": "never",
+                "render": false
+              },
+              "stages": [
+                {
+                  "stage": "alpha",
+                  "defaultValue": false,
+                  "fromVersion": "1.3",
+                  "toVersion": "1.4"
+                },
+                {
+                  "stage": "beta",
+                  "defaultValue": true,
+                  "fromVersion": "1.5",
+                  "toVersion": "1.20"
+                },
+                {
+                  "stage": "stable",
+                  "defaultValue": true,
+                  "fromVersion": "1.21",
+                  "toVersion": "1.25"
+                }
+              ],
+              "removed": true,
+              "filename": "website-main/content/zh-cn/docs/reference/command-line-tools-reference/feature-gates/PodDisruptionBudget.md",
+              "chunk": "<!--\nEnable the [PodDisruptionBudget](/docs/tasks/run-application/configure-pdb/) feature.\n-->\n\u542f\u7528 [PodDisruptionBudget](/zh-cn/docs/tasks/run-application/configure-pdb/) \u7279\u6027\u3002",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "Role"
+              },
+              "content_type": "api_reference",
+              "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
+              "title": "Role",
+              "weight": 7,
+              "auto_generated": true,
+              "filename": "website-main/content/en/docs/reference/kubernetes-api/authorization-resources/role-v1.md",
+              "chunk": "a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Accepted\n\n401: Unauthorized\n\n\n### `update` replace the specified Role\n\n#### HTTP Request\n\nPUT /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Role\n\n\n- **namespace** (*in path*): string, required\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n\n\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>, required\n\n  \n\n\n- **dryRun** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n\n- **fieldManager** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n\n- **fieldValidation** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n\n- **pretty** (*in query*): string\n\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n\n\n#### Response\n\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Created\n\n401: Unauthorized\n\n\n### `patch` partially update the specified Role\n\n#### HTTP Request\n\nPATCH /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}\n\n#### Parameters\n\n\n- **name** (*in path*): string, required\n\n  name of the Role\n\n\n- **namesp",
+              "method": "sliding_window"
+            },
+            {
+              "api_metadata": {
+                "apiVersion": "rbac.authorization.k8s.io/v1",
+                "import": "k8s.io/api/rbac/v1",
+                "kind": "Role"
+              },
+              "content_type": "api_reference",
+              "description": "Role \u662f\u4e00\u4e2a\u6309\u547d\u540d\u7a7a\u95f4\u5212\u5206\u7684 PolicyRule \u903b\u8f91\u5206\u7ec4\uff0c\u53ef\u4ee5\u88ab RoleBinding \u4f5c\u4e3a\u4e00\u4e2a\u5355\u5143\u5f15\u7528\u3002",
+              "title": "Role",
+              "weight": 7,
+              "filename": "website-main/content/zh-cn/docs/reference/kubernetes-api/authorization-resources/role-v1.md",
+              "chunk": "role-v1#Role\" >}}\">Role</a>\uff0c\u5fc5\u9700\n\n- **dryRun**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n\n- **fieldManager**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n\n- **fieldValidation**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n\n- **pretty**\uff08**\u67e5\u8be2\u53c2\u6570**\uff09\uff1astring\n  \n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n\n<!--\n#### Response\n-->\n#### \u54cd\u5e94\n\n200 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): OK\n\n201 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Created\n\n202 (<a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>): Accepted\n\n401: Unauthorized\n\n<!--\n### `update` replace the specified Role\n#### HTTP Request\n-->\n### `update` \u66ff\u6362\u6307\u5b9a\u7684 Role\n\n#### HTTP \u8bf7\u6c42\n\nPUT /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}\n\n<!--\n#### Parameters\n- **name** (*in path*): string, required\n  name of the Role\n- **namespace** (*in path*): string, required\n  <a href=\"{{< ref \"../common-parameters/common-parameters#namespace\" >}}\">namespace</a>\n- **body**: <a href=\"{{< ref \"../authorization-resources/role-v1#Role\" >}}\">Role</a>, required\n- **dryRun** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#dryRun\" >}}\">dryRun</a>\n- **fieldManager** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldManager\" >}}\">fieldManager</a>\n- **fieldValidation** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#fieldValidation\" >}}\">fieldValidation</a>\n- **pretty** (*in query*): string\n  <a href=\"{{< ref \"../common-parameters/common-parameters#pretty\" >}}\">pretty</a>\n-->\n#### \u53c2\u6570\n\n- **name**\uff08**\u8def\u5f84\u53c2\u6570**\uff09\uff1astring\uff0c\u5fc5\u9700\n  \n  Role \u7684\u540d\u79f0\n\n- **namespace**\uff08**\u8def\u5f84\u53c2\u6570**\uff09\uff1astring\uff0c\u5fc5\u9700\n  \n  <a href=\"{{< ref \"../common-paramet",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Interrup\u00e7\u00f5es",
+              "content_type": "concept",
+              "weight": 70,
+              "filename": "website-main/content/pt-br/docs/concepts/workloads/pods/disruptions.md",
+              "chunk": "## Or\u00e7amentos de Interrup\u00e7\u00e3o de Pods\n\n{{< feature-state for_k8s_version=\"v1.21\" state=\"stable\" >}}\n\nO Kubernetes oferece funcionalidades para ajud\u00e1-lo a executar aplica\u00e7\u00f5es altamente dispon\u00edveis mesmo quando voc\u00ea\nintroduz interrup\u00e7\u00f5es volunt\u00e1rias frequentes.\n\nComo propriet\u00e1rio de uma aplica\u00e7\u00e3o, voc\u00ea pode criar um PodDisruptionBudget (PDB) para cada aplica\u00e7\u00e3o.\nUm PDB limita o n\u00famero de Pods de uma aplica\u00e7\u00e3o replicada que est\u00e3o inativos simultaneamente devido a\ninterrup\u00e7\u00f5es volunt\u00e1rias. Por exemplo, uma aplica\u00e7\u00e3o baseada em qu\u00f3rum gostaria\nde garantir que o n\u00famero de r\u00e9plicas em execu\u00e7\u00e3o nunca seja reduzido abaixo do\nn\u00famero necess\u00e1rio para um qu\u00f3rum. Um front-end web pode querer\ngarantir que o n\u00famero de r\u00e9plicas atendendo a carga nunca caia abaixo de uma certa\nporcentagem do total.\n\nAdministradores de cluster e provedores de hospedagem devem usar ferramentas que\nrespeitem PodDisruptionBudgets atrav\u00e9s do uso da [API de Remo\u00e7\u00e3o](/docs/tasks/administer-cluster/safely-drain-node/#eviction-api)\nem vez de excluir diretamente Pods ou Deployments.\n\nPor exemplo, o subcomando `kubectl drain` permite marcar um n\u00f3 como sendo retirado de\nservi\u00e7o. Quando voc\u00ea executa `kubectl drain`, a ferramenta tenta remover todos os Pods do\nn\u00f3 que voc\u00ea est\u00e1 retirando de servi\u00e7o. A solicita\u00e7\u00e3o de remo\u00e7\u00e3o que o `kubectl` envia em\nseu nome pode ser temporariamente rejeitada, ent\u00e3o a ferramenta repete periodicamente todas as solicita\u00e7\u00f5es\ncom falha at\u00e9 que todos os Pods no n\u00f3 de destino sejam encerrados, ou at\u00e9 que um tempo limite\nconfigur\u00e1vel seja atingido.\n\nUm PDB especifica o n\u00famero de r\u00e9plicas que uma aplica\u00e7\u00e3o pode tolerar ter, em rela\u00e7\u00e3o a quantas\nela pretende ter. Por exemplo, um Deployment que tem `.spec.replicas: 5` deve\nter 5 Pods a qualquer momento. Se seu PDB permite que existam 4 por vez,\nent\u00e3o a API de Remo\u00e7\u00e3o permitir\u00e1 a interrup\u00e7\u00e3o volunt\u00e1ria de um (mas n\u00e3o dois) Pods por vez.\n\nO grupo de Pods que comp\u00f5em a aplica\u00e7\u00e3o \u00e9 especificado usando um seletor de r\u00f3tulos, o mesmo\nusado pelo cont",
+              "method": "sliding_window"
+            },
+            {
+              "reviewers": [
+                "electrocucaracha",
+                "raelga",
+                "gamba47"
+              ],
+              "title": "Interrupciones",
+              "content_type": "concept",
+              "weight": 60,
+              "filename": "website-main/content/es/docs/concepts/workloads/pods/disruptions.md",
+              "chunk": "## Presupuesto de Interrupci\u00f3n de Pods\n\n{{< feature-state for_k8s_version=\"v1.21\" state=\"stable\" >}}\n\nKubernetes ofrece car\u00e1cteristicas para ayudar a ejecutar aplicaciones con alta disponibliidad, incluso cuando usted\nintroduce interrupciones voluntarias frecuentes.\n\nComo due\u00f1o de la aplicaci\u00f3n, usted puede crear un presupuesto de interrupci\u00f3n de Pods (PDB por sus siglas en ingl\u00e9s) para cada aplicaci\u00f3n.\nUn PDB limita el numero de Pods de una aplicaci\u00f3n replicada, que estan ca\u00eddos de manera simult\u00e1nea por\ninterrupciones voluntarias. Por ejemplo, una aplicaci\u00f3n basada en qu\u00f3rum puede\nasegurarse que el n\u00famero de r\u00e9plicas corriendo nunca es menor al\nn\u00famero necesitado para obtener el qu\u00f3rum. Una web de tipo front end puede querer\nasegurarse que el n\u00famero de r\u00e9plicas atendiendo al tr\u00e1fico nunca puede caer bajo un cierto\nporcentaje del total.\n\nLos administradores del cl\u00faster y proveedores de hosting pueden usar herramientas que\nrespeten el presupuesto de interrupci\u00f3n de Pods utilizando la [API de Desalojo](/docs/tasks/administer-cluster/safely-drain-node/#eviction-api)\nen vez de directamente borrar Pods o Deployments.\n\nPor ejemplo, el subcomando `kubectl drain` le permite marcar un nodo a un modo fuera de\nservicio. Cuando se ejecuta `kubectl drain`, la herramienta trata de quitar a todos los Pods en\nel nodo que se esta dejando fuera de servicio. La petici\u00f3n de desalojo que `kubectl` solicita en \nsu nombre puede ser temporalmente denegado, entonces la herramienta periodicamente reintenta todas las \npeticiones fallidas hasta que todos los Pods en el nodo afectado son terminados o hasta que el tiempo de espera,\nque puede ser configurado, es alcanzado.\n \nUn PDB especifica el n\u00famero de r\u00e9plicas que una aplicaci\u00f3n puede tolerar, relativo a cuantas\nse pretende tener. Por ejemplo, un Deployment que tiene un `.spec.replicas: 5` se\nsupone que tiene 5 Pods en cualquier momento. Si su PDB permite tener 4 a la vez,\nentonces la API de Desalojo va a permitir interrupciones voluntarias de",
+              "method": "sliding_window"
+            },
+            {
+              "title": "Introducing PodTopologySpread",
+              "date": "2020-05-05",
+              "slug": "introducing-podtopologyspread",
+              "url": "/blog/2020/05/Introducing-PodTopologySpread",
+              "author": "Wei Huang (IBM), Aldo Culquicondor (Google)\n",
+              "filename": "website-main/content/en/blog/_posts/2020/introducing-podtopologyspread.md",
+              "chunk": "## PodTopologySpread defaults\n\nPodTopologySpread is a Pod level API. As such, to use the feature, workload\nauthors need to be aware of the underlying topology of the cluster, and then\nspecify proper `topologySpreadConstraints` in the Pod spec for every workload.\nWhile the Pod-level API gives the most flexibility it is also possible to\nspecify cluster-level defaults.\n\nThe default PodTopologySpread constraints allow you to specify spreading for all\nthe workloads in the cluster, tailored for its topology. The constraints can be\nspecified by an operator/admin as PodTopologySpread plugin arguments in the\n[scheduling profile configuration\nAPI](/docs/reference/scheduling/profiles/) when starting\nkube-scheduler.\n\nA sample configuration could look like this:\n\n```\napiVersion: kubescheduler.config.k8s.io/v1alpha2\nkind: KubeSchedulerConfiguration\nprofiles:\n  pluginConfig:\n  - name: PodTopologySpread\n    args:\n      defaultConstraints:\n      - maxSkew: 1\n        topologyKey: example.com/rack\n        whenUnsatisfiable: ScheduleAnyway\n```\n\nWhen configuring default constraints, label selectors must be left empty.\nkube-scheduler will deduce the label selectors from the membership of the Pod to\nServices, ReplicationControllers, ReplicaSets or StatefulSets. Pods can\nalways override the default constraints by providing their own through the\nPodSpec.\n\n{{< note >}}\nWhen using default PodTopologySpread constraints, it is recommended to disable\nthe old DefaultTopologySpread plugin.\n{{< /note >}}",
+              "method": "section"
+            },
+            {
+              "reviewers": [
+                "smarterclayton",
+                "liggitt",
+                "enj"
+              ],
+              "title": "Securing a Cluster",
+              "content_type": "task",
+              "weight": 320,
+              "filename": "website-main/content/en/docs/tasks/administer-cluster/securing-a-cluster.md",
+              "chunk": "## Controlling the capabilities of a workload or user at runtime\n\nAuthorization in Kubernetes is intentionally high level, focused on coarse actions on resources.\nMore powerful controls exist as **policies** to limit by use case how those objects act on the\ncluster, themselves, and other resources.\n\n### Limiting resource usage on a cluster\n\n[Resource quota](/docs/concepts/policy/resource-quotas/) limits the number or capacity of\nresources granted to a namespace. This is most often used to limit the amount of CPU, memory,\nor persistent disk a namespace can allocate, but can also control how many pods, services, or\nvolumes exist in each namespace.\n\n[Limit ranges](/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) restrict the maximum or minimum size of some of the\nresources above, to prevent users from requesting unreasonably high or low values for commonly\nreserved resources like memory, or to provide default limits when none are specified.\n\n\n### Controlling what privileges containers run with\n\nA pod definition contains a [security context](/docs/tasks/configure-pod-container/security-context/)\nthat allows it to request access to run as a specific Linux user on a node (like root),\naccess to run privileged or access the host network, and other controls that would otherwise\nallow it to run unfettered on a hosting node.\n\nYou can configure [Pod security admission](/docs/concepts/security/pod-security-admission/)\nto enforce use of a particular [Pod Security Standard](/docs/concepts/security/pod-security-standards/)\nin a {{< glossary_tooltip text=\"namespace\" term_id=\"namespace\" >}}, or to detect breaches.\n\nGenerally, most application workloads need limited access to host resources so they can\nsuccessfully run as a root process (uid 0) without access to host information. However,\nconsidering the privileges associated with the root user, you should write application\ncontainers to run as a non-root user. Similarly, administrators who wish to prevent\ncl",
+              "method": "sliding_window"
+            },
+            {
+              "layout": "blog",
+              "title": "Kubernetes 1.23: The Next Frontier",
+              "date": "2021-12-07",
+              "slug": "kubernetes-1-23-release-announcement",
+              "evergreen": true,
+              "author": "[Kubernetes 1.23 Release Team](https://github.com/kubernetes/sig-release/blob/master/releases/release-1.23/release-team.md)\n",
+              "filename": "website-main/content/en/blog/_posts/2021/kubernetes-release-1.23.md",
+              "chunk": " Pods must be configured to be dual-stack and Services must have their `.spec.ipFamilyPolicy` field set to either `PreferDualStack` or `RequireDualStack`.\n\n### HorizontalPodAutoscaler v2 graduates to GA\n\nThe HorizontalPodAutoscaler `autoscaling/v2` stable API moved to GA in 1.23. The HorizontalPodAutoscaler `autoscaling/v2beta2` API has been deprecated.\n\n### Generic Ephemeral Volume feature graduates to GA\n\nThe generic ephemeral volume feature moved to GA in 1.23. This feature allows any existing storage driver that supports dynamic provisioning to be used as an ephemeral volume with the volume\u2019s lifecycle bound to the Pod. All StorageClass parameters for volume provisioning and all features supported with PersistentVolumeClaims are supported.\n\n### Skip Volume Ownership change graduates to GA\n\nThe feature to configure volume permission and ownership change policy for Pods moved to GA in 1.23. This allows users to skip recursive permission changes on mount and speeds up the pod start up time.\n\n### Allow CSI drivers to opt-in to volume ownership and permission change graduates to GA\n\nThe feature to allow CSI Drivers to declare support for fsGroup based permissions graduates to GA in 1.23.\n\n### PodSecurity graduates to Beta\n\n[PodSecurity](https://kubernetes.io/docs/concepts/security/pod-security-admission/) moves to Beta. `PodSecurity` replaces the deprecated `PodSecurityPolicy` admission controller. `PodSecurity` is an admission controller that enforces Pod Security Standards on Pods in a Namespace based on specific namespace labels that set the enforcement level. In 1.23, the `PodSecurity` feature gate is enabled by default.\n\n### Container Runtime Interface (CRI) v1 is default\n\nThe Kubelet now supports the CRI `v1` API, which is now the project-wide default. \nIf a container runtime does not support the `v1` API, Kubernetes will fall back to the `v1alpha2` implementation. There is no intermediate action required by end-users, because `v1` and `v1alpha2` do not differ ",
+              "method": "sliding_window"
+            }
+          ],
+          "tool_call_id": "rj7j6csst",
+          "metadata": null,
+          "timestamp": "2026-03-30T11:50:52.100861+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-03-30T11:50:52.106565+00:00",
+      "instructions": "You are a helpful assistant for Kubernetes documentation.\n\nAlways search for relevant information before answering.\nIf the first search doesn't give you enough information, try different search terms.\nMake multiple searches if needed to provide comprehensive answers.\nIf search results are not relevant, say so and provide general guidance.\n\nAlways include references by citing the filename of the source material you used.\nWhen citing the reference, replace \"website-main\" with the full path to the GitHub\nrepository: \"https://github.com/kubernetes/website/blob/main/\"\nFormat: [LINK TITLE](FULL_GITHUB_LINK)",
+      "kind": "request",
+      "run_id": "259d7b92-4032-48e5-b83a-af51cb7d53fb",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "content": "The role of a PodDisruptionBudget (PDB) in a Kubernetes cluster is to limit the number of Pods of a replicated application that can be terminated simultaneously due to voluntary disruptions, such as node drain or pod termination. This ensures that the application remains available and accessible to users even in the event of disruptions. [PodDisruptionBudget](https://github.com/kubernetes/website/blob/main/content/en/docs/concepts/workloads/pods/disruptions.md)",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 5064,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 92,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.3-70b-versatile",
+      "timestamp": "2026-03-30T11:51:10.856109+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_url": "https://api.groq.com",
+      "provider_details": {
+        "finish_reason": "stop",
+        "timestamp": "2026-03-30T11:51:10+00:00"
+      },
+      "provider_response_id": "chatcmpl-b7e8bcf3-076e-44d8-8725-8b0225a36e98",
+      "finish_reason": "stop",
+      "run_id": "259d7b92-4032-48e5-b83a-af51cb7d53fb",
+      "metadata": null
+    }
+  ],
+  "source": "ai-generated"
+}
